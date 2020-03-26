@@ -1,0 +1,24 @@
+json
+
+ricevuti dal websocket server
+
+id 1:
+-formato  {id = 1, user0 = utente che si è loggato}
+
+Server per far associare al programma l'utente al socket.
+
+id 2:
+-formato {id = 2,text = testo del messaggio, user0 = utente da cui parte il messaggio, user1 = utente a cui deve arrivare il messagio, date = data.now, image = string base64}
+
+id 3: 
+-formato {id = 3,} 
+
+
+
+ricevuti dal web socket client
+
+id 1:
+-formato {id = 1, testo, utente che gli ha inviato quel messaggio}
+
+id 100:
+il socket viene disconesso (kick) visualizzare a schermo che è stato kickato e chiudere le eventuali finestre.
