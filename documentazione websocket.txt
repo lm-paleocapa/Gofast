@@ -1,24 +1,19 @@
-json
+Json ricevuti dal websocket server
 
-ricevuti dal websocket server
+id <1> Serve per far associare al programma l'utente ad un socket.
+-campi da compilare     {id, user0}
+-significato            {1, utente che si è connesso}
 
-id 1:
--formato  {id = 1, user0 = utente che si è loggato}
-
-Server per far associare al programma l'utente al socket.
-
-id 2:
--formato {id = 2,text = testo del messaggio, user0 = utente da cui parte il messaggio, user1 = utente a cui deve arrivare il messagio, date = data.now, image = string base64}
-
-id 3: 
--formato {id = 3,} 
+id <2> 
+-campi da compilare {id,text, user0, user1, date, image}
+-significato        {2, testo del messaggio, utente di partenza, utente destinatario, data di partezza, immagine in base64}
 
 
+Json ricevuti dal web socket client
 
-ricevuti dal web socket client
+id <1> Server al client che riceve il messaggio per sapere chi gli ha inviato il messaggio e quando è stato inviato
+-Campi da compilare {id = 1, text, user0, date}
+-significato        {1, testo, utente che ha inviato inviato il messaggio, data di partenza del messaggio}
 
-id 1:
--formato {id = 1, testo, utente che gli ha inviato quel messaggio}
-
-id 100:
+id <100>
 il socket viene disconesso (kick) visualizzare a schermo che è stato kickato e chiudere le eventuali finestre.
