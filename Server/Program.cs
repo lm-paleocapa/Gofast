@@ -1,22 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading;
-using System.IO;
-using System.Data;
 using Fleck;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
-
 namespace Server
 {
     class Program
     {
-        static WebSocketServer server = new WebSocketServer($"ws://{LocalIp()}:8181");
+        private static MySqlConnection connection = new MySqlConnection("server=79.24.89.93;port=3306;username=gofast;password=qGZGg01k0lbWXkKD");
+        private static WebSocketServer server = new WebSocketServer($"ws://{LocalIp()}:8181");
         private static List<Users> userConnected = new List<Users>();
-
         static void Main()
         {
             server.RestartAfterListenError = true;
@@ -47,13 +42,18 @@ namespace Server
 
                     switch (json0.id)
                     {
-                        case 1: // Associa il socket conesso con un utente.
+                        case 1: // Associa il socket conesso con un utente e ne aggiorna lo stato.
                             {
                                 foreach (var i in userConnected)
                                 {
                                     if (i.socketId == socket)
                                     {
                                         i.user = json0.user0;
+                                        string query0 = $"use gofast; UPDATE account SET state = 'online' WHERE user = '{json0.user0}';";
+                                        MySqlCommand cmd0 = connection.CreateCommand();
+                                        cmd0.CommandText = (query0);
+                                        cmd0.Connection = connection;
+                                        cmd0.ExecuteNonQuery();
                                     }
                                 }
                                 break;
@@ -78,31 +78,42 @@ namespace Server
                                 }
                                 break;
                             }
+                        case 3: // Logout del profilo e aggiornamento ultimo accesso.
+                            {
+                                string user0 = null;
+                                foreach (var i in userConnected)
+                                {
+                                    if (i.socketId == socket)
+                                    {
+                                        user0 = i.user;
+                                    }
+                                }
+                                string query = $"use gofast; UPDATE account SET state = '{json0.date}' WHERE user = '{user0}';";
+                                MySqlCommand cmd = connection.CreateCommand();
+                                cmd.CommandText = (query);
+                                cmd.Connection = connection;
+                                cmd.ExecuteNonQuery();
+                                
+                                break;
+                            }
                     }
                 };
             });
 
-            Thread cmd = new Thread(thread0);
-            cmd.Start();
-
-            Thread checkOnline = new Thread(thread1);
-            checkOnline.Start();
-        }
-
-        private static void thread1()
-        {
-            string db = @"server=79.24.89.93;userid=gofast;password=qGZGg01k0lbWXkKD;database=gofast";
-            var con = new MySqlConnection(db);
-            con.Open();
-
-
-            Console.WriteLine($"MySQL version : {con.ServerVersion}");
-            while (true)
+            Thread zero = new Thread(thread0);
+            zero.Start();
+            bool ok = false;
+            try
             {
-
+                connection.Open();
+                ok = true;
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            if (ok) Console.WriteLine("Database is connected");
         }
-
         private static void thread0()
         {
             while (true)
@@ -110,8 +121,7 @@ namespace Server
                 startComand(Console.ReadLine());
             }
         }
-
-        public static string LocalIp() // Trova l'ipv4 in autonomia.
+        private static string LocalIp() // Trova l'ipv4 in autonomia.
         {
             IPHostEntry host;
             string localIP = "";
@@ -125,7 +135,6 @@ namespace Server
             }
             return localIP;
         }
-
         private static void startComand(string comand) // Mette a disposizione dei comandi eseguibili dal terminale
         {
             switch (comand)
@@ -166,8 +175,7 @@ namespace Server
                     }
             }
         }
-
-        class Json
+        private class Json
         {
             public int id { get; set; }
             public string text { get; set; }
@@ -175,9 +183,10 @@ namespace Server
             public string user1 { get; set; }
             public DateTime date { get; set; }
             public string imageBase64 { get; set; }
+            public string state { get; set; }
+            public string image { get; set; }
         }
-
-        class Users
+        private class Users
         {
             public IWebSocketConnection socketId { get; set; }
             public string user { get; set; }
