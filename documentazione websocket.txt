@@ -7,13 +7,18 @@ id <1> Serve per far associare al programma l'utente ad un socket.
 id <2> 
 -campi da compilare {id,text, user0, user1, date, image}
 -significato        {2, testo del messaggio, utente di partenza, utente destinatario, data di partezza, immagine in base64}
-
+-variabile          {}
 
 Json ricevuti dal web socket client
 
-id <1> Server al client che riceve il messaggio per sapere chi gli ha inviato il messaggio e quando è stato inviato
+id <1> Serve al client che riceve il messaggio per sapere chi gli ha inviato il messaggio e quando è stato inviato
 -Campi da compilare {id = 1, text, user0, date}
 -significato        {1, testo, utente che ha inviato inviato il messaggio, data di partenza del messaggio}
+-variabile          {}
+
+id <2> Serve al client per definire gli utenti online e l'ultimo accesso 
+-campi da compilare {state}
+-variabile   {}
 
 id <100>
 il socket viene disconesso (kick) visualizzare a schermo che è stato kickato e chiudere le eventuali finestre.
