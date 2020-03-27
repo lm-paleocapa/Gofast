@@ -9,7 +9,7 @@ namespace Server
 {
     class Program
     {
-        private static MySqlConnection connection = new MySqlConnection("server=79.24.89.93;port=3306;username=gofast;password=qGZGg01k0lbWXkKD");
+        private static MySqlConnection connection = new MySqlConnection("server=79.24.89.93;port=3306;username=gofast;password=da inserire");
         private static WebSocketServer server = new WebSocketServer($"ws://{LocalIp()}:8181");
         private static List<Users> userConnected = new List<Users>();
         static void Main()
