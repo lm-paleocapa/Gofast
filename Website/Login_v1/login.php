@@ -8,7 +8,7 @@
     $DBpassword = "qGZGg01k0lbWXkKD";
     $DBdatabase = "gofast";
 
-    $badFormatElail = false;
+    $error = "";
 
     $conn = new mysqli($ip, $user, $password, $database);
     
@@ -17,26 +17,29 @@
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL))  
-        $badFormatEmail = true;
+        $error = "badFormatEmail";
 
     if ($badFormatEmail === false) {
         $result = $conn->query("SELECT id, password FROM account WHERE mail LIKE '$email'");
         if (!$result) {
-            exit("Failed to fetch the account: ".$conn->connection_error);
+            $error = "databaseError";
         }
         else {
             if ($res->num_rows == 0) {
-                exit("Email not fount")
+                $error = "emailNotFound";
             }
             else {
                 if (!$result->fetch_assoc()["password"] === $password) {
-                    exit("Wrong Password");
+                    $error = "wrongPassword";
                 }
                 else {
                     session_start();
                     $_SESSION["id"] = $result->fetch_assoc()["id"];
+                    header("Location: ../chat.php");
                 }
             }
         }
     }
+
+    echo $error;
 ?>

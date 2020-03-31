@@ -17,7 +17,7 @@
     $conn = new mysqli($ip, $user, $password, $database);
     
     if ($conn->connect_error) {
-        exit("Connection Failed: ".$conn->connection_error);
+        $error = "databaseError");
     }
 
     if (!ctype_alnum($username))
@@ -48,7 +48,7 @@
 
     if ($error === "") {
         if (!$conn->query("INSERT INTO account (user, mail, password, age, image) VALUES ('$username', '$email', '$password', '$age', '$image')"))
-            exit("Failed to insert new record: ".$conn->connection_error);
+            $error = "databaseError";
         else {
             echo "newAccountCreatedSuccessfully";
         }
