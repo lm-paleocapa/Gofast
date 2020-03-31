@@ -27,6 +27,13 @@ function manageResponse(response) {
             response = "New account created successfully, log in";
             responseMessage.color = "green";
             break;
+        case "emailNotFound":
+            response = "Email not found";
+            break;
+        case "wrongPassword":
+            response = "Wrong Password";
+        case "databaseError":
+            response = "Database error, try again later";
     }
     responseMessage.innerHTML = responseTxt;
 }
@@ -50,6 +57,23 @@ function register() {
     var http = new XMLHttpRequest();
     var url = 'register.php';
     var params = 'username=' + document.getElementById("username").value + "&email=" + document.getElementById("email").value + "&password=" + document.getElementById("password").value + "&confirmPassword=" + document.getElementById("confirmPassword").value + "&age=" + document.getElementById("age").value + "&image=" + document.getElementById("image").value;
+    http.open('POST', url, true);
+
+    //Send the proper header information along with the request
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    http.onreadystatechange = function() {//Call a function when the state changes.
+        if(http.readyState == 4 && http.status == 200) {
+            manageResponse(http.responseText);
+        }
+    }
+    http.send(params);
+}
+
+function login() {
+    var http = new XMLHttpRequest();
+    var url = 'login.php';
+    var params = "email=" + document.getElementById("email").value + "&password=" + document.getElementById("password").value;
     http.open('POST', url, true);
 
     //Send the proper header information along with the request
