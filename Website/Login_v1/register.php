@@ -7,10 +7,10 @@
     $age = $_POST["age"];
     $image = $_POST["image"];
     
-    $DBip = "79.24.89.93";
-    $DBuser = "gofast";
-    $DBpassword = "qGZGg01k0lbWXkKD";
-    $DBdatabase = "gofast";
+    $DBip = "";
+    $DBuser = "";
+    $DBpassword = "";
+    $DBdatabase = "";
 
     $error = "";
 
