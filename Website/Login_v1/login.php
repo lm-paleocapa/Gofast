@@ -3,10 +3,10 @@
     $email = $_POST("email");
     $password = $_POST("password");
     
-    $DBip = "79.24.89.93";
-    $DBuser = "gofast";
-    $DBpassword = "qGZGg01k0lbWXkKD";
-    $DBdatabase = "gofast";
+    $DBip = "";
+    $DBuser = "";
+    $DBpassword = "";
+    $DBdatabase = "";
 
     $error = "";
 
