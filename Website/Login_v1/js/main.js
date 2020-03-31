@@ -1,57 +1,109 @@
+function manageResponse(response) {
+    responseMessage = document.getElementById("responseMessage");
+    responseTxt = "";
+    switch (response) {
+        case "badFormatUsername":
+            responseTxt = "Invalid username, only A-Z, a-z, or 0-9 characters allowed";
+            break;
+        case "usernameAlreadyTaken":
+            responseTxt = "Invalid username, username already taken";
+            break;
+        case "badFormatEmail":
+            responseTxt = "Invalid email";
+            break;
+        case "emailAlreadyTaken":
+            responseTxt = "Invalid email, email already taken";
+            break;
+        case "passwordsDoNotMatch":
+            responseTxt = "Passwords to not match";
+            break;
+        case "badAgeFormat":
+            responseTxt = "Invalid age";
+            break;
+        case "tooYoung":
+            responseTxt = "Invalid age, too young";
+            break;
+        case "newAccountCreatedSuccessfully":
+            response = "New account created successfully, log in";
+            responseMessage.color = "green";
+            break;
+        case "emailNotFound":
+            response = "Email not found";
+            break;
+        case "wrongPassword":
+            response = "Wrong Password";
+        case "databaseError":
+            response = "Database error, try again later";
+    }
+    responseMessage.innerHTML = responseTxt;
+}
 
-(function ($) {
-    "use strict";
-
+function register() {
+    /*jQuery.ajax({
+        type: "POST",
+        url: 'register.php',
+        dataType: 'json',
+        data: {username: document.getElementById("username").value, email: document.getElementById("email").value, password: document.getElementById("password").value, confirmPassword: document.getElementById("confirmPassword").value, age: document.getElementById("age").value, image: image},
     
-    /*==================================================================
-    [ Validate ]*/
-    var input = $('.validate-input .input100');
+        success: function (obj, textstatus) {
+                      if( !('error' in obj) ) {
+                          yourVariable = obj.result;
+                      }
+                      else {
+                          console.log(obj.error);
+                      }
+                }
+    });*/
+    var http = new XMLHttpRequest();
+    var url = 'register.php';
+    var params = 'username=' + document.getElementById("username").value + "&email=" + document.getElementById("email").value + "&password=" + document.getElementById("password").value + "&confirmPassword=" + document.getElementById("confirmPassword").value + "&age=" + document.getElementById("age").value + "&image=" + document.getElementById("image").value;
+    http.open('POST', url, true);
 
-    $('.validate-form').on('submit',function(){
-        var check = true;
+    //Send the proper header information along with the request
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
-        for(var i=0; i<input.length; i++) {
-            if(validate(input[i]) == false){
-                showValidate(input[i]);
-                check=false;
-            }
-        }
-
-        return check;
-    });
-
-
-    $('.validate-form .input100').each(function(){
-        $(this).focus(function(){
-           hideValidate(this);
-        });
-    });
-
-    function validate (input) {
-        if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
-            if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-                return false;
-            }
-        }
-        else {
-            if($(input).val().trim() == ''){
-                return false;
-            }
+    http.onreadystatechange = function() {//Call a function when the state changes.
+        if(http.readyState == 4 && http.status == 200) {
+            manageResponse(http.responseText);
         }
     }
+    http.send(params);
+}
 
-    function showValidate(input) {
-        var thisAlert = $(input).parent();
+function login() {
+    var http = new XMLHttpRequest();
+    var url = 'login.php';
+    var params = "email=" + document.getElementById("email").value + "&password=" + document.getElementById("password").value;
+    http.open('POST', url, true);
 
-        $(thisAlert).addClass('alert-validate');
+    //Send the proper header information along with the request
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    http.onreadystatechange = function() {//Call a function when the state changes.
+        if(http.readyState == 4 && http.status == 200) {
+            manageResponse(http.responseText);
+        }
     }
+    http.send(params);
+}
 
-    function hideValidate(input) {
-        var thisAlert = $(input).parent();
+var upload = document.getElementById("upload");
+var path = "";
+var image = document.getElementById("image").src;
 
-        $(thisAlert).removeClass('alert-validate');
+upload.addEventListener("change", function() {
+    if (upload.value) {
+        const input = document.querySelector("input");
+        const curFiles = input.files;
+        document.getElementById("image").src = URL.createObjectURL(curFiles[0]);
+        var fr = new FileReader();
+        fr.readAsDataURL(curFiles[0]);
+        fr.onloadend = function() {
+            document.getElementById("image").src = (fr.result);
+            image = fr.result;
+        }
     }
     
     
+});
 
-})(jQuery);
