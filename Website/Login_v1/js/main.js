@@ -32,8 +32,10 @@ function manageResponse(response) {
             break;
         case "wrongPassword":
             response = "Wrong Password";
+            break;
         case "databaseError":
             response = "Database error, try again later";
+            break;
     }
     responseMessage.innerHTML = responseTxt;
 }
