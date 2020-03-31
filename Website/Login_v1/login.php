@@ -1,7 +1,7 @@
 <?php
 
-    $email = $_POST("email");
-    $password = $_POST("password");
+    $email = $_POST["email"[;
+    $password = $_POST["password"];
     
     $DBip = "";
     $DBuser = "";
@@ -10,7 +10,7 @@
 
     $error = "";
 
-    $conn = new mysqli($ip, $user, $password, $database);
+    $conn = new mysqli($DBip, $DBuser, $DBpassword, $DBdatabase);
     
     if ($conn->connect_error) {
         exit("Connection Failed: ".$conn->connection_error);
@@ -25,11 +25,11 @@
             $error = "databaseError";
         }
         else {
-            if ($res->num_rows == 0) {
+            if ($result->num_rows == 0) {
                 $error = "emailNotFound";
             }
             else {
-                if (!$result->fetch_assoc()["password"] === $password) {
+                if ($result->fetch_assoc()["password"] !== $password) {
                     $error = "wrongPassword";
                 }
                 else {

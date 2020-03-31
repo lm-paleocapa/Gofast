@@ -14,7 +14,7 @@
 
     $error = "";
 
-    $conn = new mysqli($ip, $user, $password, $database);
+    $conn = new mysqli($DBip, $DBuser, $DBpassword, $DBdatabase);
     
     if ($conn->connect_error) {
         $error = "databaseError");
