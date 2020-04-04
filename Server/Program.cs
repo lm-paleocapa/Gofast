@@ -10,8 +10,9 @@ namespace Server
 {
     class Program
     {
-        private static MySqlConnection connection = new MySqlConnection("server=79.24.89.93;port=3306;username=gofast;password=");
-        private static WebSocketServer server = new WebSocketServer($"ws://{LocalIp()}:8181");
+        private static MySqlConnection connection = new MySqlConnection("server=79.24.89.93;port=3306;username=gofast;password=dysa91ASDSAmk");
+        //private static WebSocketServer server = new WebSocketServer($"ws://{LocalIp()}:8181");
+        private static WebSocketServer server = new WebSocketServer($"ws://127.0.0.1:55555");
         private static List<Users> userConnected = new List<Users>();
         static void Main()
         {
@@ -20,6 +21,7 @@ namespace Server
             {
                 socket.OnOpen = () =>
                 {
+                    Console.WriteLine("sadas");
                     Users user = new Users
                     {
                         socketId = socket,
@@ -39,6 +41,10 @@ namespace Server
                 };
                 socket.OnMessage = message =>
                 {
+                    Console.WriteLine(message);
+                    Thread.Sleep(1221);
+                    return;
+
                     Json json0 = JsonConvert.DeserializeObject<Json>(message);
 
                     switch (json0.id)
@@ -94,7 +100,7 @@ namespace Server
                                 cmd.CommandText = (query);
                                 cmd.Connection = connection;
                                 cmd.ExecuteNonQuery();
-                                
+
                                 break;
                             }
                     }
