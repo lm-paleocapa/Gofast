@@ -36,6 +36,8 @@ function manageResponse(response) {
         case "databaseError":
             response = "Database error, try again later";
             break;
+        case "successfullyLoggedIn":
+            document.location.href = "192.168.178.26/prova/chat.php"
     }
     responseMessage.innerHTML = responseTxt;
 }
