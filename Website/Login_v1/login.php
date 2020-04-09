@@ -1,6 +1,6 @@
 <?php
 
-    $email = $_POST["email"[;
+    $email = $_POST["email"];
     $password = $_POST["password"];
     
     $DBip = "";
@@ -19,7 +19,7 @@
     if (!filter_var($email, FILTER_VALIDATE_EMAIL))  
         $error = "badFormatEmail";
 
-    if ($badFormatEmail === false) {
+    if ($error === "") {
         $result = $conn->query("SELECT id, password FROM account WHERE mail LIKE '$email'");
         if (!$result) {
             $error = "databaseError";
@@ -35,7 +35,7 @@
                 else {
                     session_start();
                     $_SESSION["id"] = $result->fetch_assoc()["id"];
-                    header("Location: ../chat.php");
+                    echo "successfullyLoggedIn";
                 }
             }
         }
