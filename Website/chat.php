@@ -460,8 +460,3 @@ class Contact {
 		addContact(contacts[i].image, contacts[i].name, contacts[i].id, contacts[i].online, contacts[i].lastLog);
 	}
 </script>
-
-<?php
-	session_start();
-	$id = $_SESSION["id"];
-?>

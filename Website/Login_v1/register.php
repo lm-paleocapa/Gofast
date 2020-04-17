@@ -17,7 +17,7 @@
     $conn = new mysqli($DBip, $DBuser, $DBpassword, $DBdatabase);
     
     if ($conn->connect_error) {
-        $error = "databaseError");
+        $error = "databaseError";
     }
 
     if (!ctype_alnum($username))
