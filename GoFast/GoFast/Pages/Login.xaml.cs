@@ -37,16 +37,7 @@ namespace GoFast.Pages
                 return;
             }
 
-            btnLogin = sender as Button;
-            webSocket.Json json = new webSocket.Json
-            {
-                id = 1,
-                username = EntryUsername.Text,
-                password = EntryPassword.Text
-            };
-            string Login = JsonConvert.SerializeObject(json);
-            webSocket.ws.Send(Login);
-            ButtonLogin.IsEnabled = false;
+            
         }
     }
 }

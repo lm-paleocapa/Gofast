@@ -7,7 +7,7 @@ namespace GoFast.Pages
     public class Element
     {
         public static List<webSocket.Friend> friends = new List<webSocket.Friend>();
-        public static List<webSocket.Message> messages = new List<webSocket.Message>();
+        //public static List<webSocket.Message> messages = new List<webSocket.Message>();
     }
     public partial class FriendsAndGroups : ContentPage
     {
