@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using Fleck;
-using MySql.Data.MySqlClient;
-using Newtonsoft.Json;
-
-namespace Server
+﻿namespace Server
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading;
+    using Fleck;
+    using MySql.Data.MySqlClient;
+    using Newtonsoft.Json;
     class Program
     {
         private static WebSocketServer server = new WebSocketServer($"ws://0.0.0.0:8181");
@@ -329,7 +328,7 @@ namespace Server
         {
             public string image { get; set; } // Immagine dell'amico.
             public string user { get; set; } // Nome utente dell'amico.
-        }
+        }   
         private class WebsocketUsers
         {
             public bool SocketConnected { get; set; } // Identifica se il socket è connesso.
