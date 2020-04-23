@@ -211,9 +211,9 @@
             this.labelNoFriendsOrChat_RecentChat.AutoSize = true;
             this.labelNoFriendsOrChat_RecentChat.Location = new System.Drawing.Point(133, 205);
             this.labelNoFriendsOrChat_RecentChat.Name = "labelNoFriendsOrChat_RecentChat";
-            this.labelNoFriendsOrChat_RecentChat.Size = new System.Drawing.Size(94, 13);
+            this.labelNoFriendsOrChat_RecentChat.Size = new System.Drawing.Size(95, 13);
             this.labelNoFriendsOrChat_RecentChat.TabIndex = 5;
-            this.labelNoFriendsOrChat_RecentChat.Text = "No chat or friends.";
+            this.labelNoFriendsOrChat_RecentChat.Text = "No chat or groups.";
             this.labelNoFriendsOrChat_RecentChat.Visible = false;
             // 
             // btnBack_RecentChat
