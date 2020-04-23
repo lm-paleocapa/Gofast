@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -27,9 +27,15 @@
     <ExternalConsole>true</ExternalConsole>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="Fleck">
+    <Reference Include="Fleck, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Fleck.1.1.0\lib\net45\Fleck.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.19.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.0.19\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.0.19\lib\net452\Ubiety.Dns.Core.dll</HintPath>
     </Reference>
     <Reference Include="websocket-sharp">
       <HintPath>packages\WebSocketSharpFork.1.0.4.0\lib\net35\websocket-sharp.dll</HintPath>
@@ -45,12 +51,6 @@
     </Reference>
     <Reference Include="Renci.SshNet">
       <HintPath>packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
-    </Reference>
-    <Reference Include="MySql.Data">
-      <HintPath>packages\MySql.Data.8.0.19\lib\net452\MySql.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Ubiety.Dns.Core">
-      <HintPath>packages\MySql.Data.8.0.19\lib\net452\Ubiety.Dns.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel" />
@@ -84,6 +84,7 @@
     <Compile Include="MessagesUsersOnline.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
