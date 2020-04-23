@@ -102,11 +102,11 @@
             // gunaVScrollBar1
             // 
             this.gunaVScrollBar1.LargeChange = 10;
-            this.gunaVScrollBar1.Location = new System.Drawing.Point(377, 50);
+            this.gunaVScrollBar1.Location = new System.Drawing.Point(380, 50);
             this.gunaVScrollBar1.Maximum = 100;
             this.gunaVScrollBar1.Name = "gunaVScrollBar1";
             this.gunaVScrollBar1.ScrollIdleColor = System.Drawing.Color.Silver;
-            this.gunaVScrollBar1.Size = new System.Drawing.Size(13, 290);
+            this.gunaVScrollBar1.Size = new System.Drawing.Size(10, 289);
             this.gunaVScrollBar1.TabIndex = 23;
             this.gunaVScrollBar1.ThumbColor = System.Drawing.Color.DimGray;
             this.gunaVScrollBar1.ThumbHoverColor = System.Drawing.Color.Gray;
