@@ -8,7 +8,7 @@
     using Newtonsoft.Json;
     class Program
     {
-        private static WebSocketServer server = new WebSocketServer($"ws://0.0.0.0:8181");
+        private static WebSocketServer server = new WebSocketServer($"ws://127.0.0.1:8181");
         private static MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
         private static List<WebsocketUsers> usersConnected = new List<WebsocketUsers>();
         private static List<Messages> MessagesInAttesa = new List<Messages>();
@@ -85,12 +85,14 @@
                                 MySqlDataReader reader;
                                 string ToClient;
 
-                                try // L'utente esiste.
-                                {
-                                    query = $"SELECT user FROM account WHERE user= '{json0.username}' limit 1;";
-                                    cmd = new MySqlCommand(query, cnn);
-                                    string dbUser = cmd.ExecuteScalar().ToString();
+                                // L'utente esiste.
 
+                                query = $"SELECT (EXISTS(SELECT user from account where user = '{json0.username}')) LIMIT 1;";
+                                cmd = new MySqlCommand(query, cnn);
+                                string dbUser = cmd.ExecuteScalar().ToString();
+
+                                if (dbUser != "0")
+                                {
                                     query = $"SELECT password FROM account WHERE user= '{json0.username}' limit 1;";
                                     cmd = new MySqlCommand(query, cnn);
 
@@ -161,7 +163,7 @@
                                         socket.Send(ToClient);
                                     }
                                 }
-                                catch // L'utente non esiste.
+                                else // L'utente non esiste.
                                 {
                                     Json json = new Json
                                     {
@@ -183,7 +185,7 @@
                                     {
                                         Json json = new Json
                                         {
-                                            id = 3  ,
+                                            id = 3,
                                             from = json0.from,
                                             message = json0.message,
                                             messageType = json0.messageType,
@@ -316,7 +318,7 @@
             public string message { get; set; } // Stringa della messaggio.
             public string messageType { get; set; } // Che tipo di messaggio è (testo, audio, video, immagine).
         }
-        private class Messages  
+        private class Messages
         {
             public string from { get; set; } // Da chi viene il messaggio.
             public string to { get; set; } // Verso che deve andare il messaggio.
@@ -328,7 +330,7 @@
         {
             public string image { get; set; } // Immagine dell'amico.
             public string user { get; set; } // Nome utente dell'amico.
-        }   
+        }
         private class WebsocketUsers
         {
             public bool SocketConnected { get; set; } // Identifica se il socket è connesso.
