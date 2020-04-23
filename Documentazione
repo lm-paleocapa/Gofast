@@ -1,0 +1,14 @@
+verso il server 
+
+1 tentativo di Login (id = 1, username = EntryUsername.Text, password = EntryPassword.Text)
+
+2 Messaggio da reindirizzare ad un utente () // Da fare.
+
+
+
+
+verso il client
+
+1 login accettato (id = 1, uok = true, pok = true, friends = Friends)
+2 login non accettato (id = 2, uok = true/false, pok = true/false) 
+3 Messaggio in entrata (id = 3, from = da chi viene, messsage, messagetype = tipo di messaggio, date = data di invio)
