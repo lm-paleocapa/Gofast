@@ -26,16 +26,14 @@ class Contact {
 	var webSocket;
 	var webSocketAddress;
 
-	function getData(jsonData) {
-		var data = JSON.parse(jsonData);
+	function getData(data) {
 		email = data.email;
 		password = data.password;
 		image = data.password;
 		id = data.id;
 	}
 
-	function loadContacts(jsonData) {
-		var data = JSON.parse(jsonData);
+	function loadContacts(data) {
 		for (var i = 0; i < data.length; i++) {
 			let online = false;
 			let lastlog;
@@ -188,8 +186,8 @@ class Contact {
 		newSubDiv1.appendChild(newP);
 	}
 
-	$.getJSON("getData.php", getData(jsonData));
-	$.getJSON("loadContacts.php", loadContacts(jsonData));
+	$.getJSON("getData.php", getData);
+	$.getJSON("loadContacts.php", loadContacts);
 	
 	setupWebSocket();
 
