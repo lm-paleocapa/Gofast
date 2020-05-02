@@ -80,6 +80,7 @@
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(0, 0);
             this.flowLayoutPanel1.TabIndex = 0;
@@ -94,8 +95,9 @@
             this.flowLayoutPanel.Controls.Add(this.panelForChat);
             this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(1028, 609);
+            this.flowLayoutPanel.Size = new System.Drawing.Size(1371, 750);
             this.flowLayoutPanel.TabIndex = 1;
             // 
             // panelLogin
@@ -109,9 +111,10 @@
             this.panelLogin.Controls.Add(this.labelUser_Login);
             this.panelLogin.Controls.Add(this.tbUser_Login);
             this.panelLogin.Controls.Add(this.labelLogo_Login);
-            this.panelLogin.Location = new System.Drawing.Point(3, 3);
+            this.panelLogin.Location = new System.Drawing.Point(4, 4);
+            this.panelLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelLogin.Name = "panelLogin";
-            this.panelLogin.Size = new System.Drawing.Size(275, 358);
+            this.panelLogin.Size = new System.Drawing.Size(367, 441);
             this.panelLogin.TabIndex = 1;
             this.panelLogin.Visible = false;
             // 
@@ -120,9 +123,10 @@
             this.labelRegister_Login.AutoSize = true;
             this.labelRegister_Login.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelRegister_Login.ForeColor = System.Drawing.SystemColors.Info;
-            this.labelRegister_Login.Location = new System.Drawing.Point(0, 323);
+            this.labelRegister_Login.Location = new System.Drawing.Point(0, 398);
+            this.labelRegister_Login.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelRegister_Login.Name = "labelRegister_Login";
-            this.labelRegister_Login.Size = new System.Drawing.Size(275, 13);
+            this.labelRegister_Login.Size = new System.Drawing.Size(346, 17);
             this.labelRegister_Login.TabIndex = 7;
             this.labelRegister_Login.Text = "If you do not have an account, click to register";
             this.labelRegister_Login.Click += new System.EventHandler(this.labelRegister_Login_Click);
@@ -135,10 +139,11 @@
             this.rbtnRememberMe_Login.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.rbtnRememberMe_Login.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtnRememberMe_Login.ForeColor = System.Drawing.SystemColors.Info;
-            this.rbtnRememberMe_Login.Location = new System.Drawing.Point(157, 184);
+            this.rbtnRememberMe_Login.Location = new System.Drawing.Point(209, 226);
+            this.rbtnRememberMe_Login.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rbtnRememberMe_Login.Name = "rbtnRememberMe_Login";
             this.rbtnRememberMe_Login.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.rbtnRememberMe_Login.Size = new System.Drawing.Size(104, 17);
+            this.rbtnRememberMe_Login.Size = new System.Drawing.Size(132, 21);
             this.rbtnRememberMe_Login.TabIndex = 6;
             this.rbtnRememberMe_Login.TabStop = true;
             this.rbtnRememberMe_Login.Text = "Remember me";
@@ -152,9 +157,10 @@
             this.btnLogin_Login.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnLogin_Login.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin_Login.ForeColor = System.Drawing.SystemColors.Info;
-            this.btnLogin_Login.Location = new System.Drawing.Point(107, 282);
+            this.btnLogin_Login.Location = new System.Drawing.Point(143, 347);
+            this.btnLogin_Login.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLogin_Login.Name = "btnLogin_Login";
-            this.btnLogin_Login.Size = new System.Drawing.Size(75, 23);
+            this.btnLogin_Login.Size = new System.Drawing.Size(100, 28);
             this.btnLogin_Login.TabIndex = 5;
             this.btnLogin_Login.Text = "Login";
             this.btnLogin_Login.UseVisualStyleBackColor = false;
@@ -165,18 +171,20 @@
             this.labelPassword_Login.AutoSize = true;
             this.labelPassword_Login.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPassword_Login.ForeColor = System.Drawing.SystemColors.Info;
-            this.labelPassword_Login.Location = new System.Drawing.Point(28, 132);
+            this.labelPassword_Login.Location = new System.Drawing.Point(37, 162);
+            this.labelPassword_Login.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPassword_Login.Name = "labelPassword_Login";
-            this.labelPassword_Login.Size = new System.Drawing.Size(65, 13);
+            this.labelPassword_Login.Size = new System.Drawing.Size(82, 17);
             this.labelPassword_Login.TabIndex = 4;
             this.labelPassword_Login.Text = "Password:";
             // 
             // tbPassword_Login
             // 
-            this.tbPassword_Login.Location = new System.Drawing.Point(106, 130);
+            this.tbPassword_Login.Location = new System.Drawing.Point(141, 160);
+            this.tbPassword_Login.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbPassword_Login.MaxLength = 12;
             this.tbPassword_Login.Name = "tbPassword_Login";
-            this.tbPassword_Login.Size = new System.Drawing.Size(151, 20);
+            this.tbPassword_Login.Size = new System.Drawing.Size(200, 22);
             this.tbPassword_Login.TabIndex = 3;
             this.tbPassword_Login.UseSystemPasswordChar = true;
             this.tbPassword_Login.Click += new System.EventHandler(this.ChangeColorPassword);
@@ -186,19 +194,21 @@
             this.labelUser_Login.AutoSize = true;
             this.labelUser_Login.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUser_Login.ForeColor = System.Drawing.SystemColors.Info;
-            this.labelUser_Login.Location = new System.Drawing.Point(28, 86);
+            this.labelUser_Login.Location = new System.Drawing.Point(37, 106);
+            this.labelUser_Login.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelUser_Login.Name = "labelUser_Login";
-            this.labelUser_Login.Size = new System.Drawing.Size(37, 13);
+            this.labelUser_Login.Size = new System.Drawing.Size(47, 17);
             this.labelUser_Login.TabIndex = 2;
             this.labelUser_Login.Text = "User:";
             this.labelUser_Login.Click += new System.EventHandler(this.ChangeColorUser);
             // 
             // tbUser_Login
             // 
-            this.tbUser_Login.Location = new System.Drawing.Point(106, 84);
+            this.tbUser_Login.Location = new System.Drawing.Point(141, 103);
+            this.tbUser_Login.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbUser_Login.MaxLength = 12;
             this.tbUser_Login.Name = "tbUser_Login";
-            this.tbUser_Login.Size = new System.Drawing.Size(151, 20);
+            this.tbUser_Login.Size = new System.Drawing.Size(200, 22);
             this.tbUser_Login.TabIndex = 1;
             this.tbUser_Login.Click += new System.EventHandler(this.ChangeColorUser);
             // 
@@ -207,9 +217,10 @@
             this.labelLogo_Login.AutoSize = true;
             this.labelLogo_Login.Font = new System.Drawing.Font("Forte", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLogo_Login.ForeColor = System.Drawing.SystemColors.Info;
-            this.labelLogo_Login.Location = new System.Drawing.Point(84, 18);
+            this.labelLogo_Login.Location = new System.Drawing.Point(112, 22);
+            this.labelLogo_Login.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelLogo_Login.Name = "labelLogo_Login";
-            this.labelLogo_Login.Size = new System.Drawing.Size(83, 24);
+            this.labelLogo_Login.Size = new System.Drawing.Size(105, 31);
             this.labelLogo_Login.TabIndex = 0;
             this.labelLogo_Login.Text = "GoFast";
             // 
@@ -221,19 +232,20 @@
             this.panelRecentChat.Controls.Add(this.pictureBoxImage_RecentChat);
             this.panelRecentChat.Controls.Add(this.listViewChat_RecentChat);
             this.panelRecentChat.Controls.Add(this.labelLogo_RecentChat);
-            this.panelRecentChat.Location = new System.Drawing.Point(284, 3);
+            this.panelRecentChat.Location = new System.Drawing.Point(379, 4);
+            this.panelRecentChat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelRecentChat.Name = "panelRecentChat";
-            this.panelRecentChat.Size = new System.Drawing.Size(353, 358);
+            this.panelRecentChat.Size = new System.Drawing.Size(471, 441);
             this.panelRecentChat.TabIndex = 2;
             this.panelRecentChat.Visible = false;
             // 
             // FrecciaReg
             // 
             this.FrecciaReg.Image = ((System.Drawing.Image)(resources.GetObject("FrecciaReg.Image")));
-            this.FrecciaReg.Location = new System.Drawing.Point(2, 6);
-            this.FrecciaReg.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FrecciaReg.Location = new System.Drawing.Point(3, 7);
+            this.FrecciaReg.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.FrecciaReg.Name = "FrecciaReg";
-            this.FrecciaReg.Size = new System.Drawing.Size(46, 40);
+            this.FrecciaReg.Size = new System.Drawing.Size(61, 49);
             this.FrecciaReg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.FrecciaReg.TabIndex = 8;
             this.FrecciaReg.TabStop = false;
@@ -242,18 +254,20 @@
             // 
             this.labelNoFriendsOrChat_RecentChat.AutoSize = true;
             this.labelNoFriendsOrChat_RecentChat.ForeColor = System.Drawing.SystemColors.Info;
-            this.labelNoFriendsOrChat_RecentChat.Location = new System.Drawing.Point(133, 205);
+            this.labelNoFriendsOrChat_RecentChat.Location = new System.Drawing.Point(177, 252);
+            this.labelNoFriendsOrChat_RecentChat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNoFriendsOrChat_RecentChat.Name = "labelNoFriendsOrChat_RecentChat";
-            this.labelNoFriendsOrChat_RecentChat.Size = new System.Drawing.Size(95, 13);
+            this.labelNoFriendsOrChat_RecentChat.Size = new System.Drawing.Size(126, 17);
             this.labelNoFriendsOrChat_RecentChat.TabIndex = 5;
             this.labelNoFriendsOrChat_RecentChat.Text = "No chat or groups.";
             this.labelNoFriendsOrChat_RecentChat.Visible = false;
             // 
             // pictureBoxImage_RecentChat
             // 
-            this.pictureBoxImage_RecentChat.Location = new System.Drawing.Point(54, 8);
+            this.pictureBoxImage_RecentChat.Location = new System.Drawing.Point(71, 7);
+            this.pictureBoxImage_RecentChat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBoxImage_RecentChat.Name = "pictureBoxImage_RecentChat";
-            this.pictureBoxImage_RecentChat.Size = new System.Drawing.Size(40, 40);
+            this.pictureBoxImage_RecentChat.Size = new System.Drawing.Size(53, 49);
             this.pictureBoxImage_RecentChat.TabIndex = 3;
             this.pictureBoxImage_RecentChat.TabStop = false;
             // 
@@ -264,9 +278,10 @@
             this.ColumLastAccess_Chat});
             this.listViewChat_RecentChat.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewChat_RecentChat.HideSelection = false;
-            this.listViewChat_RecentChat.Location = new System.Drawing.Point(21, 56);
+            this.listViewChat_RecentChat.Location = new System.Drawing.Point(28, 69);
+            this.listViewChat_RecentChat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listViewChat_RecentChat.Name = "listViewChat_RecentChat";
-            this.listViewChat_RecentChat.Size = new System.Drawing.Size(316, 292);
+            this.listViewChat_RecentChat.Size = new System.Drawing.Size(420, 358);
             this.listViewChat_RecentChat.TabIndex = 2;
             this.listViewChat_RecentChat.UseCompatibleStateImageBehavior = false;
             this.listViewChat_RecentChat.View = System.Windows.Forms.View.Details;
@@ -287,9 +302,10 @@
             this.labelLogo_RecentChat.AutoSize = true;
             this.labelLogo_RecentChat.Font = new System.Drawing.Font("Forte", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLogo_RecentChat.ForeColor = System.Drawing.SystemColors.Info;
-            this.labelLogo_RecentChat.Location = new System.Drawing.Point(148, 18);
+            this.labelLogo_RecentChat.Location = new System.Drawing.Point(197, 22);
+            this.labelLogo_RecentChat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelLogo_RecentChat.Name = "labelLogo_RecentChat";
-            this.labelLogo_RecentChat.Size = new System.Drawing.Size(83, 24);
+            this.labelLogo_RecentChat.Size = new System.Drawing.Size(105, 31);
             this.labelLogo_RecentChat.TabIndex = 1;
             this.labelLogo_RecentChat.Text = "GoFast";
             // 
@@ -311,19 +327,20 @@
             this.panelRegister.Controls.Add(this.tbMail_Register);
             this.panelRegister.Controls.Add(this.tbCPassword_Register);
             this.panelRegister.Controls.Add(this.tbPassword_Register);
-            this.panelRegister.Location = new System.Drawing.Point(643, 3);
+            this.panelRegister.Location = new System.Drawing.Point(858, 4);
+            this.panelRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelRegister.Name = "panelRegister";
-            this.panelRegister.Size = new System.Drawing.Size(347, 358);
+            this.panelRegister.Size = new System.Drawing.Size(463, 441);
             this.panelRegister.TabIndex = 3;
             this.panelRegister.Visible = false;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(2, 6);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(3, 7);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(45, 37);
+            this.pictureBox1.Size = new System.Drawing.Size(60, 46);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
@@ -333,23 +350,25 @@
             this.labelLogo_Register.AutoSize = true;
             this.labelLogo_Register.Font = new System.Drawing.Font("Forte", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelLogo_Register.ForeColor = System.Drawing.SystemColors.Info;
-            this.labelLogo_Register.Location = new System.Drawing.Point(131, 23);
+            this.labelLogo_Register.Location = new System.Drawing.Point(175, 28);
+            this.labelLogo_Register.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelLogo_Register.Name = "labelLogo_Register";
-            this.labelLogo_Register.Size = new System.Drawing.Size(83, 24);
+            this.labelLogo_Register.Size = new System.Drawing.Size(105, 31);
             this.labelLogo_Register.TabIndex = 4;
             this.labelLogo_Register.Text = "GoFast";
             // 
             // numericUpAndDown_Register
             // 
             this.numericUpAndDown_Register.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpAndDown_Register.Location = new System.Drawing.Point(175, 216);
+            this.numericUpAndDown_Register.Location = new System.Drawing.Point(233, 266);
+            this.numericUpAndDown_Register.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numericUpAndDown_Register.Minimum = new decimal(new int[] {
             5,
             0,
             0,
             0});
             this.numericUpAndDown_Register.Name = "numericUpAndDown_Register";
-            this.numericUpAndDown_Register.Size = new System.Drawing.Size(100, 19);
+            this.numericUpAndDown_Register.Size = new System.Drawing.Size(133, 22);
             this.numericUpAndDown_Register.TabIndex = 14;
             this.numericUpAndDown_Register.Value = new decimal(new int[] {
             16,
@@ -364,9 +383,10 @@
             this.btnRegister_Register.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnRegister_Register.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegister_Register.ForeColor = System.Drawing.SystemColors.Info;
-            this.btnRegister_Register.Location = new System.Drawing.Point(136, 313);
+            this.btnRegister_Register.Location = new System.Drawing.Point(181, 385);
+            this.btnRegister_Register.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRegister_Register.Name = "btnRegister_Register";
-            this.btnRegister_Register.Size = new System.Drawing.Size(75, 23);
+            this.btnRegister_Register.Size = new System.Drawing.Size(100, 28);
             this.btnRegister_Register.TabIndex = 13;
             this.btnRegister_Register.Text = "Register";
             this.btnRegister_Register.UseVisualStyleBackColor = false;
@@ -375,9 +395,10 @@
             // btnImage_Register
             // 
             this.btnImage_Register.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImage_Register.Location = new System.Drawing.Point(175, 242);
+            this.btnImage_Register.Location = new System.Drawing.Point(233, 298);
+            this.btnImage_Register.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnImage_Register.Name = "btnImage_Register";
-            this.btnImage_Register.Size = new System.Drawing.Size(36, 31);
+            this.btnImage_Register.Size = new System.Drawing.Size(48, 38);
             this.btnImage_Register.TabIndex = 12;
             this.btnImage_Register.Text = "...";
             this.btnImage_Register.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -389,9 +410,10 @@
             this.labelImage_Register.AutoSize = true;
             this.labelImage_Register.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelImage_Register.ForeColor = System.Drawing.SystemColors.Info;
-            this.labelImage_Register.Location = new System.Drawing.Point(59, 250);
+            this.labelImage_Register.Location = new System.Drawing.Point(79, 308);
+            this.labelImage_Register.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelImage_Register.Name = "labelImage_Register";
-            this.labelImage_Register.Size = new System.Drawing.Size(45, 13);
+            this.labelImage_Register.Size = new System.Drawing.Size(56, 17);
             this.labelImage_Register.TabIndex = 11;
             this.labelImage_Register.Text = "Image:";
             // 
@@ -400,9 +422,10 @@
             this.labelAge_Register.AutoSize = true;
             this.labelAge_Register.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAge_Register.ForeColor = System.Drawing.SystemColors.Info;
-            this.labelAge_Register.Location = new System.Drawing.Point(59, 218);
+            this.labelAge_Register.Location = new System.Drawing.Point(79, 268);
+            this.labelAge_Register.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAge_Register.Name = "labelAge_Register";
-            this.labelAge_Register.Size = new System.Drawing.Size(33, 13);
+            this.labelAge_Register.Size = new System.Drawing.Size(41, 17);
             this.labelAge_Register.TabIndex = 10;
             this.labelAge_Register.Text = "Age:";
             // 
@@ -411,9 +434,10 @@
             this.labelMail_Register.AutoSize = true;
             this.labelMail_Register.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMail_Register.ForeColor = System.Drawing.SystemColors.Info;
-            this.labelMail_Register.Location = new System.Drawing.Point(59, 184);
+            this.labelMail_Register.Location = new System.Drawing.Point(79, 226);
+            this.labelMail_Register.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelMail_Register.Name = "labelMail_Register";
-            this.labelMail_Register.Size = new System.Drawing.Size(34, 13);
+            this.labelMail_Register.Size = new System.Drawing.Size(42, 17);
             this.labelMail_Register.TabIndex = 9;
             this.labelMail_Register.Text = "Mail:";
             // 
@@ -422,9 +446,10 @@
             this.labelCPassword_Register.AutoSize = true;
             this.labelCPassword_Register.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCPassword_Register.ForeColor = System.Drawing.SystemColors.Info;
-            this.labelCPassword_Register.Location = new System.Drawing.Point(59, 148);
+            this.labelCPassword_Register.Location = new System.Drawing.Point(79, 182);
+            this.labelCPassword_Register.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelCPassword_Register.Name = "labelCPassword_Register";
-            this.labelCPassword_Register.Size = new System.Drawing.Size(110, 13);
+            this.labelCPassword_Register.Size = new System.Drawing.Size(141, 17);
             this.labelCPassword_Register.TabIndex = 8;
             this.labelCPassword_Register.Text = "Confirm password:";
             // 
@@ -433,9 +458,10 @@
             this.labelPassword_Register.AutoSize = true;
             this.labelPassword_Register.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPassword_Register.ForeColor = System.Drawing.SystemColors.Info;
-            this.labelPassword_Register.Location = new System.Drawing.Point(59, 111);
+            this.labelPassword_Register.Location = new System.Drawing.Point(79, 137);
+            this.labelPassword_Register.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPassword_Register.Name = "labelPassword_Register";
-            this.labelPassword_Register.Size = new System.Drawing.Size(65, 13);
+            this.labelPassword_Register.Size = new System.Drawing.Size(82, 17);
             this.labelPassword_Register.TabIndex = 7;
             this.labelPassword_Register.Text = "Password:";
             // 
@@ -444,61 +470,68 @@
             this.labelUser_Register.AutoSize = true;
             this.labelUser_Register.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUser_Register.ForeColor = System.Drawing.SystemColors.Info;
-            this.labelUser_Register.Location = new System.Drawing.Point(59, 75);
+            this.labelUser_Register.Location = new System.Drawing.Point(79, 92);
+            this.labelUser_Register.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelUser_Register.Name = "labelUser_Register";
-            this.labelUser_Register.Size = new System.Drawing.Size(37, 13);
+            this.labelUser_Register.Size = new System.Drawing.Size(47, 17);
             this.labelUser_Register.TabIndex = 6;
             this.labelUser_Register.Text = "User:";
             // 
             // tbUser_Register
             // 
-            this.tbUser_Register.Location = new System.Drawing.Point(175, 72);
+            this.tbUser_Register.Location = new System.Drawing.Point(233, 89);
+            this.tbUser_Register.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbUser_Register.MaxLength = 12;
             this.tbUser_Register.Name = "tbUser_Register";
-            this.tbUser_Register.Size = new System.Drawing.Size(100, 20);
+            this.tbUser_Register.Size = new System.Drawing.Size(132, 22);
             this.tbUser_Register.TabIndex = 5;
             // 
             // tbMail_Register
             // 
-            this.tbMail_Register.Location = new System.Drawing.Point(175, 181);
+            this.tbMail_Register.Location = new System.Drawing.Point(233, 223);
+            this.tbMail_Register.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbMail_Register.MaxLength = 12;
             this.tbMail_Register.Name = "tbMail_Register";
-            this.tbMail_Register.Size = new System.Drawing.Size(100, 20);
+            this.tbMail_Register.Size = new System.Drawing.Size(132, 22);
             this.tbMail_Register.TabIndex = 2;
             // 
             // tbCPassword_Register
             // 
-            this.tbCPassword_Register.Location = new System.Drawing.Point(175, 145);
+            this.tbCPassword_Register.Location = new System.Drawing.Point(233, 178);
+            this.tbCPassword_Register.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbCPassword_Register.MaxLength = 12;
             this.tbCPassword_Register.Name = "tbCPassword_Register";
-            this.tbCPassword_Register.Size = new System.Drawing.Size(100, 20);
+            this.tbCPassword_Register.Size = new System.Drawing.Size(132, 22);
             this.tbCPassword_Register.TabIndex = 1;
             // 
             // tbPassword_Register
             // 
-            this.tbPassword_Register.Location = new System.Drawing.Point(175, 108);
+            this.tbPassword_Register.Location = new System.Drawing.Point(233, 133);
+            this.tbPassword_Register.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbPassword_Register.MaxLength = 12;
             this.tbPassword_Register.Name = "tbPassword_Register";
-            this.tbPassword_Register.Size = new System.Drawing.Size(100, 20);
+            this.tbPassword_Register.Size = new System.Drawing.Size(132, 22);
             this.tbPassword_Register.TabIndex = 0;
             // 
             // panelForChat
             // 
-            this.panelForChat.Location = new System.Drawing.Point(3, 367);
+            this.panelForChat.Location = new System.Drawing.Point(4, 453);
+            this.panelForChat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelForChat.Name = "panelForChat";
-            this.panelForChat.Size = new System.Drawing.Size(396, 358);
+            this.panelForChat.Size = new System.Drawing.Size(528, 441);
             this.panelForChat.TabIndex = 4;
             this.panelForChat.Visible = false;
             // 
             // mainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1028, 609);
+            this.ClientSize = new System.Drawing.Size(1371, 750);
             this.Controls.Add(this.flowLayoutPanel);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "mainForm";
             this.Text = "GoFast";
             this.Load += new System.EventHandler(this.mainForm_Load);
