@@ -40,7 +40,7 @@
             JSON json = new JSON
             {
                 id = 2,
-                from = Form1.username,
+                from = "martin", // Da modificare in base all'utente
                 to = mainChatControl.To,
                 message = mes,
                 messageType = "string",
