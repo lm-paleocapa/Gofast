@@ -65,11 +65,25 @@ class Contact {
 	}
 
 	function loadMessages(id) {
-		for (var i = 0; i < contacts[id].messages.length; i++) {
-			if (contacts[id].messages[i].mode == "SEND")
-				viewSentMessage(contacts[id].messages[i].content, contacts[id].messages.time);
-			else if (contacts[id].messages[i].mode == "RECEIVE")
-				viewReceivedMessage(contacts[id].messages[i].content, contacts[id].messages.time);
+		$.getJSON("loadMessages.php?friendId=" + id, function(data) {
+			for (var i = 0; i < contacts.length; i++) {
+				if(contacts[i].id == id) {
+					for (var j = 0; j < data.length; j++) {
+						contacts[i].messages.push(new Message(data[j].content, data[j].time, data[j].mode));
+					}
+				}
+			}	
+		});
+
+		for (var i = 0; i < contacts.length; i++) {
+			if(contacts[i].id == id) {
+				for (var j = 0; j < contacts[id].messages.length; j++) {
+					if (contacts[id].messages[j].mode == "SEND")
+						viewSentMessage(contacts[id].messages[j].content, contacts[id].messages.time);
+					else if (contacts[id].messages[j].mode == "RECEIVE")
+						viewReceivedMessage(contacts[id].messages[j].content, contacts[id].messages.time);
+				}
+			}
 		}
 	}
 
