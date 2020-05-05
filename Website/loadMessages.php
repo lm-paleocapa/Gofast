@@ -7,7 +7,7 @@
     $DBdatabase = "";
 
     $conn = new mysqli($DBip, $DBuser, $DBpassword, $DBdatabase);
-    
+
     session_start();
 
     $id = $_SESSION["id"];
@@ -15,16 +15,34 @@
     $password = $_SESSION["password"];
     $image = $_SESSION["image"];
 
+    $friendId = $_GET["friendId"];
+
+    $friend = $conn->query("SELECT user FROM account WHERE id = '$friendId'");
     $username = $conn->query("SELECT user FROM account WHERE id = '$id'");
-    
-    $response = array();
 
-    $result = $conn->query("SELECT * FROM account WHERE username = '$username'");
+    $username = "martin";
+    $friend = "cane";
 
-    int i = 0;
-    while ($friend = mysql_fetch_array($result) {
-        $response[i] = ["image" => $friend["image"], "name" => $friend["username"], "id" => $friend["id"], "state" => $friend["state"]];
+    $messages = array();
+
+    $query = $conn->query("SELECT messages, date FROM " . "$username" . "_messages WHERE user = '$friend'");
+
+    while ($result = mysqli_fetch_assoc($query)) {
+        $messages[] = ["content" => $result["messages"], "date" => strtotime($result["date"]), "mode" => "SEND"];
     }
 
-    echo json_encode($response);
+    $query = $conn->query("SELECT messages, date FROM " . "$friend" . "_messages WHERE user = '$username'");
+
+    while ($result = mysqli_fetch_assoc($query)) {
+        $messages[] = ["content" => $result["messages"], "date" => strtotime($result["date"]), "mode" => "RECEIVE"];
+    }
+    usort($messages, function($a, $b) {
+        return $a['date'] - $b['date'];
+    });
+
+    for ($i = 0; $i < sizeof($messages); $i++) {
+        $messages[$i]["date"] = date("Y-m-d H:i:s", $messages[$i]["date"]);
+    }
+
+    echo json_encode($messages);
 ?>
