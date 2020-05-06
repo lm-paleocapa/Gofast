@@ -60,7 +60,6 @@
                 label1.Cursor = value;
             }
         }
-
         public Color MsgColor
         {
             get
@@ -72,7 +71,6 @@
                 label1.BackColor = value;
             }
         }
-
         public Color MsgTextColor
         {
             get
@@ -84,7 +82,6 @@
                 label1.ForeColor = value;
             }
         }
-
         public Color TimeColor
         {
             get
@@ -96,7 +93,6 @@
                 time.ForeColor = value;
             }
         }
-
         public string Time
         {
             get
@@ -142,12 +138,10 @@
                 SetMsgStatus();
             }
         }
-
         private MessageStatus GetMsgStatus()
         {
             return _CurrentMessageStatus;
         }
-
         private void SetMsgStatus()
         {
             //switch (_CurrentMessageStatus)
@@ -189,13 +183,10 @@
             //        }
             //}
         }
-
-
         Panel messageBottom = new Panel();
         Label time = new Label();
         PictureBox msgStatus = new PictureBox();
         bool isAdded = false;
-
         private void YouBubble_Load(object sender, EventArgs e)
         {
 
@@ -276,7 +267,6 @@
                 OnChatTextClick.Invoke(sender, e);
             }
         }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             if (OnChatImageClick != null)
@@ -285,6 +275,4 @@
             }
         }
     }
-
-   
 }

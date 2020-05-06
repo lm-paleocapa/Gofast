@@ -6,12 +6,10 @@
     using System.IO;
     using System.Drawing;
     using System.Threading;
-
     using WebSocket4Net;
     using Newtonsoft.Json;
-
+    using Bunifu.Framework.UI;
     using Chat.Controls;
-
     public class WS
     {
         private static WebSocket ws = new WebSocket("ws://127.0.0.1:8181");
@@ -48,6 +46,11 @@
                         ClassThree.Three(json);
                         break;
                     }
+                case 4:
+                    {
+                        ClassFour.Four(json);
+                        break;
+                    }
             }
         }
 
@@ -59,40 +62,38 @@
             {
                 panelForControl.Invoke(new Action(() =>
                 {
-                    panelForControl.Size = new Size(881, 609);
+                    panelForControl.Size = new Size(876, 612);
                     foreach (UserControl i in panelForControl.Controls)
                         i.Visible = false;
                     panelForControl.Controls.Add(Form1.MainChat);
-                    Form1.MainChat.Show();
                 }));
 
-                new Thread (() =>
-                {
-                    MemoryStream ms;
-                    foreach (var i in json.friends)
-                    {
-                        var pic = Convert.FromBase64String(i.image);
-                        ms = new MemoryStream(pic);
+                new Thread(() =>
+               {
+                   MemoryStream ms;
+                   foreach (var i in json.friends)
+                   {
+                       var pic = Convert.FromBase64String(i.image);
+                       ms = new MemoryStream(pic);
 
-                        userLeft user = new userLeft
-                        {
-                            name = i.user,
-                            lastAccess = "Da mettere",
-                            picture = Image.FromStream(ms),
-                            Dock = DockStyle.Top
-                        };
-                        Form1.MainChat.panelUsers.Invoke(new Action(() => Form1.MainChat.panelUsers.Controls.Add(user)));
-                    }
+                       userLeft user = new userLeft
+                       {
+                           name = i.user,
+                           lastAccess = "Da mettere",
+                           picture = Image.FromStream(ms),
+                           Dock = DockStyle.Top
+                       };
+                       Form1.MainChat.panelUsers.Invoke(new Action(() => Form1.MainChat.panelUsers.Controls.Add(user)));
+                   }
 
-                    var pic1 = Convert.FromBase64String(json.image);
-                    ms = new MemoryStream(pic1);
+                   var pic1 = Convert.FromBase64String(json.image);
+                   ms = new MemoryStream(pic1);
 
-                    Form1.MainChat.myUser.Invoke(new Action(() =>
-                    {
-                        Form1.MainChat.myUser.image = Image.FromStream(ms);
-                        Form1.MainChat.myUser.name = Form1.username;
-                    }));
-                }).Start();
+                   Form1.MainChat.myUser.Invoke(new Action(() =>
+                   {
+                       Form1.MainChat.myUser.image = Image.FromStream(ms);
+                   }));
+               }).Start();
             }
         }
         public class ClassTwo
@@ -146,6 +147,71 @@
                             i.Invoke(new Action(() => i.Controls.Add(bubble)));
                         }
                     }
+                }
+            }
+        }
+        public class ClassFour
+        {
+            public static BunifuFlatButton btn;
+            public static void Four(JSON json)
+            {
+                btn.Invoke(new Action(() => btn.Enabled = true));
+                if (json.uok)
+                {
+                    Register.RegisterPage.userImage = "";
+                    Form1.registerPage.Invoke(new Action(() =>
+                    {
+                        Form1.registerPage.numericUpDown.Value = 1;
+                        Form1.registerPage.typingBoxConfirmPassword.text = "";
+                        Form1.registerPage.typingBoxMail.text = "";
+                        Form1.registerPage.typingBoxPassword.text = "";
+                        Form1.registerPage.typingBoxUser.text = "";
+                    }));
+
+                    Register.RegisterPage.panelDown.Invoke(new Action(() =>
+                    {
+                        Register.RegisterPage.panelDown.Size = new Size(463, 493);
+                        foreach (UserControl i in Register.RegisterPage.panelDown.Controls)
+                            i.Visible = false;
+                        Register.RegisterPage.panelDown.Controls.Add(Form1.loginPage);
+                        Form1.loginPage.Show();
+                    }));
+
+                    MessageBox.Show("Registered!");
+                }
+                else
+                {
+                    Form1.registerPage.Invoke(new Action(() =>
+                    {
+                        if (json.mok && json.uok)
+                        {
+                            MessageBox.Show("ok");
+                        }
+                        else if (!json.mok && json.uok)
+                        {
+                            Form1.registerPage.typingBoxMail.labelErrorControl.Text = "the mail is already used";
+                            Form1.registerPage.typingBoxMail.labelErrorControl.ForeColor = Color.FromArgb(204, 0, 0);
+                            Form1.registerPage.typingBoxMail.labelErrorControl.Visible = true;
+                        }
+                        else if (json.mok && !json.uok)
+                        {
+                            Form1.registerPage.typingBoxUser.labelErrorControl.Text = "The name is already used";
+                            Form1.registerPage.typingBoxUser.labelErrorControl.ForeColor = Color.FromArgb(204, 0, 0);
+                            Form1.registerPage.typingBoxUser.labelErrorControl.Visible = true;
+                        }
+                        else
+                        {
+                            Form1.registerPage.typingBoxUser.labelErrorControl.Text = "The name is already used";
+                            Form1.registerPage.typingBoxUser.labelErrorControl.ForeColor = Color.FromArgb(204, 0, 0);
+                            Form1.registerPage.typingBoxUser.labelErrorControl.Visible = true;
+
+                            Form1.registerPage.typingBoxMail.labelErrorControl.Text = "the mail is already used";
+                            Form1.registerPage.typingBoxMail.labelErrorControl.ForeColor = Color.FromArgb(204, 0, 0);
+                            Form1.registerPage.typingBoxMail.labelErrorControl.Visible = true;
+                        }
+                        Form1.registerPage.typingBoxConfirmPassword.text = "";
+                        Form1.registerPage.typingBoxConfirmPassword.text = "";
+                    }));
                 }
             }
         }

@@ -26,7 +26,7 @@
                 {
                     if (i.SocketConnected)
                     {
-                        Program.Json json = new Program.Json
+                        Obj.Json json = new Obj.Json
                         {
                             id = 3,
                             messageType = "string",
@@ -40,7 +40,7 @@
                     }
                     else
                     {
-                        Program.Messages message = new Program.Messages
+                        Obj.Messages message = new Obj.Messages
                         {
                             to = to,
                             from = from,

@@ -1,6 +1,6 @@
 ﻿namespace OfficialChat.Chat.Controls
 {
-    partial class myUser
+    partial class User
     {
         /// <summary> 
         /// Required designer variable.
@@ -35,7 +35,7 @@
             // 
             // pictureBox
             // 
-            this.pictureBox.Location = new System.Drawing.Point(6, 7);
+            this.pictureBox.Location = new System.Drawing.Point(8, 7);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(45, 45);
             this.pictureBox.TabIndex = 0;
@@ -44,21 +44,23 @@
             // labelUsername
             // 
             this.labelUsername.AutoSize = true;
-            this.labelUsername.Location = new System.Drawing.Point(57, 10);
+            this.labelUsername.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.labelUsername.Location = new System.Drawing.Point(63, 11);
             this.labelUsername.Name = "labelUsername";
-            this.labelUsername.Size = new System.Drawing.Size(35, 13);
+            this.labelUsername.Size = new System.Drawing.Size(69, 13);
             this.labelUsername.TabIndex = 1;
-            this.labelUsername.Text = "label1";
+            this.labelUsername.Text = "MyUsername";
             // 
-            // myUser
+            // User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(69)))));
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.labelUsername);
             this.Controls.Add(this.pictureBox);
-            this.Name = "myUser";
-            this.Size = new System.Drawing.Size(213, 59);
+            this.Name = "User";
+            this.Size = new System.Drawing.Size(200, 57);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

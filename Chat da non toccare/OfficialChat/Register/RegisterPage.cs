@@ -16,6 +16,13 @@
         public static Panel panelDown;
         private void pictureBoxBack_Click(object sender, EventArgs e)
         {
+            typingBoxUser.text = "";
+            typingBoxPassword.text = "";
+            typingBoxConfirmPassword.text = "";
+            typingBoxMail.text = "";
+            numericUpDown.Value = 1;
+            userImage = "";
+
             panelDown.Invoke(new Action(() =>
             {
                 panelDown.Size = new Size(463, 493);
@@ -25,7 +32,7 @@
                 Form1.loginPage.Show();
             }));
         }
-        public static string userImage;
+        public static string userImage { get; set; }
         private void buttonImage_Click_1(object sender, EventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
@@ -44,7 +51,6 @@
             pictureBox.Image = Image.FromStream(m);
             pictureBoxRemove.Visible = true;
         }
-
         private void buttonRegister_Click(object sender, EventArgs e)
         {
             bool ok = false;
@@ -52,19 +58,10 @@
             #region User
             if (string.IsNullOrEmpty(typingBoxUser.text) || typingBoxUser.text == "Username")
             {
-                typingBoxUser.labelErrorControl.Text = "Inset a username";
+                typingBoxUser.labelErrorControl.Text = "Insert a username";
                 typingBoxUser.labelErrorControl.ForeColor = SystemColors.ControlLightLight;
                 typingBoxUser.labelErrorControl.Visible = true;
-            }
-            else
-            {
-                // Cerca nel db se il nome è già stato usato;
-                //JSON json = new JSON
-                //{
-
-                //};
-                //string to = JsonConvert.SerializeObject(json);
-                //WS.Send(to);
+                ok = true;
             }
             #endregion
 
@@ -74,28 +71,71 @@
                 typingBoxMail.labelErrorControl.ForeColor = SystemColors.ControlLightLight;
                 typingBoxMail.labelErrorControl.Text = "Insert a mail";
                 typingBoxMail.labelErrorControl.Visible = true;
+                ok = true;
             }
             else if (!isEmail(typingBoxMail.text))
             {
                 typingBoxMail.labelErrorControl.ForeColor = SystemColors.ControlLightLight;
                 typingBoxMail.labelErrorControl.Text = "Invalid mail";
                 typingBoxMail.labelErrorControl.Visible = true;
+                ok = true;
             }
             #endregion
 
             if (numericUpDown.Value < 16)
+            {
+                ok = true;
                 labelNumberError.Visible = true;
+            }
+
+            #region Password
+            if (string.IsNullOrEmpty(typingBoxPassword.text) || typingBoxPassword.text == "Password")
+            {
+                typingBoxPassword.labelErrorControl.ForeColor = SystemColors.ControlLightLight;
+                typingBoxPassword.labelErrorControl.Text = "Insert a password";
+                typingBoxPassword.labelErrorControl.Visible = true;
+                ok = true;
+            }
+            else if (typingBoxPassword.text.Length < 8)
+            {
+                typingBoxPassword.labelErrorControl.ForeColor = SystemColors.ControlLightLight;
+                typingBoxPassword.labelErrorControl.Text = "Password too short";
+                typingBoxPassword.labelErrorControl.Visible = true;
+                ok = true;
+            }
+
+            if (string.IsNullOrEmpty(typingBoxConfirmPassword.text) || typingBoxConfirmPassword.text == "Confirm password")
+            {
+                typingBoxConfirmPassword.labelErrorControl.ForeColor = SystemColors.ControlLightLight;
+                typingBoxConfirmPassword.labelErrorControl.Text = "Insert the confirm password";
+                typingBoxConfirmPassword.labelErrorControl.Visible = true;
+                ok = true;
+            }
+            else if (typingBoxConfirmPassword.text != typingBoxPassword.text)
+            {
+                typingBoxConfirmPassword.labelErrorControl.ForeColor = SystemColors.ControlLightLight;
+                typingBoxConfirmPassword.labelErrorControl.Text = "Invalid confirm password";
+                typingBoxConfirmPassword.labelErrorControl.Visible = true;
+                ok = true;
+            }
+            #endregion
 
             if (!ok)
             {
-                MessageBox.Show("Metti la registrazione");
-                //JSON json = new JSON
-                //{
-                    
-                //    // Register
-                //};
-                //string to = JsonConvert.SerializeObject(json);
-                //WS.Send(to);
+                if (userImage == null)
+                    userImage = "iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAABmElEQVRoge3Yv05UQRiG8Z8al0QTjaG1sRIFLgC9CTvopTdciAYi0U5q1FIbUTuvANBQkWALyQakg6zFOZsY2HPcnRmY1cyTvNXuzPd8J1/m/KFQKBT+N2axgi38qrOFZcxk9PorE3iFU/QacoJVdDI5NjKBr5rFz+aLMWviteHl+3mZxXQAs9rHpm2cpmOLX43dAIuB+1zD0wT1o9k2+tXvZzOD7zmOhDdwGFs8xQj1Mq1FmgZ+Rqzdiy2eooGNiLWfEtSPZkZ1JIYcow8z+A5k1egNrGQxbaCDz4aX38D1LKYtdFSPB23jdKK68mMn/yfTeKG6SR3V2cRzYzTzhUKhkIYrifZ4gMeqY/I+7mESt+r/HOIAu9jBd3zDDwmeSEO4iXm8x77w94F9vKv3unEZ4lNYw3GEdFOO8aaukZy7eCvs5X3UnGK9rpmEJ+LGJDRdLMTKL2UQP5tnofKPXM7IDDNScyENfBwD+X4+NEm23Qe6uD1i0xdFF3cG/dDWQO9iXIIZ6Jriq0RWSgO5+ecbKBQKhbz8BlwQZA0cAiNhAAAAAElFTkSuQmCC";
+                buttonRegister.Enabled = false;
+                JSON json = new JSON
+                {
+                    id = 3,
+                    username = typingBoxUser.text,
+                    password = typingBoxPassword.text,
+                    age = (int)numericUpDown.Value,
+                    image = userImage,
+                    mail = typingBoxMail.text
+                };
+                string to = JsonConvert.SerializeObject(json);
+                WS.Send(to);
             }
         }
         private static bool isEmail(string inputEmail)
@@ -115,10 +155,13 @@
             pictureBox.Visible = false;
             pictureBoxRemove.Visible = false;
         }
-
         private void numericUpDown_ValueChanged(object sender, EventArgs e)
         {
             labelNumberError.Visible = false;
+        }
+        private void RegisterPage_Load(object sender, EventArgs e)
+        {
+            WS.ClassFour.btn = buttonRegister;
         }
     }
 }

@@ -1,27 +1,28 @@
 ﻿namespace OfficialChat.Chat
 {
-    using System;
     using System.Collections.Generic;
     using System.Windows.Forms;
     using System.Drawing;
+    using OfficialChat.Chat.Controls;
 
     public partial class mainChatControl : UserControl
     {
         public static string To = "";
+        public static string from = "";
         public static List<Panel> Chats = new List<Panel>();
         public mainChatControl()
         {
             InitializeComponent();
         }
-        public Panel panelUserSelected
+        public UserSelected panelUserSelected
         {
             get 
             {
-                return panelForUserS;
+                return userSelected;
             }
             set
             {
-                panelForUserS = value;
+                userSelected = value;
             }
         }
         public Panel panelTypingBox
@@ -84,16 +85,12 @@
         {
             get
             {
-                return blockPanelLeft;
+                return leftPanel.Users;
             }
             set
             {
-                blockPanelLeft = value;
+                leftPanel.Users = value;
             }
-        }
-        private void mainChatControl_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

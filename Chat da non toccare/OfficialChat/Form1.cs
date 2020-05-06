@@ -14,6 +14,11 @@
     using Chat;
     using Login;
     using Register;
+    using System.IO;
+    using Newtonsoft.Json.Serialization;
+    using Newtonsoft.Json;
+    using OfficialChat.Chat.Controls;
+
     public partial class Form1 : Form
     {
         #region Cose
@@ -45,9 +50,30 @@
             LoginPage.panelDown = mainPanelDown;
             WS.ClassOne.panelForControl = mainPanelDown;
             RegisterPage.panelDown = mainPanelDown;
-            mainPanelDown.Controls.Add(loginPage);
-            mainPanelDown.Size = new Size(463, 493);
             WS.Open();
+
+            if (File.Exists("user.json"))
+            {
+                StreamReader r = new StreamReader("user.json");
+                string j = r.ReadToEnd();
+
+                Lib.Local.UserJ user = JsonConvert.DeserializeObject<Lib.Local.UserJ>(j);
+
+                JSON f = new JSON
+                {
+                    id = 1,
+                    username = user.username,
+                    password = user.password
+                };
+
+                string to = JsonConvert.SerializeObject(f);
+                WS.Send(to);
+            }
+            else
+            {
+                mainPanelDown.Size = new Size(463, 493);
+                mainPanelDown.Controls.Add(loginPage);
+            }
         }
         private void labelClose_Click(object sender, EventArgs e)
         {

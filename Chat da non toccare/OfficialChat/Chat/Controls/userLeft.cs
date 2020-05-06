@@ -64,7 +64,6 @@
                 }
             }
         }
-        private Random rnd = new Random();
         private void userLeft_Load(object sender, EventArgs e)
         {
             int width = Form1.MainChat.flowLayoutPanelChat.Size.Width;

@@ -49,8 +49,6 @@
             // 
             // labelMinimize
             // 
-            this.labelMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelMinimize.AutoSize = true;
             this.labelMinimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMinimize.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -81,7 +79,6 @@
             // 
             this.panelMove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(179)))), ((int)(((byte)(16)))));
             this.panelMove.Controls.Add(this.labelLogo);
-            this.panelMove.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMove.Location = new System.Drawing.Point(0, 0);
             this.panelMove.Name = "panelMove";
             this.panelMove.Size = new System.Drawing.Size(1000, 36);
@@ -128,6 +125,7 @@
             this.panelMove.ResumeLayout(false);
             this.panelMove.PerformLayout();
             this.ResumeLayout(false);
+
         }
         private System.Windows.Forms.Panel mainPanelUp;
         private System.Windows.Forms.Panel mainPanelDown;

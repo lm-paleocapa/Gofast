@@ -6,6 +6,10 @@
     using System.Drawing;
     using Newtonsoft.Json;
     using Controls;
+    using OfficialChat.Chat;
+    using Lib.Local;
+    using System.Diagnostics;
+
     public partial class LoginPage : UserControl
     {
         public typingBox tbUser
@@ -64,7 +68,6 @@
                 typingBoxUser.labelErrorControl.Visible = true;
                 ok = true;
             }
-
             if (!ok)
             {
                 JSON json = new JSON
@@ -75,6 +78,21 @@
                 };
                 string to = JsonConvert.SerializeObject(json);
                 WS.Send(to);
+
+                mainChatControl.from = typingBoxUser.text;
+                Form1.MainChat.myUser.name = typingBoxUser.text;
+
+                if (radioButton.Checked)
+                {
+                    UserJ user = new UserJ
+                    {
+                        username = typingBoxUser.text,
+                        password = typingBoxPassword.text
+                    };
+                    string s = JsonConvert.SerializeObject(user);
+
+                    System.IO.File.WriteAllText("user.json", s);
+                }
             }
         }
         private static int i = 0;
@@ -99,6 +117,7 @@
                 panelDown.Size = new Size(463, 529);
                 foreach (UserControl i in panelDown.Controls)
                     i.Visible = false;
+                Form1.registerPage.Dock = DockStyle.Fill;
                 panelDown.Controls.Add(Form1.registerPage);
                 Form1.registerPage.Show();
             }));

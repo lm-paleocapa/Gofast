@@ -5,8 +5,6 @@
     using System.Windows.Forms;
     using System.IO;
     using System.Threading;
-    using System.Threading.Tasks;
-
     using OfficialChat.Lib;
     using OfficialChat.Lib.Client;
 
@@ -40,7 +38,7 @@
             JSON json = new JSON
             {
                 id = 2,
-                from = "martin", // Da modificare in base all'utente
+                from = mainChatControl.from,
                 to = mainChatControl.To,
                 message = mes,
                 messageType = "string",

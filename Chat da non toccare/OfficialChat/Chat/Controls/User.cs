@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace OfficialChat.Chat.Controls
 {
-    public partial class myUser : UserControl
+    public partial class User : UserControl
     {
         public string name
         {
@@ -34,7 +34,7 @@ namespace OfficialChat.Chat.Controls
                 pictureBox.Image = value;
             }
         }
-        public myUser()
+        public User()
         {
             InitializeComponent();
         }

@@ -4,22 +4,20 @@
     using MySql.Data.MySqlClient;
     using Newtonsoft.Json;
     using System;
-    using System.IO;
     using System.Collections.Generic;
     using System.Threading;
-    using System.Drawing;
-    using System.Data;
-
     using Lib;
     public class Program
     {
-        public static List<WebsocketUsers> usersConnected = new List<WebsocketUsers>();
-        public static List<Messages> MessaggiInAttesa = new List<Messages>();
+        public static List<Obj.WebsocketUsers> usersConnected = new List<Obj.WebsocketUsers>();
+        public static List<Obj.Messages> MessaggiInAttesa = new List<Obj.Messages>();
         static void Main()
         {
             #region Database
             MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
             cnn.Open();
+
+            Start.OnServerOpen(cnn);
             #endregion
 
             #region Server
@@ -37,7 +35,7 @@
                 };
                 socket.OnMessage = message =>
                 {
-                    Json json0 = JsonConvert.DeserializeObject<Json>(message);
+                    Obj.Json json0 = JsonConvert.DeserializeObject<Obj.Json>(message);
 
                     switch (json0.id)
                     {
@@ -49,6 +47,11 @@
                         case 2:
                             {
                                 Secondo(json0, socket);
+                                break;
+                            }
+                        case 3:
+                            {
+                                Terzo(json0, socket);
                                 break;
                             }
                     }
@@ -84,7 +87,7 @@
                 }
             }
 
-            void Primo(Json json0, IWebSocketConnection socket)
+            void Primo(Obj.Json json0, IWebSocketConnection socket)
             {
                 string query;
                 MySqlCommand cmd;
@@ -116,13 +119,13 @@
                         cmd = new MySqlCommand(query, cnn);
                         cmd.ExecuteNonQuery();
 
-                        List<Friend> friends = new List<Friend>();
+                        List<Obj.Friend> friends = new List<Obj.Friend>();
                         query = $"SELECT friend from friends where user= '{json0.username}';";
                         cmd = new MySqlCommand(query, cnn);
                         reader = cmd.ExecuteReader();
                         while (reader.Read())
                         {
-                            Friend friend = new Friend
+                            Obj.Friend friend = new Obj.Friend
                             {
                                 user = reader[0].ToString()
                             };
@@ -136,7 +139,7 @@
                             cmd = new MySqlCommand(query, cnn);
                             img = cmd.ExecuteScalar().ToString();
                             if (string.IsNullOrEmpty(img))
-                                img = "iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAB20lEQVR42mL8//8/w2AGTAyDHIw6cNg7kAWXBCMjIynm8AOxOhB7ALEWFIsCcS4QryHFIIxMCxLAhokEzEA8DYj/gIzCgScD8UwgLgViNmIciOIOCh2Yj8dh2HAOqQ6kNA0mk6jeid6ZRItE9aL0diAziep56OlAfjp4aHgX1NJk6PlFTFFDrXLwCYlFDAxvJ8U9jLgcQ0RNQm477TUQixFbk1ASxd/J1PeLXmnwApn6ptMrDQoB8WoS0583vetiUM3wgUjHbSEnwCh1IKx+/UbAcSBPKA6UA0HAjIADbchNcpQUM+jV3gc8uZad3AYrtaq6L3jk3g2GPokrkmMeQcvIeqTQ5SfbZCqkQVDR8Raa1vYiiSuiVW/S9MokckAcDsTzgfg5WmaYgKe+/gP1QCM0xHmo6UBQoVxHRAMBvQuwgoB6kINDKHWgGZaQwoWN0RyYQ0ILh4ccB5oRUQgjRyEnmgONSagGz4Na3KQ6cCMJFtzA0cT/TIIZ4aR2O41JyM1CWPoc/CT2QyxJLQclSOxS+qGJJWCJdpK6sfgcyElGLywWjZ9Gon4hWhTUyADUIXoFTU8HqFFxULvbCWoYLIOyZ1HFRCqHIAgYQEORkxruYRwdRB/uDgQIMADK7J2uzc976AAAAABJRU5ErkJggg==";
+                                img = "iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAABmElEQVRoge3Yv05UQRiG8Z8al0QTjaG1sRIFLgC9CTvopTdciAYi0U5q1FIbUTuvANBQkWALyQakg6zFOZsY2HPcnRmY1cyTvNXuzPd8J1/m/KFQKBT+N2axgi38qrOFZcxk9PorE3iFU/QacoJVdDI5NjKBr5rFz+aLMWviteHl+3mZxXQAs9rHpm2cpmOLX43dAIuB+1zD0wT1o9k2+tXvZzOD7zmOhDdwGFs8xQj1Mq1FmgZ+Rqzdiy2eooGNiLWfEtSPZkZ1JIYcow8z+A5k1egNrGQxbaCDz4aX38D1LKYtdFSPB23jdKK68mMn/yfTeKG6SR3V2cRzYzTzhUKhkIYrifZ4gMeqY/I+7mESt+r/HOIAu9jBd3zDDwmeSEO4iXm8x77w94F9vKv3unEZ4lNYw3GEdFOO8aaukZy7eCvs5X3UnGK9rpmEJ+LGJDRdLMTKL2UQP5tnofKPXM7IDDNScyENfBwD+X4+NEm23Qe6uD1i0xdFF3cG/dDWQO9iXIIZ6Jriq0RWSgO5+ecbKBQKhbz8BlwQZA0cAiNhAAAAAElFTkSuQmCC";
                             x.image = img;
                         }
 
@@ -144,7 +147,7 @@
                         cmd = new MySqlCommand(query, cnn);
                         img = cmd.ExecuteScalar().ToString();
 
-                        Json json1 = new Json
+                        Obj.Json json1 = new Obj.Json
                         {
                             id = 1,
                             uok = true,
@@ -158,7 +161,7 @@
                     }
                     else
                     {
-                        Json json = new Json
+                        Obj.Json json = new Obj.Json
                         {
                             id = 2,
                             uok = true,
@@ -170,7 +173,7 @@
                 }
                 else
                 {
-                    Json json = new Json
+                    Obj.Json json = new Obj.Json
                     {
                         id = 2,
                         uok = false,
@@ -180,12 +183,12 @@
                     socket.Send(ToClient);
                 }
             }
-            void Secondo(Json json0, IWebSocketConnection socket)
+            void Secondo(Obj.Json json0, IWebSocketConnection socket)
             {
                 string query;
                 MySqlCommand cmd;
                 MySqlDataReader reader;
-                List<Friend> Friends = new List<Friend>();
+                List<Obj.Friend> Friends = new List<Obj.Friend>();
                 string ToClient;
                 bool ok;
 
@@ -194,7 +197,7 @@
                 {
                     if (json0.to == i.user && i.SocketConnected)
                     {
-                        Json json = new Json
+                        Obj.Json json = new Obj.Json
                         {
                             id = 3,
                             from = json0.from,
@@ -210,7 +213,7 @@
 
                 if (!ok)
                 {
-                    Messages message1 = new Messages
+                    Obj.Messages message1 = new Obj.Messages
                     {
                         to = json0.to,
                         from = json0.from,
@@ -247,6 +250,97 @@
                 cmd.ExecuteNonQuery();
 
             }
+            void Terzo(Obj.Json json0, IWebSocketConnection socket)
+            {
+                string query;
+                MySqlCommand cmd;
+                MySqlDataReader reader;
+                string toClient;
+
+                query = "select user from account";
+                cmd = new MySqlCommand(query, cnn);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (json0.username == reader[0].ToString())
+                    {
+                        reader.Close();
+
+                        query = "select mail form account";
+                        cmd = new MySqlCommand(query, cnn);
+                        reader = cmd.ExecuteReader();
+                        {
+                            if (reader[0].ToString() == json0.mail)
+                            {
+                                Obj.Json json2 = new Obj.Json
+                                {
+                                    id = 4,
+                                    uok = false,
+                                    mok = false
+                                };
+                                toClient = JsonConvert.SerializeObject(json2);
+                                socket.Send(toClient);
+                                reader.Close();
+                                return;
+                            }
+                        }
+                        reader.Close();
+
+                        Obj.Json json = new Obj.Json
+                        {
+                            id = 4,
+                            uok = false,
+                            mok = true
+                        };
+                        toClient = JsonConvert.SerializeObject(json);
+                        socket.Send(toClient);
+                        return;
+                    }
+                }
+                reader.Close();
+
+                query = "select mail from account";
+                cmd = new MySqlCommand(query, cnn);
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if (reader[0].ToString() == json0.mail)
+                    {
+                        Obj.Json json2 = new Obj.Json
+                        {
+                            id = 4,
+                            uok = true,
+                            mok = false
+                        };
+                        toClient = JsonConvert.SerializeObject(json2);
+                        socket.Send(toClient);
+                        reader.Close();
+                        return;
+                    }
+                }
+                reader.Close();
+
+                Obj.Json json1 = new Obj.Json
+                {
+                    id = 4,
+                    uok = true,
+                    mok = true
+                };
+                toClient = JsonConvert.SerializeObject(json1);
+                socket.Send(toClient);
+
+                query = $"INSERT INTO account (user,password,mail,age,image) VALUES ('{json0.username}', '{json0.password}', '{json0.mail}', '{json0.age}', '{json0.image}');";
+                cmd = new MySqlCommand(query, cnn);
+                cmd.ExecuteNonQuery();
+
+                Obj.WebsocketUsers newUser = new Obj.WebsocketUsers
+                {
+                    SocketConnected = false,
+                    user = json0.username
+                };
+                usersConnected.Add(newUser);
+            }
 
             new Thread(() => // Da provare.
             {
@@ -259,7 +353,7 @@
                         {
                             if (x.SocketConnected && x.user == i.to)
                             {
-                                Json json = new Json
+                                Obj.Json json = new Obj.Json
                                 {
                                     id = 3,
                                     from = i.from,
@@ -277,8 +371,6 @@
                     Thread.Sleep(50);
                 }
             }).Start();
-
-            Update.Start();
             #endregion
 
             #region Utility
@@ -313,6 +405,9 @@
             }).Start();
             #endregion
         }
+    }
+    public class Obj
+    {
         public class Json
         {
             public int id { get; set; } // Identifica la funzione.
@@ -321,6 +416,8 @@
             public string password { get; set; } // Password che è stata immessa nel client.
             public bool pok { get; set; } // Identifica se la password è corretta nel db.
             public int age { get; set; } // Identifica l'età dell'utente.
+            public string mail { get; set; }
+            public bool mok { get; set; }
             public string image { get; set; } // Immagine profilo dell'utente.
             public List<Friend> friends { get; set; } // Lista di amici dell'utente.
             public string from { get; set; } // Da chi viene il messaggio.
@@ -350,7 +447,7 @@
         }
         public class OldFriends
         {
-            public List<Program.Friend> friend { get; set; }
+            public List<Friend> friend { get; set; }
             public string User { get; set; }
         }
     }

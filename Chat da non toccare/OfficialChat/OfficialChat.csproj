@@ -67,8 +67,8 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Net.Security, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Net.Security.4.3.0\lib\net46\System.Net.Security.dll</HintPath>
+    <Reference Include="System.Net.Security, Version=4.0.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Security.4.3.2\lib\net46\System.Net.Security.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
@@ -77,13 +77,13 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+    <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Runtime.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.Extensions.4.3.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Extensions.4.3.1\lib\net462\System.Runtime.Extensions.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
@@ -93,7 +93,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
@@ -107,13 +107,13 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.2\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.RegularExpressions.4.3.0\lib\net463\System.Text.RegularExpressions.dll</HintPath>
+      <HintPath>..\packages\System.Text.RegularExpressions.4.3.1\lib\net463\System.Text.RegularExpressions.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
@@ -131,23 +131,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chat\Controls\leftPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Chat\Controls\leftPanel.Designer.cs">
+      <DependentUpon>leftPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Chat\Controls\MeBubble.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Chat\Controls\MeBubble.designer.cs">
       <DependentUpon>MeBubble.cs</DependentUpon>
     </Compile>
-    <Compile Include="Chat\Controls\myUser.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Chat\Controls\myUser.Designer.cs">
-      <DependentUpon>myUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="Chat\Controls\typingBoxChat.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Chat\Controls\typingBoxChat.Designer.cs">
       <DependentUpon>typingBoxChat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Chat\Controls\User.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Chat\Controls\User.Designer.cs">
+      <DependentUpon>User.cs</DependentUpon>
     </Compile>
     <Compile Include="Chat\Controls\userLeft.cs">
       <SubType>UserControl</SubType>
@@ -184,6 +190,7 @@
     <Compile Include="Lib\Client\FRIENDS.cs" />
     <Compile Include="Lib\Client\JSON.cs" />
     <Compile Include="Lib\Client\WS.cs" />
+    <Compile Include="Lib\Local\User.cs" />
     <Compile Include="Login\Controls\typingBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -204,14 +211,17 @@
     <Compile Include="Register\RegisterPage.Designer.cs">
       <DependentUpon>RegisterPage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Chat\Controls\leftPanel.resx">
+      <DependentUpon>leftPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Chat\Controls\MeBubble.resx">
       <DependentUpon>MeBubble.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Chat\Controls\myUser.resx">
-      <DependentUpon>myUser.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Chat\Controls\typingBoxChat.resx">
       <DependentUpon>typingBoxChat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Chat\Controls\User.resx">
+      <DependentUpon>User.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Chat\Controls\userLeft.resx">
       <DependentUpon>userLeft.cs</DependentUpon>
@@ -299,9 +309,7 @@
   <ItemGroup>
     <None Include="Resources\user.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Register\Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\mail.png" />
   </ItemGroup>

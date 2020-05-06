@@ -186,6 +186,7 @@
             this.labelNumberError.Size = new System.Drawing.Size(94, 13);
             this.labelNumberError.TabIndex = 27;
             this.labelNumberError.Text = "You are too young";
+            this.labelNumberError.Visible = false;
             // 
             // typingBoxMail
             // 
@@ -238,7 +239,7 @@
             this.typingBoxUser.hint = "Username";
             this.typingBoxUser.img = global::OfficialChat.Properties.Resources.user;
             this.typingBoxUser.isPassword = false;
-            this.typingBoxUser.Location = new System.Drawing.Point(16, 71);
+            this.typingBoxUser.Location = new System.Drawing.Point(14, 71);
             this.typingBoxUser.Name = "typingBoxUser";
             this.typingBoxUser.nameOfPanel = "Register";
             this.typingBoxUser.pictureBoxTop = 21;
@@ -267,6 +268,7 @@
             this.Controls.Add(this.labelLogo);
             this.Name = "RegisterPage";
             this.Size = new System.Drawing.Size(463, 529);
+            this.Load += new System.EventHandler(this.RegisterPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRemove)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
@@ -277,16 +279,16 @@
         }
         private Bunifu.Framework.UI.BunifuCustomLabel labelLogo;
         private System.Windows.Forms.PictureBox pictureBoxBack;
-        private System.Windows.Forms.NumericUpDown numericUpDown;
         private Bunifu.Framework.UI.BunifuFlatButton buttonImage;
         private System.Windows.Forms.Label label1;
         private Bunifu.Framework.UI.BunifuFlatButton buttonRegister;
-        private Login.Controls.typingBox typingBoxUser;
-        private Login.Controls.typingBox typingBoxPassword;
-        private Login.Controls.typingBox typingBoxConfirmPassword;
-        private Login.Controls.typingBox typingBoxMail;
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.PictureBox pictureBoxRemove;
+        public Login.Controls.typingBox typingBoxUser;
+        public Login.Controls.typingBox typingBoxMail;
         private System.Windows.Forms.Label labelNumberError;
+        public System.Windows.Forms.NumericUpDown numericUpDown;
+        public Login.Controls.typingBox typingBoxPassword;
+        public Login.Controls.typingBox typingBoxConfirmPassword;
     }
 }
