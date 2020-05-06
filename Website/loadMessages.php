@@ -20,9 +20,6 @@
     $friend = $conn->query("SELECT user FROM account WHERE id = '$friendId'");
     $username = $conn->query("SELECT user FROM account WHERE id = '$id'");
 
-    $username = "martin";
-    $friend = "cane";
-
     $messages = array();
 
     $query = $conn->query("SELECT messages, date FROM " . "$username" . "_messages WHERE user = '$friend'");
