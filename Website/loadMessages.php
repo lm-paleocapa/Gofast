@@ -17,19 +17,17 @@
 
     $friendId = $_GET["friendId"];
 
-    $friend = $conn->query("SELECT user FROM account WHERE id = '$friendId'");
-    $username = $conn->query("SELECT user FROM account WHERE id = '$id'");
+    $friend = $conn->query("SELECT user FROM account WHERE id = '$friendId'")->fetch_assoc()["user"];
+    $username = $conn->query("SELECT user FROM account WHERE id = '$id'")->fetch_assoc()["user"];
 
     $messages = array();
 
     $query = $conn->query("SELECT messages, date FROM " . "$username" . "_messages WHERE user = '$friend'");
-
     while ($result = mysqli_fetch_assoc($query)) {
         $messages[] = ["content" => $result["messages"], "date" => strtotime($result["date"]), "mode" => "SEND"];
     }
 
-    $query = $conn->query("SELECT messages, date FROM " . "$friend" . "_messages WHERE user = '$username'");
-
+    $query =  $conn->query("SELECT messages, date FROM " . "$friend" . "_messages WHERE user = '$username'");
     while ($result = mysqli_fetch_assoc($query)) {
         $messages[] = ["content" => $result["messages"], "date" => strtotime($result["date"]), "mode" => "RECEIVE"];
     }

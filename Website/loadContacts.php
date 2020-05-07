@@ -15,11 +15,10 @@
     $password = $_SESSION["password"];
     $image = $_SESSION["image"];
 
-    $username = $conn->query("SELECT user FROM account WHERE id = '$id'");
+    $username = $conn->query("SELECT user FROM account WHERE id = '$id'")->fetch_assoc()["user"];
 
     $response = array();
     $friends = array();
-
     $result = $conn->query("SELECT * FROM friends WHERE user = '$username' OR friend = '$username'");
     while ($friend = mysqli_fetch_array($result)) {
         $name = $friend["friend"];
@@ -31,9 +30,8 @@
 
     $response = array();
     for($i = 0; $i < sizeof($friends); $i++) {
-        echo $friends[$i];
         $result = mysqli_fetch_array($conn->query("SELECT * FROM account WHERE user = '$friends[$i]'"));
-        $response[] = ["image" => $result[""], "name" => $result["user"], "id" => $result["id"], "state" => $result["state"]];
+        $response[] = ["image" => $result["image"], "name" => $result["user"], "id" => $result["id"], "state" => $result["state"]];
     }
 
     echo json_encode($response);

@@ -28,14 +28,15 @@
             if ($result->num_rows == 0) {
                 $error = "emailNotFound";
             }
-            else {
-                if ($result->fetch_assoc()["password"] !== $password) {
+	    else {
+		$result2 = mysqli_fetch_array($result);
+                if ($result2["password"] !== $password) {
                     $error = "wrongPassword";
                 }
                 else {
                     session_start();
-                    $_SESSION["id"] = $result->fetch_assoc()["id"];
-                    $_SESSION["image"] = $result->fetch_assoc()["image"];
+                    $_SESSION["id"] = $result2["id"];
+                    $_SESSION["image"] = $result2["image"];
                     $_SESSION["email"] = $email;
                     $_SESSION["password"] = $email;
                     echo "successfullyLoggedIn";

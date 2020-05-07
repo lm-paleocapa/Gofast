@@ -18,7 +18,7 @@ class Contact {
 	}
 	
 	var contacts = [];
-	var activeChat = 1;
+	var activeChat = 0;
 	var userID = 6;
 	var userImage;
 	var email;
@@ -43,11 +43,12 @@ class Contact {
 			}
 			else
 				lastlog = data[i].state;
-			contacts.push(new Contact(data[i].image, data[i].username, data[i].id, online, lastlog, []));
+			contacts.push(new Contact(data[i].image, data[i].name, data[i].id, online, lastlog, []));
 		}
 		for (var i = 0; i < contacts.length; i++) {
 			addContact(contacts[i].image, contacts[i].name, contacts[i].id, contacts[i].online, contacts[i].lastLog);
 		}
+		loadMessagesFromDatabase(0);
 	}
 
 	function manageData(event) {
@@ -65,26 +66,29 @@ class Contact {
 	}
 
 	function loadMessages(id) {
-		$.getJSON("loadMessages.php?friendId=" + id, function(data) {
-			for (var i = 0; i < contacts.length; i++) {
-				if(contacts[i].id == id) {
-					for (var j = 0; j < data.length; j++) {
-						contacts[i].messages.push(new Message(data[j].content, data[j].time, data[j].mode));
-					}
-				}
-			}	
-		});
-
 		for (var i = 0; i < contacts.length; i++) {
 			if(contacts[i].id == id) {
-				for (var j = 0; j < contacts[id].messages.length; j++) {
-					if (contacts[id].messages[j].mode == "SEND")
-						viewSentMessage(contacts[id].messages[j].content, contacts[id].messages.time);
-					else if (contacts[id].messages[j].mode == "RECEIVE")
-						viewReceivedMessage(contacts[id].messages[j].content, contacts[id].messages.time);
+				for (var j = 0; j < contacts[i].messages.length; j++) {
+					if (contacts[i].messages[j].mode == "SEND")
+						viewSentMessage(contacts[i].messages[j].content, contacts[i].messages.time);
+					else if (contacts[i].messages[j].mode == "RECEIVE")
+						viewReceivedMessage(contacts[i].messages[j].content, contacts[i].messages.time);
 				}
 			}
 		}
+	}
+
+	function loadMessagesFromDatabase(r) {
+			var id = contacts[r].id;
+			$.getJSON("loadMessages.php?friendId=" + id, function(data) {
+                                        	for (var j = 0; j < data.length; j++) {
+                                                	contacts[r].messages.push(new Message(data[j].content, data[j].time, data[j].mode));
+                                        	}
+						if (r < contacts.length) {
+							r++;
+							loadMessagesFromDatabase(r);
+						}
+                	});
 	}
 
 	function viewSentMessage(content, time) {
@@ -122,7 +126,10 @@ class Contact {
 		newSubDiv1.innerHTML = content;
 		newMessage.appendChild(newSubDiv1);
 		var newImg = document.createElement("img");
-		newImg.src = contacts[activeChat].image;
+		for (var i = 0; i < contacts.length; i++){
+		    if(contacts[i].id == activeChat)
+		    	newImg.src = contacts[i].image;
+		}
 		newImg.className = "rounded-circle user_img_msg";
 		newSubDiv0.appendChild(newImg);
 		var newSpan = document.createElement("span");
@@ -144,7 +151,10 @@ class Contact {
 	}
 
 	function postMessage(content, time) {
-		contacts[activeChat].messages.push(new Message(content, time, "SEND"));
+		for(var i = 0; i < contacts.length; i++) {
+		    if(contacts[i].id == activeChat)
+		    	contacts[i].messages.push(new Message(content, time, "SEND"));
+		}
 		viewSentMessage(content, time);
 		socket.send("{'id':'2', 'text':'" + content + "', 'user1':'" + activeChat + "'}");               
 	}
@@ -154,10 +164,12 @@ class Contact {
 		dynamicImg.src = image;
 		dynamicName = document.getElementById("dynamicName");
 		dynamicName.innerHTML = name;
-		document.getElementById(activeChat).className = "";
+		if(activeChat != 0)
+		    document.getElementById(activeChat).className = "";
 		document.getElementById(id).className = "active";
 		var messageList = document.getElementById("messageList");
 		if (id != activeChat) {
+			activeChat = id;
 			messageList.innerHTML = "";
 			loadMessages(id);
 		}
@@ -199,20 +211,25 @@ class Contact {
 			newP.innerHTML = "Last log: " + lastLog;
 		newSubDiv1.appendChild(newP);
 	}
+	
+	//setupWebSocket();
+
+	function main() {
+	
+	//var newContact = new Contact("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP._9SsO9_KzjYz0lPYS6XPOAHaHa%26pid%3DApi&f=1", "ddg", 0, true, "online", []);
+	//var newContact2 = new Contact("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fyt0CE-bN--g%2Fhqdefault.jpg&f=1&nofb=1", "google", 1, true, "online", []);
+	//contacts.push(newContact, newContact2);
 
 	$.getJSON("getData.php", getData);
 	$.getJSON("loadContacts.php", loadContacts);
-	
-	setupWebSocket();
 
-	/*var newContact = new Contact("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP._9SsO9_KzjYz0lPYS6XPOAHaHa%26pid%3DApi&f=1", "ddg", 0, true, "online", []);
-	var newContact2 = new Contact("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fyt0CE-bN--g%2Fhqdefault.jpg&f=1&nofb=1", "google", 1, true, "online", []);
-	contacts.push(newContact, newContact2);
+	//loadMessagesFromDatabase();
 
-	getMessage(0, "Henlo", "*time*");
-	getMessage(1, "roflmao", "*time2*");
-	postMessage("akdakdsoad", "taim");*/
+	//getMessage(0, "Henlo", "*time*");
+	//getMessage(1, "roflmao", "*time2*");
+	//postMessage("akdakdsoad", "taim");
 
-	for (var i = 0; i < contacts.length; i++) {
+	/*for (var i = 0; i < contacts.length; i++) {
 		addContact(contacts[i].image, contacts[i].name, contacts[i].id, contacts[i].online, contacts[i].lastLog);
-	}
+	}*/
+}
