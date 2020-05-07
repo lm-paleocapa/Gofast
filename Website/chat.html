@@ -36,7 +36,19 @@
 				</div></div>
 				<div class="col-md-8 col-xl-6 chat">
 					<div class="card">
-						<div class="card-header msg_head">
+						<div class="input-group addFriendText" style="display:none" id="addFriendText">
+							<input type="text" placeholder="Add Friend..." name="" class="form-control search">
+							<div class="input-group-prepend">
+								<span class="input-group-text search_btn"></span>
+							</div>
+						</div>
+						<div class="input-group addFriendButton" style="display:none"id="addFriendButton">
+							<input type="button" value="Add Friend..." name="" class="form-control addFriendButtonTextColor">
+							<div class="input-group-prepend">
+								<span class="input-group-text addFriendButtonButtonColor"></span>
+							</div>
+						</div>
+						<div class="card-header msg_head" id="messagesPanel">
 							<div class="d-flex bd-highlight">
 								<div class="img_cont">
 									<img id="dynamicImg" src="" class="rounded-circle user_img">
@@ -61,7 +73,7 @@
 							</div>
 						</div>
 						<div class="card-body msg_card_body" id="messageList"></div>
-						<div class="card-footer">
+						<div class="card-footer" id="messagesFooter">
 							<div class="input-group">
 								<div class="input-group-append">
 									<span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>

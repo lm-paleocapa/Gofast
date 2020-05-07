@@ -3,7 +3,8 @@
 			margin: 0;
 			background: rgb(79, 42, 138);
 	       background: -webkit-linear-gradient(to right, rgb(37, 58, 150), rgb(133, 73, 165), rgb(194, 81, 194));
-	        background: linear-gradient(to right, rgb(88, 74, 206), rgb(145, 92, 196), rgb(183, 80, 192));
+			background: linear-gradient(to right, rgb(88, 74, 206), rgb(145, 92, 196), rgb(183, 80, 192));
+			color: white;
 		}
 
 		.chat{
@@ -108,6 +109,10 @@
 			position: relative;
 			top: 26%;
 			left: 140%;
+		}
+		.add_img {
+			height: 70px;
+			width: 70px;
 		}
 		.user_img_msg{
 			height: 40px;
@@ -236,4 +241,43 @@
 	.contacts_card{
 		margin-bottom: 15px !important;
 	}
+	}
+
+	.addFriendHr {
+		height:1px;
+		border:none;
+		color:#333;
+		background-color:white;
+	}
+	
+	.addFriendText {
+		width:50%;
+		top:50%;
+		left:25%;
+	}
+
+	.addFriendButton {
+		width:25%;
+		top:56%;
+		left:37.5%;
+	}
+
+	.addFriendButtonTextColor {
+		border-radius: 15px 0 0 15px !important;
+		background-color: rgba(0,255,0,0.3) !important;
+		border:0 !important;
+		color:white !important;
+	}
+
+	.addFriendButtonTextColor:focus {
+		box-shadow:none !important;
+        outline:0px !important;
+	}
+
+	.addFriendButtonButtonColor {
+		border-radius: 0 15px 15px 0 !important;
+		background-color: rgba(0,255,0,0.3) !important;
+		border:0 !important;
+		color: white !important;
+		cursor: pointer;
 	}

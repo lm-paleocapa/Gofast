@@ -95,7 +95,7 @@ class Contact {
 		var contactsList = document.getElementById("contactsList");
 		var newContact = document.createElement("li");;
 		//newContact.onclick = function() { loadContact(name, image, online, id);  newContact.className = "active";};
-		contactsList.insertBefore(newContact, contactsList.childNodes[0]);
+		contactsList.insertBefore(newContact, contactsList.childNodes[1]);
 		var newDiv = document.createElement("div");
 		newDiv.className = "d-flex bd-highlight";
 		newContact.appendChild(newDiv);
@@ -220,7 +220,7 @@ class Contact {
 		var contactsList = document.getElementById("contactsList");
 		var newContact = document.createElement("li");
 		newContact.id = id;
-		newContact.onclick = function() { loadContact(name, image, online, id);  newContact.className = "active";};
+		newContact.onclick = function() { loadContact(name, image, online, id);  newContact.className = "active"; document.getElementById("addFriendText").style.display = "none"; document.getElementById("addFriendButton").style.display = "none"; document.getElementById("messagesPanel").style.display = ""; document.getElementById("messageList").style.display = ""; document.getElementById("messagesFooter").style.display = "";};
 		contactsList.appendChild(newContact);
 		var newDiv = document.createElement("div");
 		newDiv.className = "d-flex bd-highlight";
@@ -251,11 +251,39 @@ class Contact {
 			newP.innerHTML = "Last log: " + lastLog;
 		newSubDiv1.appendChild(newP);
 	}
+
+	function addAddFriend() {
+		var contactsList = document.getElementById("contactsList");
+		var newContact = document.createElement("li");
+		newContact.onclick = function() {document.getElementById("addFriendText").style.display = ""; document.getElementById("addFriendButton").style.display = ""; document.getElementById("messagesPanel").style.display = "none"; document.getElementById("messageList").style.display = "none"; document.getElementById("messagesFooter").style.display = "none";};
+		contactsList.appendChild(newContact);
+		var newDiv = document.createElement("div");
+		newDiv.className = "d-flex bd-highlight";
+		newContact.appendChild(newDiv);
+		var newSubDiv0 = document.createElement("div");
+		newSubDiv0.className = "img_cont";
+		newDiv.appendChild(newSubDiv0);
+		var newSubDiv1 = document.createElement("div");
+		newSubDiv1.className = "user_info";
+		newDiv.appendChild(newSubDiv1);
+		var newImg = document.createElement("img");
+		newImg.src = "3.png";
+		newImg.className = "rounded-circle add_img";
+		newSubDiv0.appendChild(newImg);
+		var newSpan1 = document.createElement("span");
+		newSpan1.innerHTML = "Add Friend";
+		newSubDiv1.appendChild(newSpan1);
+		var newHr = document.createElement("hr");
+		newHr.className = "addFriendHr";
+		newContact.appendChild(newHr);
+	}
 	
 	//setupWebSocket();
 
 	function main() {
 	
+
+	addAddFriend();	
 	var newContact = new Contact("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP._9SsO9_KzjYz0lPYS6XPOAHaHa%26pid%3DApi&f=1", "ddg", 1, true, "online", []);
 	var newContact2 = new Contact("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fyt0CE-bN--g%2Fhqdefault.jpg&f=1&nofb=1", "google", 2, true, "online", []);
 	contacts.push(newContact, newContact2);
