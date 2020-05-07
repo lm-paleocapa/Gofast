@@ -18,7 +18,7 @@ class Contact {
 	}
 	
 	var contacts = [];
-	var activeChat = 0;
+	var activeChat = 1;
 	var userID = 6;
 	var userImage;
 	var email;
@@ -70,9 +70,9 @@ class Contact {
 			if(contacts[i].id == id) {
 				for (var j = 0; j < contacts[i].messages.length; j++) {
 					if (contacts[i].messages[j].mode == "SEND")
-						viewSentMessage(contacts[i].messages[j].content, contacts[i].messages.time);
+						viewSentMessage(contacts[i].messages[j].content, contacts[i].messages[j].time);
 					else if (contacts[i].messages[j].mode == "RECEIVE")
-						viewReceivedMessage(contacts[i].messages[j].content, contacts[i].messages.time);
+						viewReceivedMessage(contacts[i].messages[j].content, contacts[i].messages[j].time);
 				}
 			}
 		}
@@ -89,6 +89,46 @@ class Contact {
 							loadMessagesFromDatabase(r);
 						}
                 	});
+	}
+
+	function addFriendshipRequest(name, image){
+		var contactsList = document.getElementById("contactsList");
+		var newContact = document.createElement("li");;
+		//newContact.onclick = function() { loadContact(name, image, online, id);  newContact.className = "active";};
+		contactsList.insertBefore(newContact, contactsList.childNodes[0]);
+		var newDiv = document.createElement("div");
+		newDiv.className = "d-flex bd-highlight";
+		newContact.appendChild(newDiv);
+		var newSubDiv0 = document.createElement("div");
+		newSubDiv0.className = "img_cont";
+		newDiv.appendChild(newSubDiv0);
+		var newSubDiv1 = document.createElement("div");
+		newSubDiv1.className = "user_info";
+		newDiv.appendChild(newSubDiv1);
+		var newImg = document.createElement("img");
+		newImg.src = image;
+		newImg.className = "rounded-circle user_img";
+		newSubDiv0.appendChild(newImg);
+		var newSpan1 = document.createElement("span");
+		newSpan1.innerHTML = name;
+		newSubDiv1.appendChild(newSpan1);
+		newBr = document.createElement("br");
+		newSubDiv1.appendChild(newBr)
+		newText = document.createTextNode("wants to be your friend");
+		newSubDiv1.appendChild(newText)
+		newSubDiv2 = document.createElement("div");
+		newSubDiv2.className = "img_cont";
+		newDiv.appendChild(newSubDiv2);
+		newImg2 = document.createElement("img");
+		newImg2.src = "2.png";
+		newImg2.className = "rounded-circle accept_img";
+		newImg2.onclick = function() {contactsList.removeChild(newContact);};
+		newSubDiv2.appendChild(newImg2);
+		newImg3 = document.createElement("img");
+		newImg3.src = "1.png";
+		newImg3.className = "rounded-circle decline_img";
+		newImg3.onclick = function() {contactsList.removeChild(newContact);};
+		newSubDiv2.appendChild(newImg3);
 	}
 
 	function viewSentMessage(content, time) {
@@ -156,7 +196,7 @@ class Contact {
 		    	contacts[i].messages.push(new Message(content, time, "SEND"));
 		}
 		viewSentMessage(content, time);
-		socket.send("{'id':'2', 'text':'" + content + "', 'user1':'" + activeChat + "'}");               
+		//socket.send("{'id':'2', 'text':'" + content + "', 'user1':'" + activeChat + "'}");               
 	}
 
 	function loadContact(name, image, online, id) {
@@ -216,20 +256,21 @@ class Contact {
 
 	function main() {
 	
-	//var newContact = new Contact("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP._9SsO9_KzjYz0lPYS6XPOAHaHa%26pid%3DApi&f=1", "ddg", 0, true, "online", []);
-	//var newContact2 = new Contact("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fyt0CE-bN--g%2Fhqdefault.jpg&f=1&nofb=1", "google", 1, true, "online", []);
-	//contacts.push(newContact, newContact2);
+	var newContact = new Contact("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP._9SsO9_KzjYz0lPYS6XPOAHaHa%26pid%3DApi&f=1", "ddg", 1, true, "online", []);
+	var newContact2 = new Contact("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fyt0CE-bN--g%2Fhqdefault.jpg&f=1&nofb=1", "google", 2, true, "online", []);
+	contacts.push(newContact, newContact2);
 
 	$.getJSON("getData.php", getData);
 	$.getJSON("loadContacts.php", loadContacts);
 
 	//loadMessagesFromDatabase();
 
-	//getMessage(0, "Henlo", "*time*");
-	//getMessage(1, "roflmao", "*time2*");
-	//postMessage("akdakdsoad", "taim");
+	getMessage(1, "Henlo", "*time*");
+	getMessage(2, "roflmao", "*time2*");
+	postMessage("akdakdsoad", "taim");
 
-	/*for (var i = 0; i < contacts.length; i++) {
+	for (var i = 0; i < contacts.length; i++) {
 		addContact(contacts[i].image, contacts[i].name, contacts[i].id, contacts[i].online, contacts[i].lastLog);
-	}*/
+	}
+	addFriendshipRequest("q", "q");
 }

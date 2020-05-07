@@ -94,6 +94,21 @@
 			border:1.5px solid #f5f6fa;
 		
 		}
+		.accept_img{
+			height: 26px;
+			width: 26px;
+			position: relative;
+			top: 26%;
+			left: 100%;
+		
+		}
+		.decline_img{
+			height: 26px;
+			width: 26px;
+			position: relative;
+			top: 26%;
+			left: 140%;
+		}
 		.user_img_msg{
 			height: 40px;
 			width: 40px;
@@ -150,7 +165,7 @@
 		margin-bottom: auto;
 		margin-left: 10px;
 		border-radius: 25px;
-		background-color: #82ccdd;
+		background-color: #7a43bd;
 		padding: 10px;
 		position: relative;
 	}
@@ -159,7 +174,7 @@
 		margin-bottom: auto;
 		margin-right: 10px;
 		border-radius: 25px;
-		background-color: #78e08f;
+		background-color: #cb69d9;
 		padding: 10px;
 		position: relative;
 	}
