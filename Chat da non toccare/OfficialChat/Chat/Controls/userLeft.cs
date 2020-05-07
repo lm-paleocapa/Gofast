@@ -3,6 +3,8 @@
     using System;
     using System.Windows.Forms;
     using System.Drawing;
+    using OfficialChat.Properties;
+
     public partial class userLeft : UserControl
     {
         public userLeft()
@@ -44,6 +46,12 @@
         }
         private void userLeft_Click(object sender, EventArgs e)
         {
+            if (Form1.MainChat.dropdownlist.Visible)
+            {
+                Form1.MainChat.dropdownlist.Visible = false;
+                Form1.MainChat.myUser.setting.Image = Resources.icons8_menu_2_30;
+            }
+
             Form1.MainChat.nameOfUserSelected = this.name;
             Form1.MainChat.imageOfUserSelected = picture;
             Form1.MainChat.lastAccessOfUserSelected = lastAccess;
@@ -76,6 +84,14 @@
                 Size = new Size(width, height)
             };
             Form1.MainChat.flowLayoutPanelChat.Controls.Add(panelChat);
+        }
+        private void userLeft_MouseEnter(object sender, EventArgs e)
+        {
+            this.BackColor = Color.FromArgb(69, 79, 89);
+        }
+        private void userLeft_MouseLeave(object sender, EventArgs e)
+        {
+            this.BackColor = Color.FromArgb(49, 59, 69);
         }
     }
 }

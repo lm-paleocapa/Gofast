@@ -1,26 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace OfficialChat.Chat.Controls
+﻿namespace OfficialChat.Chat.Controls
 {
+    using System;
+    using System.Drawing;
+    using System.Windows.Forms;
+    using OfficialChat.Properties;
     public partial class User : UserControl
     {
-        public string name
+        public PictureBox setting
         {
             get
             {
-                return labelUsername.Text;
+                return pictureSetting;
             }
             set
             {
-                labelUsername.Text = value;
+                pictureSetting = value;
             }
         }
         public Image image
@@ -37,6 +31,34 @@ namespace OfficialChat.Chat.Controls
         public User()
         {
             InitializeComponent();
+        }
+        bool isCollpsed = false;
+        private Image icon1 = Resources.icons8_menu_2_30;
+        private Image icon2 = Resources.icons8_menu_2_30_1_;
+        private void pictureSetting_Click(object sender, EventArgs e)
+        {
+            if (!isCollpsed == true)
+            {
+                pictureSetting.Image = icon2;
+                Form1.MainChat.dropdownlist.Visible = true;
+                isCollpsed = false;
+            }
+            else
+            {
+                pictureSetting.Image = icon1;
+                Form1.MainChat.dropdownlist.Visible = false;
+                isCollpsed = true;
+            }
+        }
+        private void pictureSetting_MouseEnter(object sender, EventArgs e)
+        {
+            if (!isCollpsed)
+            pictureSetting.Image = icon2;
+        }
+        private void pictureSetting_MouseLeave(object sender, EventArgs e)
+        {
+            if (!isCollpsed && !Form1.MainChat.dropdownlist.Visible)
+            pictureSetting.Image = icon1;
         }
     }
 }

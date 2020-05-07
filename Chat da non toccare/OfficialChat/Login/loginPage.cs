@@ -80,7 +80,6 @@
                 WS.Send(to);
 
                 mainChatControl.from = typingBoxUser.text;
-                Form1.MainChat.myUser.name = typingBoxUser.text;
 
                 if (radioButton.Checked)
                 {

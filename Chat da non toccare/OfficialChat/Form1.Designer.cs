@@ -19,7 +19,7 @@
             this.labelClose = new System.Windows.Forms.Label();
             this.panelMove = new System.Windows.Forms.Panel();
             this.labelLogo = new System.Windows.Forms.Label();
-            this.mainPanelDown = new System.Windows.Forms.Panel();
+            this.panelDown = new System.Windows.Forms.Panel();
             this.mainPanelUp.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelMove.SuspendLayout();
@@ -32,20 +32,23 @@
             this.mainPanelUp.Controls.Add(this.panelMove);
             this.mainPanelUp.Dock = System.Windows.Forms.DockStyle.Top;
             this.mainPanelUp.Location = new System.Drawing.Point(0, 0);
+            this.mainPanelUp.Margin = new System.Windows.Forms.Padding(0);
             this.mainPanelUp.Name = "mainPanelUp";
-            this.mainPanelUp.Size = new System.Drawing.Size(1000, 36);
+            this.mainPanelUp.Size = new System.Drawing.Size(886, 36);
             this.mainPanelUp.TabIndex = 0;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(179)))), ((int)(((byte)(16)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(161)))), ((int)(((byte)(226)))));
             this.panel1.Controls.Add(this.labelMinimize);
             this.panel1.Controls.Add(this.labelClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(938, 0);
+            this.panel1.Location = new System.Drawing.Point(824, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(62, 36);
             this.panel1.TabIndex = 4;
+            this.panel1.Click += new System.EventHandler(this.labelMinimize_Click);
             // 
             // labelMinimize
             // 
@@ -53,11 +56,11 @@
             this.labelMinimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMinimize.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.labelMinimize.Location = new System.Drawing.Point(7, 9);
+            this.labelMinimize.Margin = new System.Windows.Forms.Padding(0);
             this.labelMinimize.Name = "labelMinimize";
             this.labelMinimize.Size = new System.Drawing.Size(16, 18);
             this.labelMinimize.TabIndex = 3;
             this.labelMinimize.Text = "_";
-            this.labelMinimize.Click += new System.EventHandler(this.labelMinimize_Click);
             this.labelMinimize.MouseEnter += new System.EventHandler(this.labelMinimize_MouseEnter);
             this.labelMinimize.MouseLeave += new System.EventHandler(this.labelMinimize_MouseLeave);
             // 
@@ -67,6 +70,7 @@
             this.labelClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelClose.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.labelClose.Location = new System.Drawing.Point(31, 10);
+            this.labelClose.Margin = new System.Windows.Forms.Padding(0);
             this.labelClose.Name = "labelClose";
             this.labelClose.Size = new System.Drawing.Size(18, 18);
             this.labelClose.TabIndex = 1;
@@ -77,33 +81,36 @@
             // 
             // panelMove
             // 
-            this.panelMove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(179)))), ((int)(((byte)(16)))));
+            this.panelMove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(161)))), ((int)(((byte)(226)))));
             this.panelMove.Controls.Add(this.labelLogo);
             this.panelMove.Location = new System.Drawing.Point(0, 0);
+            this.panelMove.Margin = new System.Windows.Forms.Padding(0);
             this.panelMove.Name = "panelMove";
-            this.panelMove.Size = new System.Drawing.Size(1000, 36);
+            this.panelMove.Size = new System.Drawing.Size(886, 36);
             this.panelMove.TabIndex = 4;
             this.panelMove.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDownMoveForm);
             // 
             // labelLogo
             // 
             this.labelLogo.AutoSize = true;
-            this.labelLogo.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLogo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.labelLogo.Font = new System.Drawing.Font("Yu Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLogo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.labelLogo.Location = new System.Drawing.Point(12, 7);
+            this.labelLogo.Margin = new System.Windows.Forms.Padding(0);
             this.labelLogo.Name = "labelLogo";
-            this.labelLogo.Size = new System.Drawing.Size(64, 23);
+            this.labelLogo.Size = new System.Drawing.Size(64, 21);
             this.labelLogo.TabIndex = 2;
             this.labelLogo.Text = "GoFast";
             // 
-            // mainPanelDown
+            // panelDown
             // 
-            this.mainPanelDown.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.mainPanelDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(39)))), ((int)(((byte)(49)))));
-            this.mainPanelDown.Location = new System.Drawing.Point(0, 36);
-            this.mainPanelDown.Name = "mainPanelDown";
-            this.mainPanelDown.Size = new System.Drawing.Size(1000, 665);
-            this.mainPanelDown.TabIndex = 1;
+            this.panelDown.AutoSize = true;
+            this.panelDown.BackColor = System.Drawing.Color.Black;
+            this.panelDown.Location = new System.Drawing.Point(0, 36);
+            this.panelDown.Margin = new System.Windows.Forms.Padding(0);
+            this.panelDown.Name = "panelDown";
+            this.panelDown.Size = new System.Drawing.Size(886, 404);
+            this.panelDown.TabIndex = 1;
             // 
             // Form1
             // 
@@ -111,9 +118,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(60)))), ((int)(((byte)(93)))));
-            this.ClientSize = new System.Drawing.Size(1000, 701);
-            this.Controls.Add(this.mainPanelDown);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(886, 440);
+            this.Controls.Add(this.panelDown);
             this.Controls.Add(this.mainPanelUp);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
@@ -125,14 +132,15 @@
             this.panelMove.ResumeLayout(false);
             this.panelMove.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
         private System.Windows.Forms.Panel mainPanelUp;
-        private System.Windows.Forms.Panel mainPanelDown;
         private System.Windows.Forms.Label labelMinimize;
         private System.Windows.Forms.Label labelLogo;
         private System.Windows.Forms.Label labelClose;
         private System.Windows.Forms.Panel panelMove;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelDown;
     }
 }

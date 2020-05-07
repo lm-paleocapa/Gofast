@@ -16,10 +16,10 @@
         public static Panel panelDown;
         private void pictureBoxBack_Click(object sender, EventArgs e)
         {
-            typingBoxUser.text = "";
-            typingBoxPassword.text = "";
-            typingBoxConfirmPassword.text = "";
-            typingBoxMail.text = "";
+            typingBoxUser.text = "Username";
+            typingBoxPassword.text = "Password";
+            typingBoxConfirmPassword.text = "Confirm password";
+            typingBoxMail.text = "Mail";
             numericUpDown.Value = 1;
             userImage = "";
 
@@ -152,8 +152,8 @@
         private void pictureBoxRemove_Click(object sender, EventArgs e)
         {
             userImage = "";
-            pictureBox.Visible = false;
             pictureBoxRemove.Visible = false;
+            pictureBox.Image = null;
         }
         private void numericUpDown_ValueChanged(object sender, EventArgs e)
         {

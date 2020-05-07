@@ -18,6 +18,7 @@
     using Newtonsoft.Json.Serialization;
     using Newtonsoft.Json;
     using OfficialChat.Chat.Controls;
+    using OfficialChat.Properties;
 
     public partial class Form1 : Form
     {
@@ -47,9 +48,9 @@
         public static RegisterPage registerPage = new RegisterPage();
         private void Form1_Load(object sender, EventArgs e)
         {
-            LoginPage.panelDown = mainPanelDown;
-            WS.ClassOne.panelForControl = mainPanelDown;
-            RegisterPage.panelDown = mainPanelDown;
+            LoginPage.panelDown = panelDown;
+            WS.ClassOne.panelForControl = panelDown;
+            RegisterPage.panelDown = panelDown;
             WS.Open();
 
             if (File.Exists("user.json"))
@@ -71,8 +72,9 @@
             }
             else
             {
-                mainPanelDown.Size = new Size(463, 493);
-                mainPanelDown.Controls.Add(loginPage);
+                panelDown.Controls.Clear();
+                panelDown.Size = new Size(463, 493);
+                panelDown.Controls.Add(loginPage);
             }
         }
         private void labelClose_Click(object sender, EventArgs e)

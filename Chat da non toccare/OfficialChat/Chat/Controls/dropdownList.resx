@@ -117,68 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="330407-321" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\330407-321.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="330407-32(1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\330407-32(1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-menu-2-30(1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-menu-2-30(1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="arrowRightWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrowRightWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="330407-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\330407-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-menu-2-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-menu-2-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="arrowRightGold" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrowRightGold.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="remove" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\remove.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="userStandard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\userStandard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="menu(1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\menu(1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="user" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="back" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="arrowRightWhite1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrowRightWhite1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Sfondo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Sfondo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mail" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="arrowRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrowRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="key" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\key.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="arrowRightActive" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrowRightActive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-ingranaggio-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-ingranaggio-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-uscita-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-uscita-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="dropdownListItem2.itemImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EwAACxMBAJqcGAAABIxJREFUWEfVV2mIW1UUfq64kLx7MwNirXUUqxUXXCv+EsQiqFgqWlcouPxQKyr+
+        EPFPpYgL/hBBVJRKQVECdibvvWjGKY1FUYvj0qmTvCU1DDO2M6Ot3Wwz05jrd+47Ie81yTSz+KMHPnKX
+        c85377n3nndinHCi1hknF7PySs+Wt3u2+ZhnySc9W6zys8kbt/efczarLbwUneRtri02gGwSUG1QwaKy
+        rmU+Ws73nMGm85PATt0Ex98cQ/SHZ4mtiMJnaG/0HPEViItRHSx2BONrKGLsanailHGSZ5mv1B36ttgL
+        p+uDjLiG5ofTxunFXtHjZhKXupnuBI0FX6QWh0diFiKL2TzkmJLmO5bR9OIzYbiJHfwLvElOiEwvyhHD
+        PBfFOMY/9B3zVpU3TqVjwNhfPBcUs4lL2P3xBTv4lA33+468w7MT3djZ++hXeXxGIFJfU6SwiAvR/02P
+        O6JMfpiivfiWfIkdHQps89qCI68IjeMkHaDiOvJhHEsS7e16DPdmcNA4jamaxXe6LoMi7bLmO+Juz+5a
+        hvY+bTxHuI54pJAVF6CtXw+i8wzTNQsmLW3oiI92DkgT7UD354fp8CWZ93H/T4oKUzaEwh0qmEdKfanz
+        fVu+zgYzQLYYa4lfVNo4BUfwY9iXLzJtQ+pPDlHYgGe1CG0klSZHMRzcbamxbfe2nDsWuFsP4FKupjY4
+        fmLahuCd79CTjrgLK1wbNW6HqQNFRXJool+Vt1zXUqcBZEjkC7T1xijKTG0YlMNZsUo5wLVlP/fV6Pcr
+        1fjQcy1xtDKuF0BSq02rvaW3VfDlkghpDFPMM0B9igbTG0bBTi5lpTHqI0Qj3Ff7x9JM0ZlUK5Nq/Ne1
+        uMipKLlGYKUux+8H1Eakn9XkJIElbmalbZS78TvN/VkvoC5H9v2sRr5dEVsAZUm8sJepjSi/wfT/zwLo
+        foz+sKqzBSzoEUztURM7ngdZd4yc0PYIdtmLzmKlKrWRA3Lc7/gSqlpV/f37e6qU64mRRlBpewlJMDgU
+        ToiVeIZPUft4aDzDAVXOL2+pE4EdfYb06WbqUBD29VoRabiQ6z6XMiIbtsWBXX1IRPe0nGsGUrEj76c2
+        cs4g0zbEz4qrWbmy05ZLYPBqw7gdOkvFlPkoFdOv7jvmC0wbF0z2stHG8DMqXe7PB1OenVyOe/Ug9yfr
+        FVST6IrHFkdJkS4JVTFUirHh3IC6kAsTXR3hM/8007UWCg8pIlz/uFnzeq4RStrZ7HCYzp0+6/XvDLAl
+        j3KNqdoLDD5mg4P0KoZzyZTnmO+gr6PTATa7GXlVKZO8GIuoV8sl8sMUMwvV9DizNBvWsKC3ipsSXaFD
+        sQ6gEouK1SjpmGub71JWpV2iHHsCY3vCOemSLbvvTHRZHpLVQicoUC35Gl0omiMSlGznIb1eRF9QstFl
+        Okou6Hpsgycnc+VeIbTTuYhnJW9ABPJ1h4wJ7PY7VDif4/cTno/fExSyyPcP0WLZ1fwEN/mWsDQ3d8eI
+        4jgM4j66+fTHhU0XVmhH9DL8jLmCiLCgx3E0d1JNWT+KE0gM4z9wZQ1tUQp6YAAAAABJRU5ErkJggg==
+</value>
   </data>
 </root>

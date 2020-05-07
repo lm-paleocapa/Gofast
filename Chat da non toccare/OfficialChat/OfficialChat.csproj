@@ -131,6 +131,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chat\Controls\dropdownList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Chat\Controls\dropdownList.Designer.cs">
+      <DependentUpon>dropdownList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Chat\Controls\dropdownListItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Chat\Controls\dropdownListItem.Designer.cs">
+      <DependentUpon>dropdownListItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Chat\Controls\leftPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -190,7 +202,7 @@
     <Compile Include="Lib\Client\FRIENDS.cs" />
     <Compile Include="Lib\Client\JSON.cs" />
     <Compile Include="Lib\Client\WS.cs" />
-    <Compile Include="Lib\Local\User.cs" />
+    <Compile Include="Lib\Local\UserSave.cs" />
     <Compile Include="Login\Controls\typingBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -211,6 +223,12 @@
     <Compile Include="Register\RegisterPage.Designer.cs">
       <DependentUpon>RegisterPage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Chat\Controls\dropdownList.resx">
+      <DependentUpon>dropdownList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Chat\Controls\dropdownListItem.resx">
+      <DependentUpon>dropdownListItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Chat\Controls\leftPanel.resx">
       <DependentUpon>leftPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -309,12 +327,29 @@
   <ItemGroup>
     <None Include="Resources\user.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\menu%281%29.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\mail.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-menu-2-30%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-menu-2-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-ingranaggio-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-uscita-30.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

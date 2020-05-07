@@ -28,10 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.pictureSetting = new System.Windows.Forms.PictureBox();
             this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.labelUsername = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureSetting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
+            // 
+            // pictureSetting
+            // 
+            this.pictureSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureSetting.Image = global::OfficialChat.Properties.Resources.icons8_menu_2_30;
+            this.pictureSetting.Location = new System.Drawing.Point(172, 13);
+            this.pictureSetting.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureSetting.Name = "pictureSetting";
+            this.pictureSetting.Size = new System.Drawing.Size(20, 32);
+            this.pictureSetting.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureSetting.TabIndex = 1;
+            this.pictureSetting.TabStop = false;
+            this.pictureSetting.Click += new System.EventHandler(this.pictureSetting_Click);
+            this.pictureSetting.MouseEnter += new System.EventHandler(this.pictureSetting_MouseEnter);
+            this.pictureSetting.MouseLeave += new System.EventHandler(this.pictureSetting_MouseLeave);
             // 
             // pictureBox
             // 
@@ -41,35 +57,25 @@
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
             // 
-            // labelUsername
-            // 
-            this.labelUsername.AutoSize = true;
-            this.labelUsername.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelUsername.Location = new System.Drawing.Point(63, 11);
-            this.labelUsername.Name = "labelUsername";
-            this.labelUsername.Size = new System.Drawing.Size(69, 13);
-            this.labelUsername.TabIndex = 1;
-            this.labelUsername.Text = "MyUsername";
-            // 
             // User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(69)))));
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.labelUsername);
+            this.Controls.Add(this.pictureSetting);
             this.Controls.Add(this.pictureBox);
             this.Name = "User";
             this.Size = new System.Drawing.Size(200, 57);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureSetting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox;
-        private System.Windows.Forms.Label labelUsername;
+        private System.Windows.Forms.PictureBox pictureSetting;
     }
 }

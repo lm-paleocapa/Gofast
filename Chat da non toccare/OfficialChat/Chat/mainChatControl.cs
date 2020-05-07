@@ -4,6 +4,7 @@
     using System.Windows.Forms;
     using System.Drawing;
     using OfficialChat.Chat.Controls;
+    using OfficialChat.Properties;
 
     public partial class mainChatControl : UserControl
     {
@@ -14,15 +15,15 @@
         {
             InitializeComponent();
         }
-        public UserSelected panelUserSelected
+        public Panel panelUserSelected
         {
             get 
             {
-                return userSelected;
+                return blockPanelUp;
             }
             set
             {
-                userSelected = value;
+                blockPanelUp = value;
             }
         }
         public Panel panelTypingBox
@@ -90,6 +91,26 @@
             set
             {
                 leftPanel.Users = value;
+            }
+        }
+        public dropdownList dropdownlist
+        {
+            get
+            {
+                return dropdownList;
+            }
+            set
+            {
+                dropdownList = value;
+            }
+        }
+
+        private void flpChat_Click(object sender, System.EventArgs e)
+        {
+            if (dropdownlist.Visible)
+            {
+                dropdownlist.Visible = false;
+                myUser.setting.Image = Resources.icons8_menu_2_30;
             }
         }
     }

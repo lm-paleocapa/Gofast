@@ -45,6 +45,7 @@
             this.buttonLogin.IconZoom = 90D;
             this.buttonLogin.IsTab = false;
             this.buttonLogin.Location = new System.Drawing.Point(179, 362);
+            this.buttonLogin.Margin = new System.Windows.Forms.Padding(0);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(140)))), ((int)(((byte)(193)))));
             this.buttonLogin.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(120)))), ((int)(((byte)(173)))));
@@ -65,6 +66,7 @@
             this.labelLogo.Font = new System.Drawing.Font("Comic Sans MS", 20F, System.Drawing.FontStyle.Bold);
             this.labelLogo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(179)))), ((int)(((byte)(16)))));
             this.labelLogo.Location = new System.Drawing.Point(178, 36);
+            this.labelLogo.Margin = new System.Windows.Forms.Padding(0);
             this.labelLogo.Name = "labelLogo";
             this.labelLogo.Size = new System.Drawing.Size(106, 38);
             this.labelLogo.TabIndex = 9;
@@ -76,6 +78,7 @@
             this.labelDontHaveAnAccount.AutoSize = true;
             this.labelDontHaveAnAccount.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.labelDontHaveAnAccount.Location = new System.Drawing.Point(135, 468);
+            this.labelDontHaveAnAccount.Margin = new System.Windows.Forms.Padding(0);
             this.labelDontHaveAnAccount.Name = "labelDontHaveAnAccount";
             this.labelDontHaveAnAccount.Size = new System.Drawing.Size(125, 13);
             this.labelDontHaveAnAccount.TabIndex = 10;
@@ -87,6 +90,7 @@
             this.radioButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.radioButton.Location = new System.Drawing.Point(337, 278);
+            this.radioButton.Margin = new System.Windows.Forms.Padding(0);
             this.radioButton.Name = "radioButton";
             this.radioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.radioButton.Size = new System.Drawing.Size(109, 19);
@@ -116,6 +120,7 @@
             this.typingBoxPassword.img = ((System.Drawing.Image)(resources.GetObject("typingBoxPassword.img")));
             this.typingBoxPassword.isPassword = true;
             this.typingBoxPassword.Location = new System.Drawing.Point(9, 187);
+            this.typingBoxPassword.Margin = new System.Windows.Forms.Padding(0);
             this.typingBoxPassword.Name = "typingBoxPassword";
             this.typingBoxPassword.nameOfPanel = "Login";
             this.typingBoxPassword.pictureBoxTop = 10;
@@ -131,6 +136,7 @@
             this.typingBoxUser.img = global::OfficialChat.Properties.Resources.user;
             this.typingBoxUser.isPassword = false;
             this.typingBoxUser.Location = new System.Drawing.Point(9, 91);
+            this.typingBoxUser.Margin = new System.Windows.Forms.Padding(0);
             this.typingBoxUser.Name = "typingBoxUser";
             this.typingBoxUser.nameOfPanel = "Login";
             this.typingBoxUser.pictureBoxTop = 41;
@@ -143,7 +149,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(60)))), ((int)(((byte)(93)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.Controls.Add(this.typingBoxPassword);
             this.Controls.Add(this.typingBoxUser);
             this.Controls.Add(this.labelSignUp);
@@ -151,6 +157,7 @@
             this.Controls.Add(this.labelDontHaveAnAccount);
             this.Controls.Add(this.labelLogo);
             this.Controls.Add(this.buttonLogin);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "LoginPage";
             this.Size = new System.Drawing.Size(463, 493);
             this.ResumeLayout(false);

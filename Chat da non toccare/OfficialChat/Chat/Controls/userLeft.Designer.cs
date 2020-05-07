@@ -30,6 +30,8 @@
             this.labelUsername.TabIndex = 1;
             this.labelUsername.Text = "Username";
             this.labelUsername.Click += new System.EventHandler(this.userLeft_Click);
+            this.labelUsername.MouseEnter += new System.EventHandler(this.userLeft_MouseEnter);
+            this.labelUsername.MouseLeave += new System.EventHandler(this.userLeft_MouseLeave);
             // 
             // labelLastAccess
             // 
@@ -41,6 +43,8 @@
             this.labelLastAccess.TabIndex = 2;
             this.labelLastAccess.Text = "10:30";
             this.labelLastAccess.Click += new System.EventHandler(this.userLeft_Click);
+            this.labelLastAccess.MouseEnter += new System.EventHandler(this.userLeft_MouseEnter);
+            this.labelLastAccess.MouseLeave += new System.EventHandler(this.userLeft_MouseLeave);
             // 
             // pictureBox
             // 
@@ -51,12 +55,14 @@
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
             this.pictureBox.Click += new System.EventHandler(this.userLeft_Click);
+            this.pictureBox.MouseEnter += new System.EventHandler(this.userLeft_MouseEnter);
+            this.pictureBox.MouseLeave += new System.EventHandler(this.userLeft_MouseLeave);
             // 
             // userLeft
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(79)))), ((int)(((byte)(89)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(69)))));
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.labelLastAccess);
             this.Controls.Add(this.labelUsername);
@@ -65,6 +71,8 @@
             this.Size = new System.Drawing.Size(200, 66);
             this.Load += new System.EventHandler(this.userLeft_Load);
             this.Click += new System.EventHandler(this.userLeft_Click);
+            this.MouseEnter += new System.EventHandler(this.userLeft_MouseEnter);
+            this.MouseLeave += new System.EventHandler(this.userLeft_MouseLeave);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

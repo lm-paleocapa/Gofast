@@ -48,7 +48,7 @@
             // 
             // numericUpDown
             // 
-            this.numericUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(60)))), ((int)(((byte)(93)))));
+            this.numericUpDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.numericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.numericUpDown.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.numericUpDown.Location = new System.Drawing.Point(74, 454);
@@ -252,7 +252,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(60)))), ((int)(((byte)(93)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.Controls.Add(this.labelNumberError);
             this.Controls.Add(this.pictureBoxRemove);
             this.Controls.Add(this.pictureBox);
@@ -266,6 +266,7 @@
             this.Controls.Add(this.numericUpDown);
             this.Controls.Add(this.pictureBoxBack);
             this.Controls.Add(this.labelLogo);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "RegisterPage";
             this.Size = new System.Drawing.Size(463, 529);
             this.Load += new System.EventHandler(this.RegisterPage_Load);

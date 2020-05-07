@@ -162,10 +162,10 @@
                     Form1.registerPage.Invoke(new Action(() =>
                     {
                         Form1.registerPage.numericUpDown.Value = 1;
-                        Form1.registerPage.typingBoxConfirmPassword.text = "";
-                        Form1.registerPage.typingBoxMail.text = "";
-                        Form1.registerPage.typingBoxPassword.text = "";
-                        Form1.registerPage.typingBoxUser.text = "";
+                        Form1.registerPage.typingBoxConfirmPassword.text = "Confirm password";
+                        Form1.registerPage.typingBoxMail.text = "Mail";
+                        Form1.registerPage.typingBoxPassword.text = "Password";
+                        Form1.registerPage.typingBoxUser.text = "Username";
                     }));
 
                     Register.RegisterPage.panelDown.Invoke(new Action(() =>

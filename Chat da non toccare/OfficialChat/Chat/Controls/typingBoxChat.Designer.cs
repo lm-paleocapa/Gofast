@@ -52,6 +52,7 @@
             this.box.TabIndex = 0;
             this.box.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.box.OnValueChanged += new System.EventHandler(this.box_OnValueChanged);
+            this.box.Click += new System.EventHandler(this.box_Click);
             // 
             // pictureBox
             // 
@@ -62,18 +63,19 @@
             this.pictureBox.TabIndex = 1;
             this.pictureBox.TabStop = false;
             this.pictureBox.Visible = false;
-            this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
+            this.pictureBox.Click += new System.EventHandler(this.box_Click);
             // 
-            // typingBox
+            // typingBoxChat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(69)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(140)))), ((int)(((byte)(193)))));
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.box);
-            this.Name = "typingBox";
+            this.Name = "typingBoxChat";
             this.Size = new System.Drawing.Size(640, 35);
             this.Load += new System.EventHandler(this.typingBox_Load);
+            this.Click += new System.EventHandler(this.box_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
 

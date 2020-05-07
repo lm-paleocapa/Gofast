@@ -28,27 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(leftPanel));
             this.panelForUser = new System.Windows.Forms.Panel();
             this.panelForControl = new System.Windows.Forms.Panel();
+            this.bunifuTextbox1 = new Bunifu.Framework.UI.BunifuTextbox();
+            this.panelForControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelForUser
             // 
-            this.panelForUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(99)))), ((int)(((byte)(109)))));
-            this.panelForUser.Location = new System.Drawing.Point(0, 68);
+            this.panelForUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.panelForUser.Location = new System.Drawing.Point(0, 51);
             this.panelForUser.Margin = new System.Windows.Forms.Padding(0);
             this.panelForUser.Name = "panelForUser";
-            this.panelForUser.Size = new System.Drawing.Size(202, 487);
+            this.panelForUser.Size = new System.Drawing.Size(202, 504);
             this.panelForUser.TabIndex = 0;
+            this.panelForUser.Click += new System.EventHandler(this.bunifuTextbox1_Click);
             // 
             // panelForControl
             // 
-            this.panelForControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.panelForControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.panelForControl.Controls.Add(this.bunifuTextbox1);
             this.panelForControl.Location = new System.Drawing.Point(0, 0);
             this.panelForControl.Margin = new System.Windows.Forms.Padding(0);
             this.panelForControl.Name = "panelForControl";
-            this.panelForControl.Size = new System.Drawing.Size(202, 68);
+            this.panelForControl.Size = new System.Drawing.Size(202, 51);
             this.panelForControl.TabIndex = 1;
+            this.panelForControl.Click += new System.EventHandler(this.bunifuTextbox1_Click);
+            // 
+            // bunifuTextbox1
+            // 
+            this.bunifuTextbox1.BackColor = System.Drawing.Color.Silver;
+            this.bunifuTextbox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuTextbox1.BackgroundImage")));
+            this.bunifuTextbox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuTextbox1.ForeColor = System.Drawing.Color.White;
+            this.bunifuTextbox1.Icon = ((System.Drawing.Image)(resources.GetObject("bunifuTextbox1.Icon")));
+            this.bunifuTextbox1.Location = new System.Drawing.Point(7, 6);
+            this.bunifuTextbox1.Name = "bunifuTextbox1";
+            this.bunifuTextbox1.Size = new System.Drawing.Size(188, 36);
+            this.bunifuTextbox1.TabIndex = 0;
+            this.bunifuTextbox1.text = "Search...";
+            this.bunifuTextbox1.Click += new System.EventHandler(this.bunifuTextbox1_Click);
             // 
             // leftPanel
             // 
@@ -59,6 +79,8 @@
             this.Controls.Add(this.panelForUser);
             this.Name = "leftPanel";
             this.Size = new System.Drawing.Size(202, 555);
+            this.Click += new System.EventHandler(this.bunifuTextbox1_Click);
+            this.panelForControl.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -67,5 +89,6 @@
 
         private System.Windows.Forms.Panel panelForUser;
         private System.Windows.Forms.Panel panelForControl;
+        private Bunifu.Framework.UI.BunifuTextbox bunifuTextbox1;
     }
 }
