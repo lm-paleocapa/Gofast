@@ -24,7 +24,7 @@ class Contact {
 	var email;
 	var password;
 	var webSocket;
-	var webSocketAddress;
+	var webSocketAddress = "ws://79.24.89.93.8181";
 
 	function getData(data) {
 		email = data.email;
@@ -54,15 +54,15 @@ class Contact {
 	function manageData(event) {
 		var data = JSON.parse(event.data);
 		switch (data.id) {
-			case 1:
-				getMessage(data.user0, data.text, data.date);
+			case 3:
+				getMessage(data.from, data.message, data.date);
 		}
 	}
 
 	function setupWebSocket() {
 		webSocket = new WebSocket(webSocketAddress);
 		webSocet.onmessage = manageData(event);
-		webSocket.onopen = function(event) {webSocket.send()};
+		webSocket.onopen = function(event) {webSocket.send("{'id':'1', 'username':'" + username + "', 'password':'" + password + "'}")};
 	}
 
 	function loadMessages(id) {
@@ -120,12 +120,12 @@ class Contact {
 		newSubDiv2.className = "img_cont";
 		newDiv.appendChild(newSubDiv2);
 		newImg2 = document.createElement("img");
-		newImg2.src = "2.png";
+		newImg2.src = "accept.png";
 		newImg2.className = "rounded-circle accept_img";
 		newImg2.onclick = function() {contactsList.removeChild(newContact);};
 		newSubDiv2.appendChild(newImg2);
 		newImg3 = document.createElement("img");
-		newImg3.src = "1.png";
+		newImg3.src = "decline.png";
 		newImg3.className = "rounded-circle decline_img";
 		newImg3.onclick = function() {contactsList.removeChild(newContact);};
 		newSubDiv2.appendChild(newImg3);
@@ -196,7 +196,7 @@ class Contact {
 		    	contacts[i].messages.push(new Message(content, time, "SEND"));
 		}
 		viewSentMessage(content, time);
-		//socket.send("{'id':'2', 'text':'" + content + "', 'user1':'" + activeChat + "'}");               
+		//socket.send("{'id':'2', 'message':'" + content + "', 'from':'" + username + "', 'to':'" + contacts[activeChat].username + "'}");               
 	}
 
 	function loadContact(name, image, online, id) {
@@ -267,7 +267,7 @@ class Contact {
 		newSubDiv1.className = "user_info";
 		newDiv.appendChild(newSubDiv1);
 		var newImg = document.createElement("img");
-		newImg.src = "3.png";
+		newImg.src = "addFriend.png";
 		newImg.className = "rounded-circle add_img";
 		newSubDiv0.appendChild(newImg);
 		var newSpan1 = document.createElement("span");
