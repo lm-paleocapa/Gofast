@@ -12,6 +12,7 @@
         public int age { get; set; } // Identifica l'età dell'utente.
         public string mail { get; set; }
         public bool mok { get; set; }
+        public List<Messages> ms { get; set; }
         public string image { get; set; } // Immagine profilo dell'utente.
         public List<FRIENDS> friends { get; set; } // Lista di amici dell'utente.
         public string from { get; set; } // Da chi viene il messaggio.

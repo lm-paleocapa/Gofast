@@ -7,6 +7,8 @@
     using System.Collections.Generic;
     using System.Threading;
     using Lib;
+    using System.Security.AccessControl;
+
     public class Program
     {
         public static List<Obj.WebsocketUsers> usersConnected = new List<Obj.WebsocketUsers>();
@@ -52,6 +54,11 @@
                         case 3:
                             {
                                 Terzo(json0, socket);
+                                break;
+                            }
+                        case 4:
+                            {
+                                Quarto(json0, socket);
                                 break;
                             }
                     }
@@ -153,11 +160,27 @@
                             uok = true,
                             pok = true,
                             friends = friends,
-                            image = img
+                            image = img,
+                            username = json0.username
                         };
 
                         ToClient = JsonConvert.SerializeObject(json1);
                         socket.Send(ToClient);
+
+                        List<Obj.Messages> messages = new List<Obj.Messages>();
+                        foreach (var k in MessaggiInAttesa)
+                            if (k.to == json0.username)
+                                messages.Add(k);
+                        Obj.Json json = new Obj.Json
+                        {
+                            id = 5,
+                            ms = messages
+                        };
+                        string to = JsonConvert.SerializeObject(json);
+                        socket.Send(to);
+
+                        foreach (var i in messages)
+                            MessaggiInAttesa.Remove(i);
                     }
                     else
                     {
@@ -341,68 +364,39 @@
                 };
                 usersConnected.Add(newUser);
             }
-
-            new Thread(() => // Da provare.
+            void Quarto(Obj.Json json0, IWebSocketConnection socket)
             {
-                Thread.CurrentThread.Name = "Messaggi in attesa";
-                while (true)
+                MySqlCommand cmd;
+                string query;
+                MySqlDataReader reader;
+
+                List<Obj.Friend> userToAdd = new List<Obj.Friend>();
+
+                query = $"SELECT user,image from account where user REGEXP '^[{json0.message}]'";
+                cmd = new MySqlCommand(query, cnn);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    foreach (var i in MessaggiInAttesa)
+                    Obj.Friend item = new Obj.Friend
                     {
-                        foreach (var x in usersConnected)
-                        {
-                            if (x.SocketConnected && x.user == i.to)
-                            {
-                                Obj.Json json = new Obj.Json
-                                {
-                                    id = 3,
-                                    from = i.from,
-                                    date = i.date,
-                                    message = i.message,
-                                    messageType = i.messageType
-                                };
-
-                                string ToClient = JsonConvert.SerializeObject(json);
-                                x.socketId.Send(ToClient);
-                                MessaggiInAttesa.Remove(i);
-                            }
-                        }
-                    }
-                    Thread.Sleep(50);
+                        user = reader[0].ToString(),
+                        image = reader[1].ToString()
+                    };
+                    userToAdd.Add(item);
                 }
-            }).Start();
-            #endregion
+                Obj.Json json = new Obj.Json
+                {
+                    id = 6,
+                    friends = userToAdd
+                };
+                string to = JsonConvert.SerializeObject(json);
+                socket.Send(to);
+            }
 
-            #region Utility
-            new Thread(() =>
+            while (true)
             {
-                Thread.CurrentThread.Name = "Utility";
-
-                while (true)
-                {
-                    Console.Clear();
-
-                    Console.WriteLine(
-                        $"{Utility.Now()}\n" +
-                        $"1) Send");
-                    try
-                    {
-                        int i = int.Parse(Console.ReadLine());
-                        switch (i)
-                        {
-                            case 1:
-                                {
-                                    Utility.SendMessage();
-                                    break;
-                                }
-                        }
-                    }
-                    finally
-                    {
-                        Console.Clear();
-                    }
-                }
-            }).Start();
+                Thread.Sleep(100);
+            }
             #endregion
         }
     }
@@ -420,6 +414,7 @@
             public bool mok { get; set; }
             public string image { get; set; } // Immagine profilo dell'utente.
             public List<Friend> friends { get; set; } // Lista di amici dell'utente.
+            public List<Messages> ms { get; set; }
             public string from { get; set; } // Da chi viene il messaggio.
             public string to { get; set; } // Verso che deve andare il messaggio.
             public DateTime date { get; set; } // Orario di invio del messaggio.

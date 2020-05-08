@@ -1,13 +1,9 @@
 ﻿namespace OfficialChat.Chat.Controls
 {
+    using Newtonsoft.Json;
+    using OfficialChat.Lib.Client;
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Drawing;
-    using System.Data;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows.Forms;
     public partial class addFriends : UserControl
     {
@@ -20,8 +16,7 @@
         private void pictureBoxBack_Click(object sender, EventArgs e)
         {
             timer.Start();
-        }   
-
+        }
         private void timer_Tick(object sender, EventArgs e)
         {
             if (k <= 0 && k >= -620)
@@ -40,6 +35,20 @@
                 i = -210;
                 k = 0;
             }
+        }
+        private void textboxSearch_OnTextChange(object sender, EventArgs e)
+        {
+            JSON json = new JSON
+            {
+                id = 4,
+                message = textboxSearch.text,
+            };
+            string to = JsonConvert.SerializeObject(json);
+            WS.Send(to);
+        }
+        private void addFriends_Load(object sender, EventArgs e)
+        {
+            WS.ClassSix.panel = panelForUser;
         }
     }
 }

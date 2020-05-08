@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(leftPanel));
             this.panelForUser = new System.Windows.Forms.Panel();
             this.panelForControl = new System.Windows.Forms.Panel();
-            this.bunifuTextbox1 = new Bunifu.Framework.UI.BunifuTextbox();
+            this.textboxSearch = new Bunifu.Framework.UI.BunifuTextbox();
             this.panelForControl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +48,7 @@
             // panelForControl
             // 
             this.panelForControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.panelForControl.Controls.Add(this.bunifuTextbox1);
+            this.panelForControl.Controls.Add(this.textboxSearch);
             this.panelForControl.Location = new System.Drawing.Point(0, 0);
             this.panelForControl.Margin = new System.Windows.Forms.Padding(0);
             this.panelForControl.Name = "panelForControl";
@@ -56,19 +56,22 @@
             this.panelForControl.TabIndex = 1;
             this.panelForControl.Click += new System.EventHandler(this.bunifuTextbox1_Click);
             // 
-            // bunifuTextbox1
+            // textboxSearch
             // 
-            this.bunifuTextbox1.BackColor = System.Drawing.Color.Silver;
-            this.bunifuTextbox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuTextbox1.BackgroundImage")));
-            this.bunifuTextbox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuTextbox1.ForeColor = System.Drawing.Color.White;
-            this.bunifuTextbox1.Icon = ((System.Drawing.Image)(resources.GetObject("bunifuTextbox1.Icon")));
-            this.bunifuTextbox1.Location = new System.Drawing.Point(7, 6);
-            this.bunifuTextbox1.Name = "bunifuTextbox1";
-            this.bunifuTextbox1.Size = new System.Drawing.Size(188, 36);
-            this.bunifuTextbox1.TabIndex = 0;
-            this.bunifuTextbox1.text = "Search...";
-            this.bunifuTextbox1.Click += new System.EventHandler(this.bunifuTextbox1_Click);
+            this.textboxSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(179)))), ((int)(((byte)(16)))));
+            this.textboxSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("textboxSearch.BackgroundImage")));
+            this.textboxSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.textboxSearch.ForeColor = System.Drawing.Color.White;
+            this.textboxSearch.Icon = ((System.Drawing.Image)(resources.GetObject("textboxSearch.Icon")));
+            this.textboxSearch.Location = new System.Drawing.Point(7, 6);
+            this.textboxSearch.Name = "textboxSearch";
+            this.textboxSearch.Size = new System.Drawing.Size(188, 36);
+            this.textboxSearch.TabIndex = 0;
+            this.textboxSearch.text = "Search...";
+            this.textboxSearch.OnTextChange += new System.EventHandler(this.textboxSearch_OnTextChange);
+            this.textboxSearch.Click += new System.EventHandler(this.bunifuTextbox1_Click);
+            this.textboxSearch.Enter += new System.EventHandler(this.bunifuTextbox1_Click);
+            this.textboxSearch.Leave += new System.EventHandler(this.textboxSearch_Leave);
             // 
             // leftPanel
             // 
@@ -89,6 +92,6 @@
 
         private System.Windows.Forms.Panel panelForUser;
         private System.Windows.Forms.Panel panelForControl;
-        private Bunifu.Framework.UI.BunifuTextbox bunifuTextbox1;
+        private Bunifu.Framework.UI.BunifuTextbox textboxSearch;
     }
 }

@@ -207,6 +207,7 @@
     <Compile Include="Lib\Arrounder.cs" />
     <Compile Include="Lib\Client\FRIENDS.cs" />
     <Compile Include="Lib\Client\JSON.cs" />
+    <Compile Include="Lib\Client\Messages.cs" />
     <Compile Include="Lib\Client\WS.cs" />
     <Compile Include="Lib\Local\UserSave.cs" />
     <Compile Include="Login\Controls\typingBox.cs">

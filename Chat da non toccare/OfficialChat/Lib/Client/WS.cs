@@ -51,6 +51,16 @@
                         ClassFour.Four(json);
                         break;
                     }
+                case 5:
+                    {
+                        ClassFive.Five(json);
+                        break;
+                    }
+                case 6:
+                    {
+                        ClassSix.Six(json);
+                        break;
+                    }
             }
         }
 
@@ -60,6 +70,7 @@
             public static Panel panelForControl;
             public static void One(JSON json)
             {
+                Form1.username = json.username;
                 panelForControl.Invoke(new Action(() =>
                 {
                     panelForControl.Size = new Size(876, 612);
@@ -68,32 +79,29 @@
                     panelForControl.Controls.Add(Form1.MainChat);
                 }));
 
-                new Thread(() =>
-               {
-                   MemoryStream ms;
-                   foreach (var i in json.friends)
-                   {
-                       var pic = Convert.FromBase64String(i.image);
-                       ms = new MemoryStream(pic);
+                MemoryStream ms;
+                foreach (var i in json.friends)
+                {
+                    var pic = Convert.FromBase64String(i.image);
+                    ms = new MemoryStream(pic);
 
-                       userLeft user = new userLeft
-                       {
-                           name = i.user,
-                           lastAccess = "Da mettere",
-                           picture = Image.FromStream(ms),
-                           Dock = DockStyle.Top
-                       };
-                       Form1.MainChat.panelUsers.Invoke(new Action(() => Form1.MainChat.panelUsers.Controls.Add(user)));
-                   }
+                    userLeft user = new userLeft
+                    {
+                        name = i.user,
+                        lastAccess = "Da mettere",
+                        picture = Image.FromStream(ms),
+                        Dock = DockStyle.Top
+                    };
+                    Form1.MainChat.panelUsers.Invoke(new Action(() => Form1.MainChat.panelUsers.Controls.Add(user)));
+                }
 
-                   var pic1 = Convert.FromBase64String(json.image);
-                   ms = new MemoryStream(pic1);
+                var pic1 = Convert.FromBase64String(json.image);
+                ms = new MemoryStream(pic1);
 
-                   Form1.MainChat.myUser.Invoke(new Action(() =>
-                   {
-                       Form1.MainChat.myUser.image = Image.FromStream(ms);
-                   }));
-               }).Start();
+                Form1.MainChat.myUser.Invoke(new Action(() =>
+                {
+                    Form1.MainChat.myUser.image = Image.FromStream(ms);
+                }));
             }
         }
         public class ClassTwo
@@ -211,6 +219,60 @@
                         }
                         Form1.registerPage.typingBoxConfirmPassword.text = "";
                         Form1.registerPage.typingBoxConfirmPassword.text = "";
+                    }));
+                }
+            }
+        }
+        public class ClassFive
+        {
+            public static void Five(JSON json)
+            {
+                new Thread(() =>
+                {
+                    Thread.Sleep(5000); // Tempo di attesa da regolare
+
+                    foreach (Panel i in Form1.MainChat.flowLayoutPanelChat.Controls)
+                    {
+                        foreach (var k in json.ms)
+                        {
+                            if (i.Name == k.from)
+                            {
+                                if (k.messageType == "string")
+                                {
+                                    YouBubble bubble = new YouBubble
+                                    {
+                                        Body = k.message,
+                                        Dock = DockStyle.Bottom
+                                    };
+                                    i.Invoke(new Action(() => i.Controls.Add(bubble)));
+                                }
+                            }
+                        }
+                    }
+                }).Start();
+            }
+        }
+        public class ClassSix
+        {
+            public static Panel panel;
+            public static void Six(JSON json)
+            {
+                MemoryStream ms;
+                foreach (var i in json.friends)
+                {
+                    var pic = Convert.FromBase64String(i.image);
+                    ms = new MemoryStream(pic);
+
+                    userLeft user = new userLeft
+                    {
+                        name = i.user,
+                        picture = Image.FromStream(ms),
+                        Dock = DockStyle.Top
+                    };
+                    panel.Invoke(new Action(() =>
+                    {
+                        panel.Controls.Clear();
+                        panel.Controls.Add(user);
                     }));
                 }
             }

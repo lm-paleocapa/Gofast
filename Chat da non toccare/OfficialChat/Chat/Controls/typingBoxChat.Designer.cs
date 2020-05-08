@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.box = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -37,7 +39,7 @@
             // 
             this.box.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.box.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.box.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.box.HintForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.box.HintText = "Text...";
             this.box.isPassword = false;
@@ -64,6 +66,13 @@
             this.pictureBox.TabStop = false;
             this.pictureBox.Visible = false;
             this.pictureBox.Click += new System.EventHandler(this.box_Click);
+            this.pictureBox.MouseEnter += new System.EventHandler(this.pictureBox_MouseEnter);
+            this.pictureBox.MouseLeave += new System.EventHandler(this.pictureBox_MouseLeave);
+            // 
+            // timer
+            // 
+            this.timer.Interval = 200;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // typingBoxChat
             // 
@@ -74,7 +83,6 @@
             this.Controls.Add(this.box);
             this.Name = "typingBoxChat";
             this.Size = new System.Drawing.Size(640, 35);
-            this.Load += new System.EventHandler(this.typingBox_Load);
             this.Click += new System.EventHandler(this.box_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
@@ -85,5 +93,6 @@
 
         private Bunifu.Framework.UI.BunifuMaterialTextbox box;
         private System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.Timer timer;
     }
 }
