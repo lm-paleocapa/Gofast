@@ -131,6 +131,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chat\Controls\addFriends.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Chat\Controls\addFriends.Designer.cs">
+      <DependentUpon>addFriends.cs</DependentUpon>
+    </Compile>
     <Compile Include="Chat\Controls\dropdownList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -223,6 +229,9 @@
     <Compile Include="Register\RegisterPage.Designer.cs">
       <DependentUpon>RegisterPage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Chat\Controls\addFriends.resx">
+      <DependentUpon>addFriends.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Chat\Controls\dropdownList.resx">
       <DependentUpon>dropdownList.cs</DependentUpon>
     </EmbeddedResource>
@@ -350,6 +359,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-uscita-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-plus-math-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cbimage%281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cbimage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cbimage%281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

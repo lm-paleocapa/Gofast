@@ -28,11 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.pictureboxAdd = new System.Windows.Forms.PictureBox();
             this.pictureSetting = new System.Windows.Forms.PictureBox();
             this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureboxAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSetting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
+            // 
+            // pictureboxAdd
+            // 
+            this.pictureboxAdd.Image = global::OfficialChat.Properties.Resources.icons8_plus_math_30;
+            this.pictureboxAdd.Location = new System.Drawing.Point(127, 14);
+            this.pictureboxAdd.Name = "pictureboxAdd";
+            this.pictureboxAdd.Size = new System.Drawing.Size(30, 30);
+            this.pictureboxAdd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureboxAdd.TabIndex = 2;
+            this.pictureboxAdd.TabStop = false;
+            this.pictureboxAdd.Click += new System.EventHandler(this.pictureboxAdd_Click);
+            this.pictureboxAdd.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
+            this.pictureboxAdd.MouseLeave += new System.EventHandler(this.pictureboxAdd_MouseLeave);
             // 
             // pictureSetting
             // 
@@ -57,16 +74,24 @@
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
             // 
+            // timer
+            // 
+            this.timer.Interval = 5;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
             // User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(69)))));
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.pictureboxAdd);
             this.Controls.Add(this.pictureSetting);
             this.Controls.Add(this.pictureBox);
             this.Name = "User";
             this.Size = new System.Drawing.Size(200, 57);
+            this.Load += new System.EventHandler(this.User_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureboxAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureSetting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
@@ -77,5 +102,7 @@
 
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.PictureBox pictureSetting;
+        private System.Windows.Forms.PictureBox pictureboxAdd;
+        private System.Windows.Forms.Timer timer;
     }
 }

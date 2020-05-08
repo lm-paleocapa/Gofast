@@ -1,25 +1,15 @@
 ﻿namespace OfficialChat
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
     using System.Drawing;
-    using System.Linq;
     using System.Runtime.InteropServices;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows.Forms;
     using Lib.Client;
     using Chat;
     using Login;
     using Register;
     using System.IO;
-    using Newtonsoft.Json.Serialization;
     using Newtonsoft.Json;
-    using OfficialChat.Chat.Controls;
-    using OfficialChat.Properties;
-
     public partial class Form1 : Form
     {
         #region Cose

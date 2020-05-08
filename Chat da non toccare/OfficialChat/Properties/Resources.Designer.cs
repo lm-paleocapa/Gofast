@@ -153,6 +153,36 @@ namespace OfficialChat.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cbimage {
+            get {
+                object obj = ResourceManager.GetObject("cbimage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cbimage_1_ {
+            get {
+                object obj = ResourceManager.GetObject("cbimage(1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cose {
+            get {
+                object obj = ResourceManager.GetObject("Cose", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_ingranaggio_30 {
             get {
                 object obj = ResourceManager.GetObject("icons8-ingranaggio-30", resourceCulture);
@@ -176,6 +206,16 @@ namespace OfficialChat.Properties {
         internal static System.Drawing.Bitmap icons8_menu_2_30_1_ {
             get {
                 object obj = ResourceManager.GetObject("icons8-menu-2-30(1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_plus_math_30 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-plus-math-30", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

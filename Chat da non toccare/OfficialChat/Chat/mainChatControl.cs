@@ -5,7 +5,6 @@
     using System.Drawing;
     using OfficialChat.Chat.Controls;
     using OfficialChat.Properties;
-
     public partial class mainChatControl : UserControl
     {
         public static string To = "";
@@ -14,6 +13,28 @@
         public mainChatControl()
         {
             InitializeComponent();
+        }
+        public Panel objectLeft
+        {
+            get
+            {
+                return panelForObject;
+            }
+            set
+            {
+                panelForObject = value;
+            }
+        }
+        public Panel ControlMain
+        {
+            get
+            {
+                return panelBlockLeft;
+            }
+            set
+            {
+                panelBlockLeft = value;
+            }
         }
         public Panel panelUserSelected
         {
@@ -112,6 +133,9 @@
                 dropdownlist.Visible = false;
                 myUser.setting.Image = Resources.icons8_menu_2_30;
             }
+        }
+        private void mainChatControl_Load(object sender, System.EventArgs e)
+        {
         }
     }
 }

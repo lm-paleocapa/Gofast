@@ -15,15 +15,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainChatControl));
             this.blockPanelUp = new System.Windows.Forms.Panel();
-            this.userSelected = new OfficialChat.Chat.Controls.UserSelected();
             this.blockPanelDown = new System.Windows.Forms.Panel();
-            this.typingBox1 = new OfficialChat.Chat.Controls.typingBoxChat();
             this.flpChat = new System.Windows.Forms.FlowLayoutPanel();
+            this.panelForObject = new System.Windows.Forms.Panel();
+            this.panelBlockLeft = new System.Windows.Forms.Panel();
             this.dropdownList = new OfficialChat.Chat.Controls.dropdownList();
             this.myUser = new OfficialChat.Chat.Controls.User();
             this.leftPanel = new OfficialChat.Chat.Controls.leftPanel();
+            this.typingBox1 = new OfficialChat.Chat.Controls.typingBoxChat();
+            this.userSelected = new OfficialChat.Chat.Controls.UserSelected();
             this.blockPanelUp.SuspendLayout();
             this.blockPanelDown.SuspendLayout();
+            this.panelForObject.SuspendLayout();
+            this.panelBlockLeft.SuspendLayout();
             this.SuspendLayout();
             // 
             // blockPanelUp
@@ -38,18 +42,6 @@
             this.blockPanelUp.Visible = false;
             this.blockPanelUp.Click += new System.EventHandler(this.flpChat_Click);
             // 
-            // userSelected
-            // 
-            this.userSelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(60)))), ((int)(((byte)(93)))));
-            this.userSelected.imageUserSelected = ((System.Drawing.Image)(resources.GetObject("userSelected.imageUserSelected")));
-            this.userSelected.Location = new System.Drawing.Point(0, 0);
-            this.userSelected.Name = "userSelected";
-            this.userSelected.Size = new System.Drawing.Size(674, 57);
-            this.userSelected.state = "state";
-            this.userSelected.TabIndex = 0;
-            this.userSelected.usernameSelected = "Username";
-            this.userSelected.Click += new System.EventHandler(this.flpChat_Click);
-            // 
             // blockPanelDown
             // 
             this.blockPanelDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
@@ -62,16 +54,6 @@
             this.blockPanelDown.Visible = false;
             this.blockPanelDown.Click += new System.EventHandler(this.flpChat_Click);
             // 
-            // typingBox1
-            // 
-            this.typingBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(60)))), ((int)(((byte)(93)))));
-            this.typingBox1.Location = new System.Drawing.Point(20, 9);
-            this.typingBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.typingBox1.Name = "typingBox1";
-            this.typingBox1.Size = new System.Drawing.Size(640, 35);
-            this.typingBox1.TabIndex = 0;
-            this.typingBox1.Click += new System.EventHandler(this.flpChat_Click);
-            // 
             // flpChat
             // 
             this.flpChat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
@@ -82,6 +64,26 @@
             this.flpChat.TabIndex = 4;
             this.flpChat.Click += new System.EventHandler(this.flpChat_Click);
             // 
+            // panelForObject
+            // 
+            this.panelForObject.Controls.Add(this.panelBlockLeft);
+            this.panelForObject.Location = new System.Drawing.Point(0, 0);
+            this.panelForObject.Margin = new System.Windows.Forms.Padding(0);
+            this.panelForObject.Name = "panelForObject";
+            this.panelForObject.Size = new System.Drawing.Size(202, 612);
+            this.panelForObject.TabIndex = 5;
+            // 
+            // panelBlockLeft
+            // 
+            this.panelBlockLeft.Controls.Add(this.dropdownList);
+            this.panelBlockLeft.Controls.Add(this.myUser);
+            this.panelBlockLeft.Controls.Add(this.leftPanel);
+            this.panelBlockLeft.Location = new System.Drawing.Point(0, 0);
+            this.panelBlockLeft.Margin = new System.Windows.Forms.Padding(0);
+            this.panelBlockLeft.Name = "panelBlockLeft";
+            this.panelBlockLeft.Size = new System.Drawing.Size(202, 612);
+            this.panelBlockLeft.TabIndex = 7;
+            // 
             // dropdownList
             // 
             this.dropdownList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
@@ -90,9 +92,8 @@
             this.dropdownList.Name = "dropdownList";
             this.dropdownList.Padding = new System.Windows.Forms.Padding(1);
             this.dropdownList.Size = new System.Drawing.Size(131, 132);
-            this.dropdownList.TabIndex = 0;
+            this.dropdownList.TabIndex = 6;
             this.dropdownList.Visible = false;
-            this.dropdownList.Click += new System.EventHandler(this.flpChat_Click);
             // 
             // myUser
             // 
@@ -103,18 +104,39 @@
             this.myUser.Margin = new System.Windows.Forms.Padding(0);
             this.myUser.Name = "myUser";
             this.myUser.Size = new System.Drawing.Size(202, 57);
-            this.myUser.TabIndex = 0;
-            this.myUser.Click += new System.EventHandler(this.flpChat_Click);
+            this.myUser.TabIndex = 7;
             // 
             // leftPanel
             // 
             this.leftPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.leftPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.leftPanel.Location = new System.Drawing.Point(0, 57);
             this.leftPanel.Margin = new System.Windows.Forms.Padding(0);
             this.leftPanel.Name = "leftPanel";
             this.leftPanel.Size = new System.Drawing.Size(202, 555);
-            this.leftPanel.TabIndex = 5;
-            this.leftPanel.Click += new System.EventHandler(this.flpChat_Click);
+            this.leftPanel.TabIndex = 8;
+            // 
+            // typingBox1
+            // 
+            this.typingBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(60)))), ((int)(((byte)(93)))));
+            this.typingBox1.Location = new System.Drawing.Point(20, 9);
+            this.typingBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.typingBox1.Name = "typingBox1";
+            this.typingBox1.Size = new System.Drawing.Size(640, 35);
+            this.typingBox1.TabIndex = 0;
+            this.typingBox1.Click += new System.EventHandler(this.flpChat_Click);
+            // 
+            // userSelected
+            // 
+            this.userSelected.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(60)))), ((int)(((byte)(93)))));
+            this.userSelected.imageUserSelected = ((System.Drawing.Image)(resources.GetObject("userSelected.imageUserSelected")));
+            this.userSelected.Location = new System.Drawing.Point(0, 0);
+            this.userSelected.Name = "userSelected";
+            this.userSelected.Size = new System.Drawing.Size(674, 57);
+            this.userSelected.state = "state";
+            this.userSelected.TabIndex = 0;
+            this.userSelected.usernameSelected = "Username";
+            this.userSelected.Click += new System.EventHandler(this.flpChat_Click);
             // 
             // mainChatControl
             // 
@@ -122,18 +144,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.Controls.Add(this.dropdownList);
-            this.Controls.Add(this.myUser);
-            this.Controls.Add(this.leftPanel);
+            this.Controls.Add(this.panelForObject);
             this.Controls.Add(this.flpChat);
             this.Controls.Add(this.blockPanelDown);
             this.Controls.Add(this.blockPanelUp);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "mainChatControl";
             this.Size = new System.Drawing.Size(876, 612);
+            this.Load += new System.EventHandler(this.mainChatControl_Load);
             this.Click += new System.EventHandler(this.flpChat_Click);
             this.blockPanelUp.ResumeLayout(false);
             this.blockPanelDown.ResumeLayout(false);
+            this.panelForObject.ResumeLayout(false);
+            this.panelBlockLeft.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -141,9 +164,11 @@
         private System.Windows.Forms.FlowLayoutPanel flpChat;
         private System.Windows.Forms.Panel blockPanelDown;
         private Controls.typingBoxChat typingBox1;
+        private Controls.UserSelected userSelected;
+        private System.Windows.Forms.Panel panelForObject;
+        private System.Windows.Forms.Panel panelBlockLeft;
+        private Controls.dropdownList dropdownList;
         public Controls.User myUser;
         private Controls.leftPanel leftPanel;
-        private Controls.UserSelected userSelected;
-        private Controls.dropdownList dropdownList;
     }
 }

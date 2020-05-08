@@ -105,7 +105,7 @@
             // panelDown
             // 
             this.panelDown.AutoSize = true;
-            this.panelDown.BackColor = System.Drawing.Color.Black;
+            this.panelDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.panelDown.Location = new System.Drawing.Point(0, 36);
             this.panelDown.Margin = new System.Windows.Forms.Padding(0);
             this.panelDown.Name = "panelDown";
