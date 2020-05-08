@@ -12,7 +12,7 @@
     using Chat.Controls;
     public class WS
     {
-        private static WebSocket ws = new WebSocket("ws://127.0.0.1:8181");
+        private static WebSocket ws = new WebSocket("ws://79.24.89.93:8181");
         public static void Open()
         {
             ws.MessageReceived += ms;

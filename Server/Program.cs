@@ -23,7 +23,7 @@
             #endregion
 
             #region Server
-            WebSocketServer server = new WebSocketServer($"ws://127.0.0.1:8181");
+            WebSocketServer server = new WebSocketServer($"ws://0.0.0.0:8181");
             server.RestartAfterListenError = true;
             server.Start(socket =>
             {
