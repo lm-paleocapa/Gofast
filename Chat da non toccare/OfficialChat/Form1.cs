@@ -49,16 +49,13 @@
                 string j = r.ReadToEnd();
 
                 Lib.Local.UserJ user = JsonConvert.DeserializeObject<Lib.Local.UserJ>(j);
-
-                JSON f = new JSON
+                JSON json = new JSON
                 {
                     id = 1,
                     username = user.username,
                     password = user.password
                 };
-
-                string to = JsonConvert.SerializeObject(f);
-                WS.Send(to);
+                WS.Send(json);
             }
             else
             {

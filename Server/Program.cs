@@ -5,14 +5,12 @@
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    using System.Threading;
     using Lib;
-    using System.Security.AccessControl;
-
     public class Program
     {
         public static List<Obj.WebsocketUsers> usersConnected = new List<Obj.WebsocketUsers>();
         public static List<Obj.Messages> MessaggiInAttesa = new List<Obj.Messages>();
+
         static void Main()
         {
             #region Database
@@ -29,11 +27,11 @@
             {
                 socket.OnOpen = () =>
                 {
-                    socketOnOpen(socket);
+                   socketOnOpen(socket);
                 };
                 socket.OnClose = () =>
                 {
-                    socketOnClose(socket);
+                   socketOnClose(socket);
                 };
                 socket.OnMessage = message =>
                 {
@@ -67,6 +65,8 @@
 
             void socketOnClose(IWebSocketConnection e)
             {
+                Console.WriteLine("Close");
+
                 foreach (var i in usersConnected)
                 {
                     if (i.socketId == e)
@@ -84,6 +84,7 @@
             }
             void socketOnOpen(IWebSocketConnection e)
             {
+                Console.WriteLine("Open");
                 foreach (var i in usersConnected)
                 {
                     if (i.socketId == e)
@@ -121,7 +122,6 @@
                                 i.SocketConnected = true;
                             }
                         }
-
                         query = $"UPDATE account SET state = 'online' WHERE user = '{json0.username}' limit 1;";
                         cmd = new MySqlCommand(query, cnn);
                         cmd.ExecuteNonQuery();
@@ -168,19 +168,27 @@
                         socket.Send(ToClient);
 
                         List<Obj.Messages> messages = new List<Obj.Messages>();
+                        bool ok = false;
                         foreach (var k in MessaggiInAttesa)
-                            if (k.to == json0.username)
-                                messages.Add(k);
-                        Obj.Json json = new Obj.Json
                         {
-                            id = 5,
-                            ms = messages
-                        };
-                        string to = JsonConvert.SerializeObject(json);
-                        socket.Send(to);
-
-                        foreach (var i in messages)
-                            MessaggiInAttesa.Remove(i);
+                            if (k.to == json0.username)
+                            {
+                                messages.Add(k);
+                                ok = true;
+                            }
+                        }
+                        if (ok)
+                        {
+                            Obj.Json json = new Obj.Json
+                            {
+                                id = 5,
+                                ms = messages
+                            };
+                            string to = JsonConvert.SerializeObject(json);
+                            socket.Send(to); 
+                            foreach (var i in messages)
+                                MessaggiInAttesa.Remove(i);
+                        }
                     }
                     else
                     {
@@ -372,7 +380,7 @@
 
                 List<Obj.Friend> userToAdd = new List<Obj.Friend>();
 
-                query = $"SELECT user,image from account where user REGEXP '^[{json0.message}]'";
+                query = $"SELECT user,image from account where user REGEXP '^[{json0.message}]' limit 4";
                 cmd = new MySqlCommand(query, cnn);
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
@@ -384,6 +392,7 @@
                     };
                     userToAdd.Add(item);
                 }
+                reader.Close();
                 Obj.Json json = new Obj.Json
                 {
                     id = 6,
@@ -395,7 +404,6 @@
 
             while (true)
             {
-                Thread.Sleep(100);
             }
             #endregion
         }

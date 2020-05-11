@@ -8,8 +8,7 @@
     using Controls;
     using OfficialChat.Chat;
     using Lib.Local;
-    using System.Diagnostics;
-
+    using System.IO;
     public partial class LoginPage : UserControl
     {
         public typingBox tbUser
@@ -32,6 +31,22 @@
             set
             {
                 typingBoxPassword = value;
+            }
+        }
+        bool ok = true;
+        public bool controlEnabled
+        {
+            get
+            {
+                return ok;
+            }
+            set
+            {
+                ok = value;
+                typingBoxUser.Enabled = ok;
+                typingBoxPassword.Enabled = ok;
+                radioButton.Enabled = ok;
+                buttonLogin.Enabled = ok;
             }
         }
         public LoginPage()
@@ -70,14 +85,15 @@
             }
             if (!ok)
             {
+                controlEnabled = false;
+
                 JSON json = new JSON
                 {
                     id = 1,
                     username = typingBoxUser.text,
                     password = typingBoxPassword.text
                 };
-                string to = JsonConvert.SerializeObject(json);
-                WS.Send(to);
+                WS.Send(json);
 
                 mainChatControl.from = typingBoxUser.text;
 
@@ -90,7 +106,7 @@
                     };
                     string s = JsonConvert.SerializeObject(user);
 
-                    System.IO.File.WriteAllText("user.json", s);
+                    File.WriteAllText("user.json", s);
                 }
             }
         }

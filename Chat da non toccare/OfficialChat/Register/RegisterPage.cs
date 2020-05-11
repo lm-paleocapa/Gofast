@@ -6,7 +6,6 @@
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
     using Lib.Client;
-    using Newtonsoft.Json;
     public partial class RegisterPage : UserControl
     {
         public RegisterPage()
@@ -134,8 +133,7 @@
                     image = userImage,
                     mail = typingBoxMail.text
                 };
-                string to = JsonConvert.SerializeObject(json);
-                WS.Send(to);
+                WS.Send(json);
             }
         }
         private static bool isEmail(string inputEmail)

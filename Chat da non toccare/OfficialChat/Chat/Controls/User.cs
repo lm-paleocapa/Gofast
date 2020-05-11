@@ -32,12 +32,12 @@
         {
             InitializeComponent();
         }
-        bool isCollapsed = false;
+        bool isCollapsed = true;
         private Image icon1 = Resources.icons8_menu_2_30;
         private Image icon2 = Resources.icons8_menu_2_30_1_;
         private void pictureSetting_Click(object sender, EventArgs e)
         {
-            if (!isCollapsed == true)
+            if (isCollapsed)
             {
                 pictureSetting.Image = icon2;
                 Form1.MainChat.dropdownlist.Visible = true;
@@ -52,12 +52,12 @@
         }
         private void pictureSetting_MouseEnter(object sender, EventArgs e)
         {
-            if (!isCollapsed)
+            if (isCollapsed)
             pictureSetting.Image = icon2;
         }
         private void pictureSetting_MouseLeave(object sender, EventArgs e)
         {
-            if (!isCollapsed && !Form1.MainChat.dropdownlist.Visible)
+            if (isCollapsed && !Form1.MainChat.dropdownlist.Visible)
             pictureSetting.Image = icon1;
         }
         private void pictureBox1_MouseEnter(object sender, EventArgs e)

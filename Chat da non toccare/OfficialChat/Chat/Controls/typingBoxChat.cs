@@ -3,7 +3,6 @@
     using System;
     using System.Drawing;
     using System.Windows.Forms;
-    using Newtonsoft.Json;
     using OfficialChat.Lib;
     using OfficialChat.Lib.Client;
     using OfficialChat.Properties;
@@ -72,8 +71,7 @@
                             to = i.Name,
                             from = Form1.username
                         };
-                        string to = JsonConvert.SerializeObject(json);
-                        WS.Send(to);
+                        WS.Send(json);
                     }
                 }
             }

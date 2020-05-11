@@ -1,6 +1,5 @@
 ﻿namespace OfficialChat.Chat.Controls
 {
-    using Newtonsoft.Json;
     using OfficialChat.Lib.Client;
     using System;
     using System.Drawing;
@@ -38,13 +37,15 @@
         }
         private void textboxSearch_OnTextChange(object sender, EventArgs e)
         {
-            JSON json = new JSON
+            if (!string.IsNullOrEmpty(textboxSearch.text) || textboxSearch.text == "Search...")
             {
-                id = 4,
-                message = textboxSearch.text,
-            };
-            string to = JsonConvert.SerializeObject(json);
-            WS.Send(to);
+                JSON json = new JSON
+                {
+                    id = 4,
+                    message = textboxSearch.text,
+                };
+                WS.Send(json);
+            }
         }
         private void addFriends_Load(object sender, EventArgs e)
         {

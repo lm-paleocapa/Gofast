@@ -13,18 +13,59 @@
     public class WS
     {
         private static WebSocket ws = new WebSocket("ws://79.24.89.93:8181");
+        //private static WebSocket ws = new WebSocket("ws://127.0.0.1:8181");
+        private static List<string> toSend = new List<string>();
         public static void Open()
         {
             ws.MessageReceived += ms;
             ws.Open();
+            new Thread(() =>
+            {
+                int k = 5000;
+                while (true)
+                {
+                    if (ws.State != WebSocketState.Open)
+                    {
+                        try
+                        {
+                            ws.Open();
+                            Thread.Sleep(100);
+                        }
+                        catch
+                        {
+                            
+                        }
+                        if (ws.State == WebSocketState.Open)
+                            k = 0;
+                        else
+                            k = 5000;
+                    }
+                    else if (ws.State == WebSocketState.Open)
+                    {
+                        foreach (var i in toSend)
+                        {
+                            ws.Send(i);
+                        }
+                        toSend.Clear();
+                    }
+                    Thread.Sleep(k);
+                }
+            })
+            { IsBackground = true }.Start();
         }
         public static void Close()
         {
             ws.Close();
         }
-        public static void Send(string ms)
+        public static void Send(JSON ms)
         {
-            ws.Send(ms);
+            string item = JsonConvert.SerializeObject(ms);
+            if (ws.State == WebSocketState.Open)
+            {
+                ws.Send(item);
+            }
+            else
+                toSend.Add(item);
         }
         public static void ms(object sender, MessageReceivedEventArgs e)
         {
@@ -102,6 +143,8 @@
                 {
                     Form1.MainChat.myUser.image = Image.FromStream(ms);
                 }));
+
+                Form1.loginPage.Invoke(new Action(() => Form1.loginPage.controlEnabled = true));
             }
         }
         public class ClassTwo
@@ -257,6 +300,10 @@
             public static Panel panel;
             public static void Six(JSON json)
             {
+                panel.Invoke(new Action(() =>
+                {
+                    panel.Controls.Clear();
+                }));
                 MemoryStream ms;
                 foreach (var i in json.friends)
                 {
@@ -271,7 +318,6 @@
                     };
                     panel.Invoke(new Action(() =>
                     {
-                        panel.Controls.Clear();
                         panel.Controls.Add(user);
                     }));
                 }

@@ -42,11 +42,12 @@
             // 
             // pictureBoxBack
             // 
+            this.pictureBoxBack.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBoxBack.Image = global::OfficialChat.Properties.Resources.back;
-            this.pictureBoxBack.Location = new System.Drawing.Point(10, 10);
+            this.pictureBoxBack.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxBack.Margin = new System.Windows.Forms.Padding(10);
             this.pictureBoxBack.Name = "pictureBoxBack";
-            this.pictureBoxBack.Size = new System.Drawing.Size(40, 40);
+            this.pictureBoxBack.Size = new System.Drawing.Size(202, 52);
             this.pictureBoxBack.TabIndex = 12;
             this.pictureBoxBack.TabStop = false;
             this.pictureBoxBack.Click += new System.EventHandler(this.pictureBoxBack_Click);
@@ -60,7 +61,8 @@
             // 
             this.panelForControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.panelForControl.Controls.Add(this.textboxSearch);
-            this.panelForControl.Location = new System.Drawing.Point(0, 60);
+            this.panelForControl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelForControl.Location = new System.Drawing.Point(0, 52);
             this.panelForControl.Margin = new System.Windows.Forms.Padding(0);
             this.panelForControl.Name = "panelForControl";
             this.panelForControl.Size = new System.Drawing.Size(202, 51);
@@ -83,7 +85,8 @@
             // panelForUser
             // 
             this.panelForUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.panelForUser.Location = new System.Drawing.Point(0, 111);
+            this.panelForUser.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelForUser.Location = new System.Drawing.Point(0, 103);
             this.panelForUser.Margin = new System.Windows.Forms.Padding(0);
             this.panelForUser.Name = "panelForUser";
             this.panelForUser.Size = new System.Drawing.Size(202, 447);
