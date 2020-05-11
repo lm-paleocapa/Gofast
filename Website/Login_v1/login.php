@@ -20,7 +20,7 @@
         $error = "badFormatEmail";
 
     if ($error === "") {
-        $result = $conn->query("SELECT id, password, image FROM account WHERE mail LIKE '$email'");
+        $result = $conn->query("SELECT id, password, image, email FROM account WHERE mail LIKE '$email'");
         if (!$result) {
             $error = "databaseError";
         }
@@ -38,7 +38,8 @@
                     $_SESSION["id"] = $result2["id"];
                     $_SESSION["image"] = $result2["image"];
                     $_SESSION["email"] = $email;
-                    $_SESSION["password"] = $email;
+                    $_SESSION["password"] = $password;
+                    $_SESSION["username"] = $result2["username"];
                     echo "successfullyLoggedIn";
                 }
             }
