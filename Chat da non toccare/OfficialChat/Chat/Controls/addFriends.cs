@@ -2,6 +2,7 @@
 {
     using OfficialChat.Lib.Client;
     using System;
+    using System.Collections.Generic;
     using System.Drawing;
     using System.Windows.Forms;
     public partial class addFriends : UserControl
@@ -50,6 +51,37 @@
         private void addFriends_Load(object sender, EventArgs e)
         {
             WS.ClassSix.panel = panelForUser;
+        }
+        private void textboxSearch_Enter(object sender, EventArgs e)
+        {
+            if (textboxSearch.text == "Search...")
+            textboxSearch.text = "";
+        }
+        private void textboxSearch_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textboxSearch.text))
+            textboxSearch.text = "Search...";
+        }
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            List<FRIENDS> users = new List<FRIENDS>();
+
+            foreach (userToAdd i in panelForUser.Controls)
+                if (i.userChecked)
+                {
+                    FRIENDS item = new FRIENDS
+                    {
+                        user = i.name
+                    };
+                }
+
+            JSON json = new JSON()
+            {
+                id = 5,
+                username = Form1.username,
+                friends = users
+            };
+            WS.Send(json);
         }
     }
 }

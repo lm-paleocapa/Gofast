@@ -35,19 +35,18 @@
             this.panelForControl = new System.Windows.Forms.Panel();
             this.textboxSearch = new Bunifu.Framework.UI.BunifuTextbox();
             this.panelForUser = new System.Windows.Forms.Panel();
-            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonAdd = new Bunifu.Framework.UI.BunifuFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).BeginInit();
             this.panelForControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxBack
             // 
-            this.pictureBoxBack.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBoxBack.Image = global::OfficialChat.Properties.Resources.back;
-            this.pictureBoxBack.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxBack.Location = new System.Drawing.Point(6, 8);
             this.pictureBoxBack.Margin = new System.Windows.Forms.Padding(10);
             this.pictureBoxBack.Name = "pictureBoxBack";
-            this.pictureBoxBack.Size = new System.Drawing.Size(202, 52);
+            this.pictureBoxBack.Size = new System.Drawing.Size(40, 40);
             this.pictureBoxBack.TabIndex = 12;
             this.pictureBoxBack.TabStop = false;
             this.pictureBoxBack.Click += new System.EventHandler(this.pictureBoxBack_Click);
@@ -61,8 +60,7 @@
             // 
             this.panelForControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.panelForControl.Controls.Add(this.textboxSearch);
-            this.panelForControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelForControl.Location = new System.Drawing.Point(0, 52);
+            this.panelForControl.Location = new System.Drawing.Point(0, 66);
             this.panelForControl.Margin = new System.Windows.Forms.Padding(0);
             this.panelForControl.Name = "panelForControl";
             this.panelForControl.Size = new System.Drawing.Size(202, 51);
@@ -81,25 +79,53 @@
             this.textboxSearch.TabIndex = 0;
             this.textboxSearch.text = "Search...";
             this.textboxSearch.OnTextChange += new System.EventHandler(this.textboxSearch_OnTextChange);
+            this.textboxSearch.Enter += new System.EventHandler(this.textboxSearch_Enter);
+            this.textboxSearch.Leave += new System.EventHandler(this.textboxSearch_Leave);
             // 
             // panelForUser
             // 
             this.panelForUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.panelForUser.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelForUser.Location = new System.Drawing.Point(0, 103);
+            this.panelForUser.Location = new System.Drawing.Point(0, 117);
             this.panelForUser.Margin = new System.Windows.Forms.Padding(0);
             this.panelForUser.Name = "panelForUser";
-            this.panelForUser.Size = new System.Drawing.Size(202, 447);
+            this.panelForUser.Size = new System.Drawing.Size(202, 426);
             this.panelForUser.TabIndex = 14;
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(61, 571);
+            this.buttonAdd.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(179)))), ((int)(((byte)(16)))));
+            this.buttonAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.buttonAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonAdd.BorderRadius = 0;
+            this.buttonAdd.ButtonText = "Add";
+            this.buttonAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonAdd.DisabledColor = System.Drawing.Color.Gray;
+            this.buttonAdd.Iconcolor = System.Drawing.Color.Transparent;
+            this.buttonAdd.Iconimage = ((System.Drawing.Image)(resources.GetObject("buttonAdd.Iconimage")));
+            this.buttonAdd.Iconimage_right = null;
+            this.buttonAdd.Iconimage_right_Selected = null;
+            this.buttonAdd.Iconimage_Selected = null;
+            this.buttonAdd.IconMarginLeft = 0;
+            this.buttonAdd.IconMarginRight = 0;
+            this.buttonAdd.IconRightVisible = false;
+            this.buttonAdd.IconRightZoom = 0D;
+            this.buttonAdd.IconVisible = false;
+            this.buttonAdd.IconZoom = 90D;
+            this.buttonAdd.IsTab = false;
+            this.buttonAdd.Location = new System.Drawing.Point(50, 555);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(0);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(75, 23);
-            this.buttonAdd.TabIndex = 15;
-            this.buttonAdd.Text = "button1";
-            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.buttonAdd.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(179)))), ((int)(((byte)(16)))));
+            this.buttonAdd.OnHoverTextColor = System.Drawing.Color.White;
+            this.buttonAdd.selected = false;
+            this.buttonAdd.Size = new System.Drawing.Size(102, 48);
+            this.buttonAdd.TabIndex = 0;
+            this.buttonAdd.Text = "Add";
+            this.buttonAdd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.buttonAdd.Textcolor = System.Drawing.Color.White;
+            this.buttonAdd.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // addFriends
             // 
@@ -127,6 +153,6 @@
         private System.Windows.Forms.Panel panelForControl;
         private Bunifu.Framework.UI.BunifuTextbox textboxSearch;
         private System.Windows.Forms.Panel panelForUser;
-        private System.Windows.Forms.Button buttonAdd;
+        private Bunifu.Framework.UI.BunifuFlatButton buttonAdd;
     }
 }

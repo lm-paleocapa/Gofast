@@ -97,20 +97,20 @@
 
                 mainChatControl.from = typingBoxUser.text;
 
-                if (radioButton.Checked)
-                {
-                    UserJ user = new UserJ
-                    {
-                        username = typingBoxUser.text,
-                        password = typingBoxPassword.text
-                    };
-                    string s = JsonConvert.SerializeObject(user);
+                //if (radioButton.Checked)
+                //{
+                //    UserJ user = new UserJ
+                //    {
+                //        username = typingBoxUser.text,
+                //        password = typingBoxPassword.text
+                //    };
+                //    string s = JsonConvert.SerializeObject(user);
 
-                    File.WriteAllText("user.json", s);
-                }
+                //    File.WriteAllText("user.json", s);
+                //}
             }
         }
-        private static int i = 0;
+        private static int i = 1;
         private void radioButton_Click(object sender, EventArgs e)
         {
             if (radioButton.Checked && i == 0)

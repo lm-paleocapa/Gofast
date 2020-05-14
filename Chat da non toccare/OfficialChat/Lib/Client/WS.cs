@@ -12,8 +12,8 @@
     using Chat.Controls;
     public class WS
     {
-        private static WebSocket ws = new WebSocket("ws://79.24.89.93:8181");
-        //private static WebSocket ws = new WebSocket("ws://127.0.0.1:8181");
+        //private static WebSocket ws = new WebSocket("ws://79.24.89.93:8181");
+        private static WebSocket ws = new WebSocket("ws://127.0.0.1:8181");
         private static List<string> toSend = new List<string>();
         public static void Open()
         {
@@ -310,7 +310,7 @@
                     var pic = Convert.FromBase64String(i.image);
                     ms = new MemoryStream(pic);
 
-                    userLeft user = new userLeft
+                    userToAdd user = new userToAdd
                     {
                         name = i.user,
                         picture = Image.FromStream(ms),

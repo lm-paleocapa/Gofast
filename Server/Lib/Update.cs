@@ -5,17 +5,16 @@
     using System.Threading;
     using Newtonsoft.Json;
     using System.Drawing;
-
     class Start
     {
-        public static void OnServerOpen(MySqlConnection cnn)
+        public static void OnServerOpen(MySqlConnection mainCnn)
         {
             string query;
             MySqlCommand cmd;
             MySqlDataReader reader;
 
             query = "select user from account;";
-            cmd = new MySqlCommand(query, cnn);
+            cmd = new MySqlCommand(query, mainCnn);
             reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -27,19 +26,6 @@
                 Program.usersConnected.Add(user);
             }
             reader.Close();
-        }
-    }
-    class Update
-    {
-        public static void Start()
-        {
-            new Thread(() =>
-            {
-            }).Start();
-
-            new Thread(() =>
-            {
-            }).Start(); // Aggiungere il controllo per i nuovi amici
         }
     }
 }

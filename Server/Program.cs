@@ -6,6 +6,8 @@
     using System;
     using System.Collections.Generic;
     using Lib;
+    using System.Globalization;
+
     public class Program
     {
         public static List<Obj.WebsocketUsers> usersConnected = new List<Obj.WebsocketUsers>();
@@ -13,12 +15,10 @@
 
         static void Main()
         {
-            #region Database
-            MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
-            cnn.Open();
+            MySqlConnection mainCnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+            mainCnn.Open();
 
-            Start.OnServerOpen(cnn);
-            #endregion
+            Start.OnServerOpen(mainCnn);
 
             #region Server
             WebSocketServer server = new WebSocketServer($"ws://0.0.0.0:8181");
@@ -59,6 +59,11 @@
                                 Quarto(json0, socket);
                                 break;
                             }
+                        case 5:
+                            {
+                                Quinto(json0, socket);
+                                break;
+                            }
                     }
                 };
             });
@@ -75,7 +80,7 @@
                         if (i.user != "none")
                         {
                             string query = $"UPDATE account SET state = '{DateTime.Now}' WHERE user = '{i.user}';";
-                            MySqlCommand cmd = new MySqlCommand(query, cnn);
+                            MySqlCommand cmd = new MySqlCommand(query, mainCnn);
                             cmd.ExecuteNonQuery();
                         }
                         return;
@@ -97,6 +102,9 @@
 
             void Primo(Obj.Json json0, IWebSocketConnection socket)
             {
+                MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                cnn.Open();
+
                 string query;
                 MySqlCommand cmd;
                 string ToClient;
@@ -216,6 +224,9 @@
             }
             void Secondo(Obj.Json json0, IWebSocketConnection socket)
             {
+                MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                cnn.Open();
+
                 string query;
                 MySqlCommand cmd;
                 MySqlDataReader reader;
@@ -283,6 +294,9 @@
             }
             void Terzo(Obj.Json json0, IWebSocketConnection socket)
             {
+                MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                cnn.Open();
+
                 string query;
                 MySqlCommand cmd;
                 MySqlDataReader reader;
@@ -374,6 +388,9 @@
             }
             void Quarto(Obj.Json json0, IWebSocketConnection socket)
             {
+                MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                cnn.Open();
+
                 MySqlCommand cmd;
                 string query;
                 MySqlDataReader reader;
@@ -400,6 +417,25 @@
                 };
                 string to = JsonConvert.SerializeObject(json);
                 socket.Send(to);
+            }
+            void Quinto(Obj.Json json0, IWebSocketConnection socket)
+            {
+                MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                cnn.Open();
+
+                MySqlCommand cmd;
+                string query;
+                MySqlDataReader reader;
+
+
+                //query = $"INSERT INTO account (user,password,mail,age,image) VALUES ('{json0.username}', '{json0.password}', '{json0.mail}', '{json0.age}', '{json0.image}');";
+                //cmd = new MySqlCommand(query, cnn);
+                //cmd.ExecuteNonQuery();
+
+                foreach (var i in json0.friends)
+                {
+                    query = $"Insert into newFriendsRequest (user,friend) values ('{}','{}')";
+                }
             }
 
             while (true)

@@ -52,7 +52,7 @@
             this.buttonLogin.OnHoverTextColor = System.Drawing.Color.White;
             this.buttonLogin.selected = false;
             this.buttonLogin.Size = new System.Drawing.Size(105, 48);
-            this.buttonLogin.TabIndex = 8;
+            this.buttonLogin.TabIndex = 4;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.buttonLogin.Textcolor = System.Drawing.Color.White;
@@ -94,7 +94,7 @@
             this.radioButton.Name = "radioButton";
             this.radioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.radioButton.Size = new System.Drawing.Size(109, 19);
-            this.radioButton.TabIndex = 11;
+            this.radioButton.TabIndex = 3;
             this.radioButton.TabStop = true;
             this.radioButton.Text = "Remember me";
             this.radioButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -109,7 +109,7 @@
             this.labelSignUp.Margin = new System.Windows.Forms.Padding(0);
             this.labelSignUp.Name = "labelSignUp";
             this.labelSignUp.Size = new System.Drawing.Size(45, 13);
-            this.labelSignUp.TabIndex = 12;
+            this.labelSignUp.TabIndex = 5;
             this.labelSignUp.Text = " SingUp";
             this.labelSignUp.Click += new System.EventHandler(this.labelSignUp_Click);
             // 
@@ -125,7 +125,7 @@
             this.typingBoxPassword.nameOfPanel = "Login";
             this.typingBoxPassword.pictureBoxTop = 10;
             this.typingBoxPassword.Size = new System.Drawing.Size(444, 90);
-            this.typingBoxPassword.TabIndex = 14;
+            this.typingBoxPassword.TabIndex = 2;
             this.typingBoxPassword.text = "Password";
             this.typingBoxPassword.typingBoxTop = 6;
             // 
@@ -141,7 +141,7 @@
             this.typingBoxUser.nameOfPanel = "Login";
             this.typingBoxUser.pictureBoxTop = 41;
             this.typingBoxUser.Size = new System.Drawing.Size(444, 90);
-            this.typingBoxUser.TabIndex = 13;
+            this.typingBoxUser.TabIndex = 1;
             this.typingBoxUser.text = "Username";
             this.typingBoxUser.typingBoxTop = 37;
             // 
