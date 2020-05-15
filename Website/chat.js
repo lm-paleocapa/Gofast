@@ -25,6 +25,7 @@ class Contact {
 	var password;
 	var webSocket;
 	var webSocketAddress = "ws://79.24.89.93.8181";
+	var socketInitialized = false;
 
 	function getData(data) {
 		email = data.email;
@@ -196,10 +197,14 @@ class Contact {
 		    	contacts[i].messages.push(new Message(content, time, "SEND"));
 		}
 		viewSentMessage(content, time);
-		//socket.send("{'id':'2', 'message':'" + content + "', 'from':'" + username + "', 'to':'" + contacts[activeChat].username + "'}");               
+		socket.send("{'id':'2', 'message':'" + content + "', 'from':'" + username + "', 'to':'" + contacts[activeChat].username + "'}");               
 	}
 
 	function loadContact(name, image, online, id) {
+		if(!socketInitialized) {
+			webSocket.send("{'id':'1', 'username':'" + username + "', 'password':'" + password + "'}");
+			socketInitialized = true;
+		}
 		dynamicImg = document.getElementById("dynamicImg");
 		dynamicImg.src = image;
 		dynamicName = document.getElementById("dynamicName");
@@ -284,21 +289,21 @@ class Contact {
 	
 
 	addAddFriend();	
-	var newContact = new Contact("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP._9SsO9_KzjYz0lPYS6XPOAHaHa%26pid%3DApi&f=1", "ddg", 1, true, "online", []);
+	/*var newContact = new Contact("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP._9SsO9_KzjYz0lPYS6XPOAHaHa%26pid%3DApi&f=1", "ddg", 1, true, "online", []);
 	var newContact2 = new Contact("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fyt0CE-bN--g%2Fhqdefault.jpg&f=1&nofb=1", "google", 2, true, "online", []);
-	contacts.push(newContact, newContact2);
+	contacts.push(newContact, newContact2);*/
 
 	$.getJSON("getData.php", getData);
 	$.getJSON("loadContacts.php", loadContacts);
 
-	//loadMessagesFromDatabase();
+	loadMessagesFromDatabase();
 
-	getMessage(1, "Henlo", "*time*");
+	/*getMessage(1, "Henlo", "*time*");
 	getMessage(2, "roflmao", "*time2*");
 	postMessage("akdakdsoad", "taim");
 
 	for (var i = 0; i < contacts.length; i++) {
 		addContact(contacts[i].image, contacts[i].name, contacts[i].id, contacts[i].online, contacts[i].lastLog);
 	}
-	addFriendshipRequest("q", "q");
+	addFriendshipRequest("q", "q");*/
 }

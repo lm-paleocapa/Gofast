@@ -61,6 +61,7 @@
             this.labelMinimize.Size = new System.Drawing.Size(16, 18);
             this.labelMinimize.TabIndex = 3;
             this.labelMinimize.Text = "_";
+            this.labelMinimize.Click += new System.EventHandler(this.labelMinimize_Click);
             this.labelMinimize.MouseEnter += new System.EventHandler(this.labelMinimize_MouseEnter);
             this.labelMinimize.MouseLeave += new System.EventHandler(this.labelMinimize_MouseLeave);
             // 
