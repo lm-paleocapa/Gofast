@@ -3,10 +3,10 @@
     $email = $_POST["email"];
     $password = $_POST["password"];
     
-    $DBip = "";
-    $DBuser = "";
-    $DBpassword = "";
-    $DBdatabase = "";
+    $DBip = "80.182.17.185";
+    $DBuser = "gofast";
+    $DBpassword = "SDSD123687u21nsad";
+    $DBdatabase = "gofastdb";
 
     $error = "";
 
@@ -20,7 +20,7 @@
         $error = "badFormatEmail";
 
     if ($error === "") {
-        $result = $conn->query("SELECT id, password, image, email FROM account WHERE mail LIKE '$email'");
+        $result = $conn->query("SELECT id, password, image, user FROM account WHERE mail LIKE '$email'");
         if (!$result) {
             $error = "databaseError";
         }
@@ -39,7 +39,7 @@
                     $_SESSION["image"] = $result2["image"];
                     $_SESSION["email"] = $email;
                     $_SESSION["password"] = $password;
-                    $_SESSION["username"] = $result2["username"];
+                    $_SESSION["username"] = $result2["user"];
                     echo "successfullyLoggedIn";
                 }
             }
