@@ -88,7 +88,7 @@
             this.panelMove.Name = "panelMove";
             this.panelMove.Size = new System.Drawing.Size(886, 36);
             this.panelMove.TabIndex = 4;
-            this.panelMove.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDownMoveForm);
+           // this.panelMove.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDownMoveForm);
             // 
             // labelLogo
             // 
