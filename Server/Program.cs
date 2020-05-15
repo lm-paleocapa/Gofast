@@ -6,8 +6,6 @@
     using System;
     using System.Collections.Generic;
     using Lib;
-    using System.Globalization;
-
     public class Program
     {
         public static List<Obj.WebsocketUsers> usersConnected = new List<Obj.WebsocketUsers>();
@@ -36,7 +34,7 @@
                 socket.OnMessage = message =>
                 {
                     Obj.Json json0 = JsonConvert.DeserializeObject<Obj.Json>(message);
-
+                   
                     switch (json0.id)
                     {
                         case 1:
@@ -427,14 +425,9 @@
                 string query;
                 MySqlDataReader reader;
 
-
-                //query = $"INSERT INTO account (user,password,mail,age,image) VALUES ('{json0.username}', '{json0.password}', '{json0.mail}', '{json0.age}', '{json0.image}');";
-                //cmd = new MySqlCommand(query, cnn);
-                //cmd.ExecuteNonQuery();
-
                 foreach (var i in json0.friends)
                 {
-                    query = $"Insert into newFriendsRequest (user,friend) values ('{}','{}')";
+                    query = $"Insert into newFriendsRequest (user,friend) values ('{json0.username}','{i.user}')";
                 }
             }
 
