@@ -15,18 +15,18 @@
         #region Cose
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HTCAPTION = 0x2;
-       // [DllImport("User32.dll")]
-       // public static extern bool ReleaseCapture();
-        //[DllImport("User32.dll")]
-       // public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        //protected virtual void OnMouseDownMoveForm(object sender, MouseEventArgs e)
-        //{
-        //    if (e.Button == MouseButtons.Left)
-        //    {
-        //        ReleaseCapture();
-        //        SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
-        //    }
-        //}
+        [DllImport("User32.dll")]
+        public static extern bool ReleaseCapture();
+        [DllImport("User32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        protected virtual void OnMouseDownMoveForm(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+            }
+        }
         #endregion
         public static string username = "";
         public Form1()
