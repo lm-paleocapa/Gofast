@@ -45,7 +45,6 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Navy;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-           // this.pictureBox1.Image = global::chat.Properties.Resources.icons8_User_32;
             this.pictureBox1.Location = new System.Drawing.Point(1, 1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(32, 32);
@@ -68,7 +67,8 @@
             this.label1.Padding = new System.Windows.Forms.Padding(3);
             this.label1.Size = new System.Drawing.Size(139, 150);
             this.label1.TabIndex = 3;
-            this.label1.Text = " This is a sample text message. This is a sample text message. This is a sample text message. \r\n\r\nThis is a sample text message. ";
+            this.label1.Text = " This is a sample text message. This is a sample text message. This is a sample t" +
+    "ext message. \r\n\r\nThis is a sample text message. ";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // YouBubble
