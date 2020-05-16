@@ -134,6 +134,7 @@
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "userSetting";
             this.Size = new System.Drawing.Size(400, 450);
+            this.VisibleChanged += new System.EventHandler(this.userSetting_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.profileImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).EndInit();
             this.ResumeLayout(false);

@@ -6,6 +6,8 @@
     using System;
     public partial class userSetting : UserControl
     {
+        public string mailChanged { get; set; }
+        public string passChanged { get; set; }
         public Image userImage
         {
             get
@@ -64,7 +66,7 @@
             }
         }
         public static Panel panelDown;
-        private void pictureBoxBack_Click(object sender, System.EventArgs e)
+        private void pictureBoxBack_Click(object sender, EventArgs e)
         {
             this.Visible = false;
 
@@ -74,6 +76,11 @@
                 Form1.MainChat.Visible = true;
                 panelDown.Controls.Add(Form1.MainChat);
             }));
+        }
+        private void userSetting_VisibleChanged(object sender, EventArgs e)
+        {
+            textBoxMail.Text = mail;
+            textBoxPassword.Text = password;
         }
     }
 }
