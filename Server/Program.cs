@@ -25,16 +25,16 @@
             {
                 socket.OnOpen = () =>
                 {
-                   socketOnOpen(socket);
+                    socketOnOpen(socket);
                 };
                 socket.OnClose = () =>
                 {
-                   socketOnClose(socket);
+                    socketOnClose(socket);
                 };
                 socket.OnMessage = message =>
                 {
                     Obj.Json json0 = JsonConvert.DeserializeObject<Obj.Json>(message);
-                   
+
                     switch (json0.id)
                     {
                         case 1:
@@ -60,6 +60,11 @@
                         case 5:
                             {
                                 Quinto(json0, socket);
+                                break;
+                            }
+                        case 6:
+                            {
+                                Sesto(json0, socket);
                                 break;
                             }
                     }
@@ -156,9 +161,11 @@
                             x.image = img;
                         }
 
-                        query = $"select image from account where user= '{json0.username}'";
+                        query = $"select image,mail,password from account where user= '{json0.username}' limit 1";
                         cmd = new MySqlCommand(query, cnn);
-                        img = cmd.ExecuteScalar().ToString();
+                        reader = cmd.ExecuteReader();
+
+                        reader.Read();
 
                         Obj.Json json1 = new Obj.Json
                         {
@@ -166,9 +173,12 @@
                             uok = true,
                             pok = true,
                             friends = friends,
-                            image = img,
-                            username = json0.username
+                            image = reader[0].ToString(),
+                            username = json0.username,
+                            mail = reader[1].ToString(),
+                            password = reader[2].ToString()
                         };
+                        reader.Close();
 
                         ToClient = JsonConvert.SerializeObject(json1);
                         socket.Send(ToClient);
@@ -191,10 +201,11 @@
                                 ms = messages
                             };
                             string to = JsonConvert.SerializeObject(json);
-                            socket.Send(to); 
+                            socket.Send(to);
                             foreach (var i in messages)
                                 MessaggiInAttesa.Remove(i);
                         }
+                        cnn.Close();
                     }
                     else
                     {
@@ -206,6 +217,7 @@
                         };
                         ToClient = JsonConvert.SerializeObject(json);
                         socket.Send(ToClient);
+                        cnn.Close();
                     }
                 }
                 else
@@ -218,6 +230,7 @@
                     };
                     ToClient = JsonConvert.SerializeObject(json);
                     socket.Send(ToClient);
+                    cnn.Close();
                 }
             }
             void Secondo(Obj.Json json0, IWebSocketConnection socket)
@@ -288,7 +301,7 @@
                 query = $"insert into {json0.from}_messages (user,messages,type,date) values ('{json0.to}','{json0.message}','{json0.messageType}','{json0.date.ToString("yyyy/MM/dd HH:mm:ss")}');";
                 cmd = new MySqlCommand(query, cnn);
                 cmd.ExecuteNonQuery();
-
+                cnn.Close();
             }
             void Terzo(Obj.Json json0, IWebSocketConnection socket)
             {
@@ -300,6 +313,8 @@
                 MySqlDataReader reader;
                 string toClient;
 
+                bool mailOk = false;
+
                 query = "select user from account";
                 cmd = new MySqlCommand(query, cnn);
                 reader = cmd.ExecuteReader();
@@ -308,24 +323,23 @@
                     if (json0.username == reader[0].ToString())
                     {
                         reader.Close();
-
-                        query = "select mail form account";
+                        query = "select mail from account";
                         cmd = new MySqlCommand(query, cnn);
                         reader = cmd.ExecuteReader();
+
+                        if (reader[0].ToString() == json0.mail)
                         {
-                            if (reader[0].ToString() == json0.mail)
+                            Obj.Json json2 = new Obj.Json
                             {
-                                Obj.Json json2 = new Obj.Json
-                                {
-                                    id = 4,
-                                    uok = false,
-                                    mok = false
-                                };
-                                toClient = JsonConvert.SerializeObject(json2);
-                                socket.Send(toClient);
-                                reader.Close();
-                                return;
-                            }
+                                id = 4,
+                                uok = false,
+                                mok = false
+                            };
+                            toClient = JsonConvert.SerializeObject(json2);
+                            socket.Send(toClient);
+                            reader.Close();
+                            cnn.Close();
+                            return;
                         }
                         reader.Close();
 
@@ -335,34 +349,27 @@
                             uok = false,
                             mok = true
                         };
+                        mailOk = true;
                         toClient = JsonConvert.SerializeObject(json);
                         socket.Send(toClient);
+                        cnn.Close();
                         return;
                     }
                 }
                 reader.Close();
 
-                query = "select mail from account";
-                cmd = new MySqlCommand(query, cnn);
-                reader = cmd.ExecuteReader();
-
-                while (reader.Read())
+                if (!mailOk)
                 {
-                    if (reader[0].ToString() == json0.mail)
+                    Obj.Json json2 = new Obj.Json
                     {
-                        Obj.Json json2 = new Obj.Json
-                        {
-                            id = 4,
-                            uok = true,
-                            mok = false
-                        };
-                        toClient = JsonConvert.SerializeObject(json2);
-                        socket.Send(toClient);
-                        reader.Close();
-                        return;
-                    }
+                        id = 4,
+                        uok = true,
+                        mok = false
+                    };
+                    toClient = JsonConvert.SerializeObject(json2);
+                    socket.Send(toClient);
+                    return;
                 }
-                reader.Close();
 
                 Obj.Json json1 = new Obj.Json
                 {
@@ -415,6 +422,7 @@
                 };
                 string to = JsonConvert.SerializeObject(json);
                 socket.Send(to);
+                cnn.Close();
             }
             void Quinto(Obj.Json json0, IWebSocketConnection socket)
             {
@@ -429,8 +437,25 @@
                 {
                     query = $"Insert into newFriendsRequest (user,friend) values ('{json0.username}','{i.user}')";
                 }
-            }
+                cnn.Close();
+            } // da finire
+            void Sesto(Obj.Json json0, IWebSocketConnection socekt)
+            {
+                MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                cnn.Open();
+                string query = $"update account set mail = '{json0.mail}', password = '{json0.password}' where user = '{json0.username}'";
+                MySqlCommand cmd = new MySqlCommand(query, cnn);
+                cmd.ExecuteNonQuery();
+                cnn.Close();
 
+                Obj.Json json = new Obj.Json
+                {
+                    id = 7,
+                    mail = json0.mail,
+                };
+                string to = JsonConvert.SerializeObject(json);
+                socekt.Send(to);
+            }
             while (true)
             {
             }

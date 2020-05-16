@@ -29,58 +29,61 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dropdownList));
-            this.dropdownListItem3 = new OfficialChat.Chat.Controls.dropdownListItem();
-            this.dropdownListItem2 = new OfficialChat.Chat.Controls.dropdownListItem();
-            this.dropdownListItem1 = new OfficialChat.Chat.Controls.dropdownListItem();
+            this.btnProfileSetting = new OfficialChat.Chat.Controls.dropdownListItem();
+            this.friendshipRequest = new OfficialChat.Chat.Controls.dropdownListItem();
+            this.btnLogOut = new OfficialChat.Chat.Controls.dropdownListItem();
             this.SuspendLayout();
             // 
-            // dropdownListItem3
+            // btnProfileSetting
             // 
-            this.dropdownListItem3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.dropdownListItem3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dropdownListItem3.itemImage = global::OfficialChat.Properties.Resources.icons8_ingranaggio_30;
-            this.dropdownListItem3.itemName = "Profile";
-            this.dropdownListItem3.Location = new System.Drawing.Point(0, 0);
-            this.dropdownListItem3.Margin = new System.Windows.Forms.Padding(1);
-            this.dropdownListItem3.Name = "dropdownListItem3";
-            this.dropdownListItem3.Padding = new System.Windows.Forms.Padding(1);
-            this.dropdownListItem3.Size = new System.Drawing.Size(129, 44);
-            this.dropdownListItem3.TabIndex = 2;
+            this.btnProfileSetting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnProfileSetting.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.btnProfileSetting.itemImage = global::OfficialChat.Properties.Resources.icons8_ingranaggio_30;
+            this.btnProfileSetting.itemName = "Profile";
+            this.btnProfileSetting.Location = new System.Drawing.Point(0, 0);
+            this.btnProfileSetting.Margin = new System.Windows.Forms.Padding(1);
+            this.btnProfileSetting.Name = "btnProfileSetting";
+            this.btnProfileSetting.Padding = new System.Windows.Forms.Padding(1);
+            this.btnProfileSetting.Size = new System.Drawing.Size(129, 44);
+            this.btnProfileSetting.TabIndex = 2;
+            this.btnProfileSetting.Click += new System.EventHandler(this.btnProfileSetting_Click);
             // 
-            // dropdownListItem2
+            // friendshipRequest
             // 
-            this.dropdownListItem2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.dropdownListItem2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dropdownListItem2.itemImage = ((System.Drawing.Image)(resources.GetObject("dropdownListItem2.itemImage")));
-            this.dropdownListItem2.itemName = "Create group";
-            this.dropdownListItem2.Location = new System.Drawing.Point(0, 44);
-            this.dropdownListItem2.Margin = new System.Windows.Forms.Padding(1);
-            this.dropdownListItem2.Name = "dropdownListItem2";
-            this.dropdownListItem2.Padding = new System.Windows.Forms.Padding(1);
-            this.dropdownListItem2.Size = new System.Drawing.Size(129, 44);
-            this.dropdownListItem2.TabIndex = 1;
+            this.friendshipRequest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.friendshipRequest.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.friendshipRequest.itemImage = ((System.Drawing.Image)(resources.GetObject("friendshipRequest.itemImage")));
+            this.friendshipRequest.itemName = "Friend request";
+            this.friendshipRequest.Location = new System.Drawing.Point(0, 44);
+            this.friendshipRequest.Margin = new System.Windows.Forms.Padding(1);
+            this.friendshipRequest.Name = "friendshipRequest";
+            this.friendshipRequest.Padding = new System.Windows.Forms.Padding(1);
+            this.friendshipRequest.Size = new System.Drawing.Size(129, 44);
+            this.friendshipRequest.TabIndex = 1;
+            this.friendshipRequest.Click += new System.EventHandler(this.friendshipRequest_Click);
             // 
-            // dropdownListItem1
+            // btnLogOut
             // 
-            this.dropdownListItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.dropdownListItem1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dropdownListItem1.itemImage = global::OfficialChat.Properties.Resources.icons8_uscita_30;
-            this.dropdownListItem1.itemName = "Log out";
-            this.dropdownListItem1.Location = new System.Drawing.Point(0, 88);
-            this.dropdownListItem1.Margin = new System.Windows.Forms.Padding(1);
-            this.dropdownListItem1.Name = "dropdownListItem1";
-            this.dropdownListItem1.Padding = new System.Windows.Forms.Padding(1);
-            this.dropdownListItem1.Size = new System.Drawing.Size(129, 44);
-            this.dropdownListItem1.TabIndex = 0;
+            this.btnLogOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnLogOut.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.btnLogOut.itemImage = global::OfficialChat.Properties.Resources.icons8_uscita_30;
+            this.btnLogOut.itemName = "Log out";
+            this.btnLogOut.Location = new System.Drawing.Point(0, 88);
+            this.btnLogOut.Margin = new System.Windows.Forms.Padding(1);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Padding = new System.Windows.Forms.Padding(1);
+            this.btnLogOut.Size = new System.Drawing.Size(129, 44);
+            this.btnLogOut.TabIndex = 0;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // dropdownList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.Controls.Add(this.dropdownListItem3);
-            this.Controls.Add(this.dropdownListItem2);
-            this.Controls.Add(this.dropdownListItem1);
+            this.Controls.Add(this.btnProfileSetting);
+            this.Controls.Add(this.friendshipRequest);
+            this.Controls.Add(this.btnLogOut);
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "dropdownList";
             this.Padding = new System.Windows.Forms.Padding(1);
@@ -91,8 +94,8 @@
 
         #endregion
 
-        private dropdownListItem dropdownListItem1;
-        private dropdownListItem dropdownListItem2;
-        private dropdownListItem dropdownListItem3;
+        private dropdownListItem btnLogOut;
+        private dropdownListItem friendshipRequest;
+        private dropdownListItem btnProfileSetting;
     }
 }

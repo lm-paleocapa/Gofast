@@ -32,7 +32,7 @@
         {
             InitializeComponent();
         }
-        bool isCollapsed = true;
+        public static bool isCollapsed = true;
         private Image icon1 = Resources.icons8_menu_2_30;
         private Image icon2 = Resources.icons8_menu_2_30_1_;
         private void pictureSetting_Click(object sender, EventArgs e)
@@ -74,6 +74,7 @@
         }
         private void User_Load(object sender, EventArgs e)
         {
+            dropdownList.img = pictureSetting;
             Form1.MainChat.objectLeft.Controls.Add(panelAddUser);
         }
         private int i = 0;

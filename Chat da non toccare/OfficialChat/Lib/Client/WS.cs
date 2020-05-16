@@ -12,8 +12,8 @@
     using Chat.Controls;
     public class WS
     {
-        private static WebSocket ws = new WebSocket("ws://80.182.17.185:8181");
-        //private static WebSocket ws = new WebSocket("ws://127.0.0.1:8181");
+       // private static WebSocket ws = new WebSocket("ws://80.182.17.185:8181");
+        private static WebSocket ws = new WebSocket("ws://127.0.0.1:8181");
         private static List<string> toSend = new List<string>();
         public static void Open()
         {
@@ -102,21 +102,28 @@
                         ClassSix.Six(json);
                         break;
                     }
+                case 7:
+                    {
+                        ClassSeven.Seven(json);
+                        break;
+                    }
             }
         }
 
         public static List<userLeft> panelUserLeft = new List<userLeft>();
+        public static userSetting panelUserSetting = new userSetting();
+
         public class ClassOne
         {
             public static Panel panelForControl;
             public static void One(JSON json)
             {
                 Form1.username = json.username;
+                Form1.MainChat = new Chat.mainChatControl();
                 panelForControl.Invoke(new Action(() =>
                 {
                     panelForControl.Size = new Size(876, 612);
-                    foreach (UserControl i in panelForControl.Controls)
-                        i.Visible = false;
+                    panelForControl.Controls.Clear();
                     panelForControl.Controls.Add(Form1.MainChat);
                 }));
 
@@ -139,12 +146,22 @@
                 var pic1 = Convert.FromBase64String(json.image);
                 ms = new MemoryStream(pic1);
 
+                Image img = resizeImage(Image.FromStream(ms), new Size(90, 90));
+                Image resizeImage(Image imgToResize, Size size)
+                {
+                    return (new Bitmap(imgToResize, size));
+                }
+                panelUserSetting.userImage = img;
+
                 Form1.MainChat.myUser.Invoke(new Action(() =>
                 {
                     Form1.MainChat.myUser.image = Image.FromStream(ms);
                 }));
 
                 Form1.loginPage.Invoke(new Action(() => Form1.loginPage.controlEnabled = true));
+
+                panelUserSetting.mail = json.mail;
+                panelUserSetting.password = json.password;
             }
         }
         public class ClassTwo
@@ -321,6 +338,14 @@
                         panel.Controls.Add(user);
                     }));
                 }
+            }
+        }
+        public class ClassSeven
+        {
+            public static void Seven(JSON json)
+            {
+                panelUserSetting.mail = json.mail;
+                MessageBox.Show("Aggiornato");
             }
         }
     }

@@ -213,6 +213,12 @@
     <Compile Include="Chat\Controls\UserSelected.Designer.cs">
       <DependentUpon>UserSelected.cs</DependentUpon>
     </Compile>
+    <Compile Include="Chat\Controls\userSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Chat\Controls\userSetting.Designer.cs">
+      <DependentUpon>userSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Chat\Controls\userToAdd.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -290,6 +296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Chat\Controls\UserSelected.resx">
       <DependentUpon>UserSelected.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Chat\Controls\userSetting.resx">
+      <DependentUpon>userSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Chat\Controls\userToAdd.resx">
       <DependentUpon>userToAdd.cs</DependentUpon>

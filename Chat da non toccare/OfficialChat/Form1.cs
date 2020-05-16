@@ -8,8 +8,8 @@
     using Chat;
     using Login;
     using Register;
-    using System.IO;
-    using Newtonsoft.Json;
+    using OfficialChat.Chat.Controls;
+
     public partial class Form1 : Form
     {
         #region Cose
@@ -41,28 +41,13 @@
             LoginPage.panelDown = panelDown;
             WS.ClassOne.panelForControl = panelDown;
             RegisterPage.panelDown = panelDown;
+            dropdownList.panelDown = panelDown;
+            userSetting.panelDown = panelDown;
+
             WS.Open();
-
-            //if (File.Exists("user.json"))
-            //{
-            //    StreamReader r = new StreamReader("user.json");
-            //    string j = r.ReadToEnd();
-
-            //    Lib.Local.UserJ user = JsonConvert.DeserializeObject<Lib.Local.UserJ>(j);
-            //    JSON json = new JSON
-            //    {
-            //        id = 1,
-            //        username = user.username,
-            //        password = user.password
-            //    };
-            //    WS.Send(json);
-            //}
-            //else
-            //{
-                panelDown.Controls.Clear();
-                panelDown.Size = new Size(463, 493);
-                panelDown.Controls.Add(loginPage);
-            //}
+            panelDown.Controls.Clear();
+            panelDown.Size = new Size(463, 493);
+            panelDown.Controls.Add(loginPage);
         }
         private void labelClose_Click(object sender, EventArgs e)
         {

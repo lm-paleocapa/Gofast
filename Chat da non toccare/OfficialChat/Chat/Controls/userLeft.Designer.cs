@@ -49,9 +49,9 @@
             // pictureBox
             // 
             this.pictureBox.Image = global::OfficialChat.Properties.Resources.userStandard;
-            this.pictureBox.Location = new System.Drawing.Point(8, 8);
+            this.pictureBox.Location = new System.Drawing.Point(11, 9);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox.Size = new System.Drawing.Size(45, 45);
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
             this.pictureBox.Click += new System.EventHandler(this.userLeft_Click);
