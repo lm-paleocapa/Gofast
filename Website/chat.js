@@ -18,20 +18,21 @@ class Contact {
 	}
 	
 	var contacts = [];
-	var activeChat = 1;
+	var activeChat = 0;
 	var userID = 6;
 	var userImage;
 	var email;
 	var password;
 	var webSocket;
-	var webSocketAddress = "ws://79.24.89.93.8181";
-	var socketInitialized = false;
+	var webSocketAddress = "ws://80.182.17.185:8181";
+	var username;
 
 	function getData(data) {
 		email = data.email;
 		password = data.password;
-		image = data.password;
+		image = data.image;
 		id = data.id;
+		username = data.username;
 	}
 
 	function loadContacts(data) {
@@ -54,15 +55,20 @@ class Contact {
 
 	function manageData(event) {
 		var data = JSON.parse(event.data);
+		var idFrom;
+		for(var i = 0; i < contacts.length; i++) {
+			if(contacts[i].name == data.from)
+				idFrom = contacts[i].id;
+		}
 		switch (data.id) {
 			case 3:
-				getMessage(data.from, data.message, data.date);
+				getMessage(idFrom, data.message, data.date);
 		}
 	}
 
 	function setupWebSocket() {
 		webSocket = new WebSocket(webSocketAddress);
-		webSocet.onmessage = manageData(event);
+		webSocket.onmessage = manageData;//function(event) {var data = JSON.parse(event.data); alert(data.message);}
 		webSocket.onopen = function(event) {webSocket.send("{'id':'1', 'username':'" + username + "', 'password':'" + password + "'}")};
 	}
 
@@ -197,14 +203,14 @@ class Contact {
 		    	contacts[i].messages.push(new Message(content, time, "SEND"));
 		}
 		viewSentMessage(content, time);
-		socket.send("{'id':'2', 'message':'" + content + "', 'from':'" + username + "', 'to':'" + contacts[activeChat].username + "'}");               
+		for(var i = 0; i < contacts.length; i++) {
+			if(contacts[i].id == activeChat)
+				webSocket.send("{'id':'2', 'message':'" + content + "', 'from':'" + username + "', 'to':'" + contacts[i].name + "'}");
+		}              
 	}
 
 	function loadContact(name, image, online, id) {
-		if(!socketInitialized) {
-			webSocket.send("{'id':'1', 'username':'" + username + "', 'password':'" + password + "'}");
-			socketInitialized = true;
-		}
+		webSocket.send("{'id':'1', 'username':'" + username + "', 'password':'" + password + "'}");
 		dynamicImg = document.getElementById("dynamicImg");
 		dynamicImg.src = image;
 		dynamicName = document.getElementById("dynamicName");
@@ -283,27 +289,27 @@ class Contact {
 		newContact.appendChild(newHr);
 	}
 	
-	//setupWebSocket();
+	setupWebSocket();
 
 	function main() {
 	
 
 	addAddFriend();	
-	/*var newContact = new Contact("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP._9SsO9_KzjYz0lPYS6XPOAHaHa%26pid%3DApi&f=1", "ddg", 1, true, "online", []);
-	var newContact2 = new Contact("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fyt0CE-bN--g%2Fhqdefault.jpg&f=1&nofb=1", "google", 2, true, "online", []);
-	contacts.push(newContact, newContact2);*/
+	//var newContact = new Contact("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP._9SsO9_KzjYz0lPYS6XPOAHaHa%26pid%3DApi&f=1", "ddg", 1, true, "online", []);
+	//var newContact2 = new Contact("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fyt0CE-bN--g%2Fhqdefault.jpg&f=1&nofb=1", "google", 2, true, "online", []);
+	//contacts.push(newContact, newContact2);
 
 	$.getJSON("getData.php", getData);
 	$.getJSON("loadContacts.php", loadContacts);
 
-	loadMessagesFromDatabase();
+	//loadMessagesFromDatabase();
 
-	/*getMessage(1, "Henlo", "*time*");
-	getMessage(2, "roflmao", "*time2*");
-	postMessage("akdakdsoad", "taim");
+	//getMessage(1, "Henlo", "*time*");
+	//getMessage(2, "roflmao", "*time2*");
+	//postMessage("akdakdsoad", "taim");
 
-	for (var i = 0; i < contacts.length; i++) {
-		addContact(contacts[i].image, contacts[i].name, contacts[i].id, contacts[i].online, contacts[i].lastLog);
-	}
-	addFriendshipRequest("q", "q");*/
+	//for (var i = 0; i < contacts.length; i++) {
+	//	addContact(contacts[i].image, contacts[i].name, contacts[i].id, contacts[i].online, contacts[i].lastLog);
+	//}
+	//addFriendshipRequest("firefox", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F6%2F67%2FFirefox_Logo%2C_2017.svg%2F1200px-Firefox_Logo%2C_2017.svg.png&f=1&nofb=1");
 }

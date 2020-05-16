@@ -1,10 +1,10 @@
 <?php
     header('Content-Type: application/json');
 
-    $DBip = "";
-    $DBuser = "";
-    $DBpassword = "";
-    $DBdatabase = "";
+    $DBip = "80.182.17.185";
+    $DBuser = "gofast";
+    $DBpassword = "SDSD123687u21nsad";
+    $DBdatabase = "gofastdb";
 
     $conn = new mysqli($DBip, $DBuser, $DBpassword, $DBdatabase);
 
