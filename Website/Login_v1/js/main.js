@@ -24,20 +24,20 @@ function manageResponse(response) {
             responseTxt = "Invalid age, too young";
             break;
         case "newAccountCreatedSuccessfully":
-            response = "New account created successfully, log in";
+            responseTxt = "New account created successfully, log in";
             responseMessage.color = "green";
             break;
         case "emailNotFound":
-            response = "Email not found";
+            responseTxt = "Email not found";
             break;
         case "wrongPassword":
-            response = "Wrong Password";
+            responseTxt = "Wrong Password";
             break;
         case "databaseError":
-            response = "Database error, try again later";
+            responseTxt = "Database error, try again later";
             break;
         case "successfullyLoggedIn":
-            document.location.href = "192.168.178.26/prova/chat.php?email=" + document.getElementById("email") + "?password=" + document.getElementById("password");
+            document.location.href = "../chat.html?email=" + document.getElementById("email") + "?password=" + document.getElementById("password");
     }
     responseMessage.innerHTML = responseTxt;
 }
@@ -60,7 +60,7 @@ function register() {
     });*/
     var http = new XMLHttpRequest();
     var url = 'register.php';
-    var params = 'username=' + document.getElementById("username").value + "&email=" + document.getElementById("email").value + "&password=" + document.getElementById("password").value + "&confirmPassword=" + document.getElementById("confirmPassword").value + "&age=" + document.getElementById("age").value + "&image=" + document.getElementById("image").value;
+    var params = 'username=' + document.getElementById("username").value + "&email=" + document.getElementById("email").value + "&password=" + document.getElementById("password").value + "&confirmPassword=" + document.getElementById("confirmPassword").value + "&age=" + document.getElementById("age").value + "&image=" + image;
     http.open('POST', url, true);
 
     //Send the proper header information along with the request
@@ -105,6 +105,17 @@ upload.addEventListener("change", function() {
         fr.onloadend = function() {
             document.getElementById("image").src = (fr.result);
             image = fr.result;
+		while(true) {
+		if(image[0] == ",") {
+		    image = image.replace(image[0], "");
+		    break;
+		}
+		image = image.replace(image[0], "");
+	    }
+		for(var i = 0; i < image.length; i++) {
+		    if(image[i] == "+")
+			image = image.replace(image[i], "%2B");
+		}
         }
     }
     
