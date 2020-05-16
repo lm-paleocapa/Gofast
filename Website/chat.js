@@ -24,13 +24,13 @@ class Contact {
 	var email;
 	var password;
 	var webSocket;
-	var webSocketAddress = "ws://80.182.17.185:8181";
+	var webSocketAddress = "ws://192.168.178.21:8181";
 	var username;
 
 	function getData(data) {
 		email = data.email;
 		password = data.password;
-		image = data.image;
+		userImage = "data:image/png; base64, " + data.image;
 		id = data.id;
 		username = data.username;
 	}
@@ -45,7 +45,7 @@ class Contact {
 			}
 			else
 				lastlog = data[i].state;
-			contacts.push(new Contact(data[i].image, data[i].name, data[i].id, online, lastlog, []));
+			contacts.push(new Contact("data:image/png; base64, " + data[i].image, data[i].name, data[i].id, online, lastlog, []));
 		}
 		for (var i = 0; i < contacts.length; i++) {
 			addContact(contacts[i].image, contacts[i].name, contacts[i].id, contacts[i].online, contacts[i].lastLog);
@@ -89,7 +89,7 @@ class Contact {
 			var id = contacts[r].id;
 			$.getJSON("loadMessages.php?friendId=" + id, function(data) {
                                         	for (var j = 0; j < data.length; j++) {
-                                                	contacts[r].messages.push(new Message(data[j].content, data[j].time, data[j].mode));
+                                                	contacts[r].messages.push(new Message(data[j].content, data[j].date, data[j].mode));
                                         	}
 						if (r < contacts.length) {
 							r++;
@@ -215,6 +215,11 @@ class Contact {
 		dynamicImg.src = image;
 		dynamicName = document.getElementById("dynamicName");
 		dynamicName.innerHTML = name;
+		dynamicOnline = document.getElementById("dynamicOnline");
+		if(online)
+			dynamicOnline.className = "online_icon";
+		else
+			dynamicOnline.className = "online_icon offline";
 		if(activeChat != 0)
 		    document.getElementById(activeChat).className = "";
 		document.getElementById(id).className = "active";
