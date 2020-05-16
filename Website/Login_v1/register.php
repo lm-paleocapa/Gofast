@@ -47,12 +47,14 @@
     }
 
     if ($error === "") {
-        if (!$conn->query("INSERT INTO account (user, mail, password, age, image) VALUES ('$username', '$email', '$password', '$age', '$image')"))
-            $error = "databaseError";
+        if (!$conn->query("INSERT INTO account (user, mail, password, age, image) VALUES ('$username', '$email', '$password', '$age', '$image')")) {
+		$error = "databaseError";
+		echo $conn->error;
+	}
         else {
             echo "newAccountCreatedSuccessfully";
         }
     }
     else
-        echo $error;
+	    echo $error;
 ?>
