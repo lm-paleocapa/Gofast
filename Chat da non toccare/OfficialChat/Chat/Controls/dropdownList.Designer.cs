@@ -46,7 +46,6 @@
             this.btnProfileSetting.Padding = new System.Windows.Forms.Padding(1);
             this.btnProfileSetting.Size = new System.Drawing.Size(129, 44);
             this.btnProfileSetting.TabIndex = 2;
-            this.btnProfileSetting.Click += new System.EventHandler(this.btnProfileSetting_Click);
             // 
             // friendshipRequest
             // 
@@ -60,7 +59,6 @@
             this.friendshipRequest.Padding = new System.Windows.Forms.Padding(1);
             this.friendshipRequest.Size = new System.Drawing.Size(129, 44);
             this.friendshipRequest.TabIndex = 1;
-            this.friendshipRequest.Click += new System.EventHandler(this.friendshipRequest_Click);
             // 
             // btnLogOut
             // 
@@ -74,7 +72,6 @@
             this.btnLogOut.Padding = new System.Windows.Forms.Padding(1);
             this.btnLogOut.Size = new System.Drawing.Size(129, 44);
             this.btnLogOut.TabIndex = 0;
-            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // dropdownList
             // 

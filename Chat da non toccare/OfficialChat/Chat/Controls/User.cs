@@ -74,7 +74,7 @@
         }
         private void User_Load(object sender, EventArgs e)
         {
-            dropdownList.img = pictureSetting;
+            dropdownListItem.img = pictureSetting;
             Form1.MainChat.objectLeft.Controls.Add(panelAddUser);
         }
         private int i = 0;

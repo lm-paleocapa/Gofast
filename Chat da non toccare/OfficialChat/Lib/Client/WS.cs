@@ -110,9 +110,6 @@
             }
         }
 
-        public static List<userLeft> panelUserLeft = new List<userLeft>();
-        public static userSetting panelUserSetting = new userSetting();
-
         public class ClassOne
         {
             public static Panel panelForControl;
@@ -151,7 +148,8 @@
                 {
                     return (new Bitmap(imgToResize, size));
                 }
-                panelUserSetting.userImage = img;
+                Form1.panelUserSetting.userImage = img;
+                Form1.panelUserSetting.defaultImage = img;
 
                 Form1.MainChat.myUser.Invoke(new Action(() =>
                 {
@@ -159,12 +157,9 @@
                 }));
 
                 Form1.loginPage.Invoke(new Action(() => Form1.loginPage.controlEnabled = true));
-
-                panelUserSetting.mail = json.mail;
-                panelUserSetting.password = json.password;
             }
         }
-        public class ClassTwo // 18,14
+        public class ClassTwo
         {
             public static void Two(JSON json)
             {
@@ -350,7 +345,6 @@
         {
             public static void Seven(JSON json)
             {
-                panelUserSetting.mail = json.mail;
                 MessageBox.Show("Aggiornato");
             }
         }

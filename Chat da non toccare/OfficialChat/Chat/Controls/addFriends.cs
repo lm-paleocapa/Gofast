@@ -15,6 +15,8 @@
         private int k = 0;
         private void pictureBoxBack_Click(object sender, EventArgs e)
         {
+            Form1.MainChat.dropdownlist.Visible = false;
+            User.isCollapsed = true;
             timer.Start();
         }
         private void timer_Tick(object sender, EventArgs e)

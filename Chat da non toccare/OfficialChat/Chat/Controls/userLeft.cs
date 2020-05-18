@@ -4,12 +4,23 @@
     using System.Windows.Forms;
     using System.Drawing;
     using OfficialChat.Properties;
-
     public partial class userLeft : UserControl
     {
+        public bool hover { get; set; }
         public userLeft()
         {
             InitializeComponent();
+        }
+        public BorderStyle Border
+        {
+            get
+            {
+                return this.BorderStyle;
+            }
+            set
+            {
+                this.BorderStyle = value;
+            }
         }
         public string name
         {
@@ -87,10 +98,12 @@
         }
         private void userLeft_MouseEnter(object sender, EventArgs e)
         {
+            if (!hover)
             this.BackColor = Color.FromArgb(69, 79, 89);
         }
         private void userLeft_MouseLeave(object sender, EventArgs e)
         {
+            if (!hover)
             this.BackColor = Color.FromArgb(49, 59, 69);
         }
     }

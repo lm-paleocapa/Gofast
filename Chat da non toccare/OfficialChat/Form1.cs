@@ -8,8 +8,8 @@
     using Chat;
     using Login;
     using Register;
-    using OfficialChat.Chat.Controls;
-
+    using Chat.Controls;
+    using System.Collections.Generic;
     public partial class Form1 : Form
     {
         #region Cose
@@ -33,6 +33,11 @@
         {
             InitializeComponent();
         }
+
+        public static List<userLeft> panelUserLeft = new List<userLeft>();
+        public static userSetting panelUserSetting = new userSetting();
+        public static requests rq = new requests();
+
         public static mainChatControl MainChat = new mainChatControl();
         public static LoginPage loginPage = new LoginPage();
         public static RegisterPage registerPage = new RegisterPage();
@@ -41,9 +46,9 @@
             LoginPage.panelDown = panelDown;
             WS.ClassOne.panelForControl = panelDown;
             RegisterPage.panelDown = panelDown;
-            dropdownList.panelDown = panelDown;
+            dropdownListItem.panelDown = panelDown;
             userSetting.panelDown = panelDown;
-
+            requests.panelDown = panelDown;
             WS.Open();
             panelDown.Controls.Clear();
             panelDown.Size = new Size(463, 493);

@@ -189,6 +189,18 @@
     <Compile Include="Chat\Controls\MeBubble.designer.cs">
       <DependentUpon>MeBubble.cs</DependentUpon>
     </Compile>
+    <Compile Include="Chat\Controls\requestItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Chat\Controls\requestItem.Designer.cs">
+      <DependentUpon>requestItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Chat\Controls\requests.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Chat\Controls\requests.Designer.cs">
+      <DependentUpon>requests.cs</DependentUpon>
+    </Compile>
     <Compile Include="Chat\Controls\typingBoxChat.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -284,6 +296,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Chat\Controls\MeBubble.resx">
       <DependentUpon>MeBubble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Chat\Controls\requestItem.resx">
+      <DependentUpon>requestItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Chat\Controls\requests.resx">
+      <DependentUpon>requests.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Chat\Controls\typingBoxChat.resx">
       <DependentUpon>typingBoxChat.cs</DependentUpon>
@@ -430,6 +448,21 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-edit-90.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-ok-35.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-cancel-35.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-ok-35%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-cancel-35%281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

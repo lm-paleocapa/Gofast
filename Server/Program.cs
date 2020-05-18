@@ -67,6 +67,11 @@
                                 Sesto(json0, socket);
                                 break;
                             }
+                        case 7:
+                            {
+                                Settimo(json0, socket);
+                                break;
+                            }
                     }
                 };
             });
@@ -161,7 +166,7 @@
                             x.image = img;
                         }
 
-                        query = $"select image,mail,password from account where user= '{json0.username}' limit 1";
+                        query = $"select image,mail from account where user= '{json0.username}' limit 1";
                         cmd = new MySqlCommand(query, cnn);
                         reader = cmd.ExecuteReader();
 
@@ -175,8 +180,7 @@
                             friends = friends,
                             image = reader[0].ToString(),
                             username = json0.username,
-                            mail = reader[1].ToString(),
-                            password = reader[2].ToString()
+                            mail = reader[1].ToString()
                         };
                         reader.Close();
 
@@ -443,7 +447,40 @@
             {
                 MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
                 cnn.Open();
-                string query = $"update account set mail = '{json0.mail}', password = '{json0.password}' where user = '{json0.username}'";
+
+                string query;
+                MySqlCommand cmd;
+
+                query = $"select mail,password from account where user = '{json0.username}'";
+                cmd = new MySqlCommand(query, cnn);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                string mail = reader[0].ToString();
+                string password = reader[1].ToString();
+                reader.Close();
+
+                if (string.IsNullOrEmpty(json0.mail))
+                    json0.mail = mail;
+                if (string.IsNullOrEmpty(json0.password))
+                    json0.password = password;
+
+                query = $"update account set mail = '{json0.mail}', password = '{json0.password}' where user = '{json0.username}'";
+                cmd = new MySqlCommand(query, cnn);
+                cmd.ExecuteNonQuery();
+                cnn.Close();
+
+                Obj.Json json = new Obj.Json
+                {
+                    id = 7,
+                };
+                string to = JsonConvert.SerializeObject(json);
+                socekt.Send(to);
+            }
+            void Settimo(Obj.Json json0, IWebSocketConnection socket)
+            {
+                MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                cnn.Open();
+                string query = $"update account set image = '{json0.image}' where user = '{json0.username}'";
                 MySqlCommand cmd = new MySqlCommand(query, cnn);
                 cmd.ExecuteNonQuery();
                 cnn.Close();
@@ -451,10 +488,9 @@
                 Obj.Json json = new Obj.Json
                 {
                     id = 7,
-                    mail = json0.mail,
                 };
                 string to = JsonConvert.SerializeObject(json);
-                socekt.Send(to);
+                socket.Send(to);
             }
             while (true)
             {

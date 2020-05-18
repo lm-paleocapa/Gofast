@@ -16,16 +16,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(userSetting));
             this.profileImage = new System.Windows.Forms.PictureBox();
             this.textBoxMail = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.textBoxPassword = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.btnSave = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pictureBoxBack = new System.Windows.Forms.PictureBox();
+            this.textboxPassword = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.textboxConfirmPassword = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             ((System.ComponentModel.ISupportInitialize)(this.profileImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).BeginInit();
             this.SuspendLayout();
             // 
             // profileImage
             // 
-            this.profileImage.Image = global::OfficialChat.Properties.Resources.userStandard;
+            this.profileImage.Image = global::OfficialChat.Properties.Resources.icons8_edit_90;
             this.profileImage.Location = new System.Drawing.Point(155, 59);
             this.profileImage.Margin = new System.Windows.Forms.Padding(0);
             this.profileImage.MaximumSize = new System.Drawing.Size(90, 90);
@@ -34,6 +35,9 @@
             this.profileImage.Size = new System.Drawing.Size(90, 90);
             this.profileImage.TabIndex = 0;
             this.profileImage.TabStop = false;
+            this.profileImage.Click += new System.EventHandler(this.profileImage_Click);
+            this.profileImage.MouseEnter += new System.EventHandler(this.profileImage_MouseEnter);
+            this.profileImage.MouseLeave += new System.EventHandler(this.profileImage_MouseLeave);
             // 
             // textBoxMail
             // 
@@ -47,33 +51,16 @@
             this.textBoxMail.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(140)))), ((int)(((byte)(193)))));
             this.textBoxMail.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(179)))), ((int)(((byte)(16)))));
             this.textBoxMail.LineThickness = 3;
-            this.textBoxMail.Location = new System.Drawing.Point(16, 205);
+            this.textBoxMail.Location = new System.Drawing.Point(16, 184);
             this.textBoxMail.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.Size = new System.Drawing.Size(370, 44);
             this.textBoxMail.TabIndex = 1;
             this.textBoxMail.Text = "Mail";
             this.textBoxMail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // textBoxPassword
-            // 
-            this.textBoxPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.textBoxPassword.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxPassword.HintForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxPassword.HintText = "";
-            this.textBoxPassword.isPassword = true;
-            this.textBoxPassword.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(179)))), ((int)(((byte)(16)))));
-            this.textBoxPassword.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(140)))), ((int)(((byte)(193)))));
-            this.textBoxPassword.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(179)))), ((int)(((byte)(16)))));
-            this.textBoxPassword.LineThickness = 3;
-            this.textBoxPassword.Location = new System.Drawing.Point(16, 257);
-            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(4);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(370, 44);
-            this.textBoxPassword.TabIndex = 2;
-            this.textBoxPassword.Text = "Password";
-            this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.textBoxMail.OnValueChanged += new System.EventHandler(this.textBoxMail_OnValueChanged);
+            this.textBoxMail.Enter += new System.EventHandler(this.textBoxMail_Enter);
+            this.textBoxMail.Leave += new System.EventHandler(this.textBoxMail_Leave);
             // 
             // btnSave
             // 
@@ -121,20 +108,66 @@
             this.pictureBoxBack.TabStop = false;
             this.pictureBoxBack.Click += new System.EventHandler(this.pictureBoxBack_Click);
             // 
+            // textboxPassword
+            // 
+            this.textboxPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textboxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.textboxPassword.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textboxPassword.HintForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textboxPassword.HintText = "";
+            this.textboxPassword.isPassword = false;
+            this.textboxPassword.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(179)))), ((int)(((byte)(16)))));
+            this.textboxPassword.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(140)))), ((int)(((byte)(193)))));
+            this.textboxPassword.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(179)))), ((int)(((byte)(16)))));
+            this.textboxPassword.LineThickness = 3;
+            this.textboxPassword.Location = new System.Drawing.Point(16, 236);
+            this.textboxPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.textboxPassword.Name = "textboxPassword";
+            this.textboxPassword.Size = new System.Drawing.Size(370, 44);
+            this.textboxPassword.TabIndex = 14;
+            this.textboxPassword.Text = "Password";
+            this.textboxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.textboxPassword.OnValueChanged += new System.EventHandler(this.textboxPassword_OnValueChanged);
+            this.textboxPassword.Enter += new System.EventHandler(this.textboxPassword_Enter);
+            this.textboxPassword.Leave += new System.EventHandler(this.textboxPassword_Leave);
+            // 
+            // textboxConfirmPassword
+            // 
+            this.textboxConfirmPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textboxConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.textboxConfirmPassword.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textboxConfirmPassword.HintForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textboxConfirmPassword.HintText = "";
+            this.textboxConfirmPassword.isPassword = false;
+            this.textboxConfirmPassword.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(179)))), ((int)(((byte)(16)))));
+            this.textboxConfirmPassword.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(140)))), ((int)(((byte)(193)))));
+            this.textboxConfirmPassword.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(179)))), ((int)(((byte)(16)))));
+            this.textboxConfirmPassword.LineThickness = 3;
+            this.textboxConfirmPassword.Location = new System.Drawing.Point(16, 288);
+            this.textboxConfirmPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.textboxConfirmPassword.Name = "textboxConfirmPassword";
+            this.textboxConfirmPassword.Size = new System.Drawing.Size(370, 44);
+            this.textboxConfirmPassword.TabIndex = 15;
+            this.textboxConfirmPassword.Text = "Confirm password";
+            this.textboxConfirmPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.textboxConfirmPassword.OnValueChanged += new System.EventHandler(this.textboxConfirmPassword_OnValueChanged);
+            this.textboxConfirmPassword.Enter += new System.EventHandler(this.textboxConfirmPassword_Enter);
+            this.textboxConfirmPassword.Leave += new System.EventHandler(this.textboxConfirmPassword_Leave);
+            // 
             // userSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.Controls.Add(this.textboxConfirmPassword);
+            this.Controls.Add(this.textboxPassword);
             this.Controls.Add(this.pictureBoxBack);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxMail);
             this.Controls.Add(this.profileImage);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "userSetting";
             this.Size = new System.Drawing.Size(400, 450);
-            this.VisibleChanged += new System.EventHandler(this.userSetting_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.profileImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).EndInit();
             this.ResumeLayout(false);
@@ -142,8 +175,9 @@
         }
         private System.Windows.Forms.PictureBox profileImage;
         private Bunifu.Framework.UI.BunifuMaterialTextbox textBoxMail;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox textBoxPassword;
         private Bunifu.Framework.UI.BunifuFlatButton btnSave;
         private System.Windows.Forms.PictureBox pictureBoxBack;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox textboxPassword;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox textboxConfirmPassword;
     }
 }
