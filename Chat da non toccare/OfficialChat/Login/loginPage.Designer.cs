@@ -17,7 +17,6 @@
             this.buttonLogin = new Bunifu.Framework.UI.BunifuFlatButton();
             this.labelLogo = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.labelDontHaveAnAccount = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.radioButton = new System.Windows.Forms.RadioButton();
             this.labelSignUp = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.typingBoxPassword = new OfficialChat.Login.Controls.typingBox();
             this.typingBoxUser = new OfficialChat.Login.Controls.typingBox();
@@ -84,23 +83,6 @@
             this.labelDontHaveAnAccount.TabIndex = 10;
             this.labelDontHaveAnAccount.Text = "Don\'t have an account ?";
             // 
-            // radioButton
-            // 
-            this.radioButton.AutoSize = true;
-            this.radioButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.radioButton.Location = new System.Drawing.Point(337, 278);
-            this.radioButton.Margin = new System.Windows.Forms.Padding(0);
-            this.radioButton.Name = "radioButton";
-            this.radioButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.radioButton.Size = new System.Drawing.Size(109, 19);
-            this.radioButton.TabIndex = 3;
-            this.radioButton.TabStop = true;
-            this.radioButton.Text = "Remember me";
-            this.radioButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.radioButton.UseVisualStyleBackColor = true;
-            this.radioButton.Click += new System.EventHandler(this.radioButton_Click);
-            // 
             // labelSignUp
             // 
             this.labelSignUp.AutoSize = true;
@@ -123,11 +105,11 @@
             this.typingBoxPassword.Margin = new System.Windows.Forms.Padding(0);
             this.typingBoxPassword.Name = "typingBoxPassword";
             this.typingBoxPassword.nameOfPanel = "Login";
-            this.typingBoxPassword.pictureBoxTop = 10;
-            this.typingBoxPassword.Size = new System.Drawing.Size(444, 90);
+            this.typingBoxPassword.pictureBoxTop = 18;
+            this.typingBoxPassword.Size = new System.Drawing.Size(444, 98);
             this.typingBoxPassword.TabIndex = 2;
             this.typingBoxPassword.text = "Password";
-            this.typingBoxPassword.typingBoxTop = 6;
+            this.typingBoxPassword.typingBoxTop = 14;
             // 
             // typingBoxUser
             // 
@@ -153,7 +135,6 @@
             this.Controls.Add(this.typingBoxPassword);
             this.Controls.Add(this.typingBoxUser);
             this.Controls.Add(this.labelSignUp);
-            this.Controls.Add(this.radioButton);
             this.Controls.Add(this.labelDontHaveAnAccount);
             this.Controls.Add(this.labelLogo);
             this.Controls.Add(this.buttonLogin);
@@ -167,7 +148,6 @@
         private Bunifu.Framework.UI.BunifuFlatButton buttonLogin;
         private Bunifu.Framework.UI.BunifuCustomLabel labelLogo;
         private Bunifu.Framework.UI.BunifuCustomLabel labelDontHaveAnAccount;
-        private System.Windows.Forms.RadioButton radioButton;
         private Bunifu.Framework.UI.BunifuCustomLabel labelSignUp;
         private Controls.typingBox typingBoxUser;
         private Controls.typingBox typingBoxPassword;

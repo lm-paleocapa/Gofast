@@ -4,11 +4,8 @@
     using System.Windows.Forms;
     using Lib.Client;
     using System.Drawing;
-    using Newtonsoft.Json;
     using Controls;
     using OfficialChat.Chat;
-    using Lib.Local;
-    using System.IO;
     public partial class LoginPage : UserControl
     {
         public typingBox tbUser
@@ -45,7 +42,6 @@
                 ok = value;
                 typingBoxUser.Enabled = ok;
                 typingBoxPassword.Enabled = ok;
-                radioButton.Enabled = ok;
                 buttonLogin.Enabled = ok;
             }
         }
@@ -96,32 +92,6 @@
                 WS.Send(json);
 
                 mainChatControl.from = typingBoxUser.text;
-
-                //if (radioButton.Checked)
-                //{
-                //    UserJ user = new UserJ
-                //    {
-                //        username = typingBoxUser.text,
-                //        password = typingBoxPassword.text
-                //    };
-                //    string s = JsonConvert.SerializeObject(user);
-
-                //    File.WriteAllText("user.json", s);
-                //}
-            }
-        }
-        private static int i = 1;
-        private void radioButton_Click(object sender, EventArgs e)
-        {
-            if (radioButton.Checked && i == 0)
-            {
-                radioButton.Checked = false;
-                i++;
-            }
-            else
-            {
-                radioButton.Checked = true;
-                i--;
             }
         }
         public static Panel panelDown;

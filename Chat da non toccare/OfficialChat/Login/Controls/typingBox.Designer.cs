@@ -37,7 +37,7 @@
             this.textBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.textBox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox.HintForeColor = System.Drawing.Color.Transparent;
+            this.textBox.HintForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.textBox.HintText = "";
             this.textBox.isPassword = false;
             this.textBox.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(179)))), ((int)(((byte)(16)))));
@@ -60,7 +60,7 @@
             // 
             this.labelError.AutoSize = true;
             this.labelError.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelError.Location = new System.Drawing.Point(61, 71);
+            this.labelError.Location = new System.Drawing.Point(62, 69);
             this.labelError.Name = "labelError";
             this.labelError.Size = new System.Drawing.Size(29, 13);
             this.labelError.TabIndex = 3;

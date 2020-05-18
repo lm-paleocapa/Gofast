@@ -164,10 +164,11 @@
                 panelUserSetting.password = json.password;
             }
         }
-        public class ClassTwo
+        public class ClassTwo // 18,14
         {
             public static void Two(JSON json)
             {
+                Form1.loginPage.Invoke(new Action(() => Form1.loginPage.controlEnabled = true));
                 if (!json.uok && !json.pok)
                 {
                     Form1.loginPage.Invoke(new Action(() =>
@@ -181,6 +182,11 @@
                         Form1.loginPage.tbUser.labelErrorControl.Text = "The user not exist";
                         Form1.loginPage.tbUser.labelErrorControl.ForeColor = Color.FromArgb(204, 0, 0);
 
+                        if (Form1.loginPage.tbPassword.pictureBoxTop == 26 && Form1.loginPage.tbPassword.typingBoxTop == 14)
+                        {
+                            Form1.loginPage.tbPassword.pictureBoxTop -= 15;
+                            Form1.loginPage.tbPassword.typingBoxTop -= 15;
+                        }
                         Form1.loginPage.tbPassword.labelErrorControl.ForeColor = Color.FromArgb(204, 0, 0);
                         Form1.loginPage.tbPassword.labelErrorControl.Text = "Error";
                         Form1.loginPage.tbPassword.labelErrorControl.Visible = true;

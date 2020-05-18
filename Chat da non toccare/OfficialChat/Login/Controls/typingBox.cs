@@ -98,7 +98,7 @@
         }
         private void textBox_Clear(object sender, EventArgs e)
         {
-            if (pictureBoxTop == 26 && typingBoxTop == 22 && nameOfPanel == "Login")
+            if (pictureBoxTop == 26 || pictureBoxTop == 11 && typingBoxTop == 22 || typingBoxTop == -1 && nameOfPanel == "Login")
             {
                 pictureBoxTop += 15;
                 typingBoxTop += 15;
