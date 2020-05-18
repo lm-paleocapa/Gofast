@@ -168,32 +168,22 @@
                 {
                     Form1.loginPage.Invoke(new Action(() =>
                     {
-                        if (Form1.loginPage.tbUser.pictureBoxTop == 41 && Form1.loginPage.tbUser.typingBoxTop == 37)
-                        {
-                            Form1.loginPage.tbUser.pictureBoxTop -= 15;
-                            Form1.loginPage.tbUser.typingBoxTop -= 15;
-                        }
-                        Form1.loginPage.tbUser.labelErrorControl.Visible = true;
-                        Form1.loginPage.tbUser.labelErrorControl.Text = "The user not exist";
-                        Form1.loginPage.tbUser.labelErrorControl.ForeColor = Color.FromArgb(204, 0, 0);
+                        Form1.loginPage.lbUsername.Visible = true;
+                        Form1.loginPage.lbUsername.Text = "The user not exist";
+                        Form1.loginPage.lbUsername.ForeColor = Color.FromArgb(204, 0, 0);
 
-                        if (Form1.loginPage.tbPassword.pictureBoxTop == 26 && Form1.loginPage.tbPassword.typingBoxTop == 14)
-                        {
-                            Form1.loginPage.tbPassword.pictureBoxTop -= 15;
-                            Form1.loginPage.tbPassword.typingBoxTop -= 15;
-                        }
-                        Form1.loginPage.tbPassword.labelErrorControl.ForeColor = Color.FromArgb(204, 0, 0);
-                        Form1.loginPage.tbPassword.labelErrorControl.Text = "Error";
-                        Form1.loginPage.tbPassword.labelErrorControl.Visible = true;
+                        Form1.loginPage.lbPassword.ForeColor = Color.FromArgb(204, 0, 0);
+                        Form1.loginPage.lbPassword.Text = "Error";
+                        Form1.loginPage.lbPassword.Visible = true;
                     }));
                 }
                 if (json.uok && !json.pok)
                 {
                     Form1.loginPage.Invoke(new Action(() =>
                     {
-                        Form1.loginPage.tbPassword.labelErrorControl.ForeColor = Color.FromArgb(204, 0, 0);
-                        Form1.loginPage.tbPassword.labelErrorControl.Text = "Error";
-                        Form1.loginPage.tbPassword.labelErrorControl.Visible = true;
+                        Form1.loginPage.lbPassword.ForeColor = Color.FromArgb(204, 0, 0);
+                        Form1.loginPage.lbPassword.Text = "Error";
+                        Form1.loginPage.lbPassword.Visible = true;
                     }));
                 }
             }
@@ -231,10 +221,10 @@
                     Form1.registerPage.Invoke(new Action(() =>
                     {
                         Form1.registerPage.numericUpDown.Value = 1;
-                        Form1.registerPage.typingBoxConfirmPassword.text = "Confirm password";
-                        Form1.registerPage.typingBoxMail.text = "Mail";
-                        Form1.registerPage.typingBoxPassword.text = "Password";
-                        Form1.registerPage.typingBoxUser.text = "Username";
+                        Form1.registerPage.cPassword = "Confirm password";
+                        Form1.registerPage.mail = "Mail";
+                        Form1.registerPage.password = "Password";
+                        Form1.registerPage.username = "Username";
                     }));
 
                     Register.RegisterPage.panelDown.Invoke(new Action(() =>
@@ -258,28 +248,28 @@
                         }
                         else if (!json.mok && json.uok)
                         {
-                            Form1.registerPage.typingBoxMail.labelErrorControl.Text = "the mail is already used";
-                            Form1.registerPage.typingBoxMail.labelErrorControl.ForeColor = Color.FromArgb(204, 0, 0);
-                            Form1.registerPage.typingBoxMail.labelErrorControl.Visible = true;
+                            Form1.registerPage.lbMail.Text = "the mail is already used";
+                            Form1.registerPage.lbMail.ForeColor = Color.FromArgb(204, 0, 0);
+                            Form1.registerPage.lbMail.Visible = true;
                         }
                         else if (json.mok && !json.uok)
                         {
-                            Form1.registerPage.typingBoxUser.labelErrorControl.Text = "The name is already used";
-                            Form1.registerPage.typingBoxUser.labelErrorControl.ForeColor = Color.FromArgb(204, 0, 0);
-                            Form1.registerPage.typingBoxUser.labelErrorControl.Visible = true;
+                            Form1.registerPage.lbUsername.Text = "The name is already used";
+                            Form1.registerPage.lbUsername.ForeColor = Color.FromArgb(204, 0, 0);
+                            Form1.registerPage.lbUsername.Visible = true;
                         }
                         else
                         {
-                            Form1.registerPage.typingBoxUser.labelErrorControl.Text = "The name is already used";
-                            Form1.registerPage.typingBoxUser.labelErrorControl.ForeColor = Color.FromArgb(204, 0, 0);
-                            Form1.registerPage.typingBoxUser.labelErrorControl.Visible = true;
+                            Form1.registerPage.lbUsername.Text = "The name is already used";
+                            Form1.registerPage.lbUsername.ForeColor = Color.FromArgb(204, 0, 0);
+                            Form1.registerPage.lbUsername.Visible = true;
 
-                            Form1.registerPage.typingBoxMail.labelErrorControl.Text = "the mail is already used";
-                            Form1.registerPage.typingBoxMail.labelErrorControl.ForeColor = Color.FromArgb(204, 0, 0);
-                            Form1.registerPage.typingBoxMail.labelErrorControl.Visible = true;
+                            Form1.registerPage.tbMail.Text = "the mail is already used";
+                            Form1.registerPage.tbMail.ForeColor = Color.FromArgb(204, 0, 0);
+                            Form1.registerPage.tbMail.Visible = true;
                         }
-                        Form1.registerPage.typingBoxConfirmPassword.text = "";
-                        Form1.registerPage.typingBoxConfirmPassword.text = "";
+                        Form1.registerPage.tbPassword.Text = "";
+                        Form1.registerPage.tbCPassword.Text = "";
                     }));
                 }
             }

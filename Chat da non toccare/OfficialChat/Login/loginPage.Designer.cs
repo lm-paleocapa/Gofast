@@ -18,8 +18,14 @@
             this.labelLogo = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.labelDontHaveAnAccount = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.labelSignUp = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.typingBoxPassword = new OfficialChat.Login.Controls.typingBox();
-            this.typingBoxUser = new OfficialChat.Login.Controls.typingBox();
+            this.tbUsername = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.lbUsername = new System.Windows.Forms.Label();
+            this.lbPassword = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.tbPass = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonLogin
@@ -95,45 +101,101 @@
             this.labelSignUp.Text = " SingUp";
             this.labelSignUp.Click += new System.EventHandler(this.labelSignUp_Click);
             // 
-            // typingBoxPassword
+            // tbUsername
             // 
-            this.typingBoxPassword.errorTop = 55;
-            this.typingBoxPassword.hint = "Password";
-            this.typingBoxPassword.img = ((System.Drawing.Image)(resources.GetObject("typingBoxPassword.img")));
-            this.typingBoxPassword.isPassword = true;
-            this.typingBoxPassword.Location = new System.Drawing.Point(9, 187);
-            this.typingBoxPassword.Margin = new System.Windows.Forms.Padding(0);
-            this.typingBoxPassword.Name = "typingBoxPassword";
-            this.typingBoxPassword.nameOfPanel = "Login";
-            this.typingBoxPassword.pictureBoxTop = 18;
-            this.typingBoxPassword.Size = new System.Drawing.Size(444, 98);
-            this.typingBoxPassword.TabIndex = 2;
-            this.typingBoxPassword.text = "Password";
-            this.typingBoxPassword.typingBoxTop = 14;
+            this.tbUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.tbUsername.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tbUsername.HintForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tbUsername.HintText = "";
+            this.tbUsername.isPassword = false;
+            this.tbUsername.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(179)))), ((int)(((byte)(16)))));
+            this.tbUsername.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(140)))), ((int)(((byte)(193)))));
+            this.tbUsername.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(179)))), ((int)(((byte)(16)))));
+            this.tbUsername.LineThickness = 3;
+            this.tbUsername.Location = new System.Drawing.Point(66, 133);
+            this.tbUsername.Margin = new System.Windows.Forms.Padding(0);
+            this.tbUsername.Name = "tbUsername";
+            this.tbUsername.Size = new System.Drawing.Size(370, 44);
+            this.tbUsername.TabIndex = 1;
+            this.tbUsername.Text = "Username";
+            this.tbUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
-            // typingBoxUser
+            // lbUsername
             // 
-            this.typingBoxUser.errorTop = 71;
-            this.typingBoxUser.hint = "Username";
-            this.typingBoxUser.img = global::OfficialChat.Properties.Resources.user;
-            this.typingBoxUser.isPassword = false;
-            this.typingBoxUser.Location = new System.Drawing.Point(9, 91);
-            this.typingBoxUser.Margin = new System.Windows.Forms.Padding(0);
-            this.typingBoxUser.Name = "typingBoxUser";
-            this.typingBoxUser.nameOfPanel = "Login";
-            this.typingBoxUser.pictureBoxTop = 41;
-            this.typingBoxUser.Size = new System.Drawing.Size(444, 90);
-            this.typingBoxUser.TabIndex = 1;
-            this.typingBoxUser.text = "Username";
-            this.typingBoxUser.typingBoxTop = 37;
+            this.lbUsername.AutoSize = true;
+            this.lbUsername.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbUsername.Location = new System.Drawing.Point(62, 181);
+            this.lbUsername.Margin = new System.Windows.Forms.Padding(0);
+            this.lbUsername.Name = "lbUsername";
+            this.lbUsername.Size = new System.Drawing.Size(35, 13);
+            this.lbUsername.TabIndex = 13;
+            this.lbUsername.Text = "label1";
+            this.lbUsername.Visible = false;
+            // 
+            // lbPassword
+            // 
+            this.lbPassword.AutoSize = true;
+            this.lbPassword.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbPassword.Location = new System.Drawing.Point(66, 262);
+            this.lbPassword.Margin = new System.Windows.Forms.Padding(0);
+            this.lbPassword.Name = "lbPassword";
+            this.lbPassword.Size = new System.Drawing.Size(35, 13);
+            this.lbPassword.TabIndex = 14;
+            this.lbPassword.Text = "label2";
+            this.lbPassword.Visible = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::OfficialChat.Properties.Resources.key;
+            this.pictureBox2.Location = new System.Drawing.Point(17, 218);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox2.TabIndex = 16;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::OfficialChat.Properties.Resources.user;
+            this.pictureBox3.Location = new System.Drawing.Point(17, 137);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox3.TabIndex = 17;
+            this.pictureBox3.TabStop = false;
+            // 
+            // tbPass
+            // 
+            this.tbPass.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.tbPass.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tbPass.HintForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tbPass.HintText = "";
+            this.tbPass.isPassword = false;
+            this.tbPass.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(179)))), ((int)(((byte)(16)))));
+            this.tbPass.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(140)))), ((int)(((byte)(193)))));
+            this.tbPass.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(179)))), ((int)(((byte)(16)))));
+            this.tbPass.LineThickness = 3;
+            this.tbPass.Location = new System.Drawing.Point(66, 214);
+            this.tbPass.Margin = new System.Windows.Forms.Padding(0);
+            this.tbPass.Name = "tbPass";
+            this.tbPass.Size = new System.Drawing.Size(370, 44);
+            this.tbPass.TabIndex = 18;
+            this.tbPass.Text = "Password";
+            this.tbPass.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // LoginPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
-            this.Controls.Add(this.typingBoxPassword);
-            this.Controls.Add(this.typingBoxUser);
+            this.Controls.Add(this.tbPass);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.lbPassword);
+            this.Controls.Add(this.lbUsername);
+            this.Controls.Add(this.tbUsername);
             this.Controls.Add(this.labelSignUp);
             this.Controls.Add(this.labelDontHaveAnAccount);
             this.Controls.Add(this.labelLogo);
@@ -141,6 +203,8 @@
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "LoginPage";
             this.Size = new System.Drawing.Size(463, 493);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,7 +213,11 @@
         private Bunifu.Framework.UI.BunifuCustomLabel labelLogo;
         private Bunifu.Framework.UI.BunifuCustomLabel labelDontHaveAnAccount;
         private Bunifu.Framework.UI.BunifuCustomLabel labelSignUp;
-        private Controls.typingBox typingBoxUser;
-        private Controls.typingBox typingBoxPassword;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        public System.Windows.Forms.Label lbUsername;
+        public System.Windows.Forms.Label lbPassword;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox tbUsername;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox tbPass;
     }
 }

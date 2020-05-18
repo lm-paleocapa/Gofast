@@ -12,13 +12,57 @@
         {
             InitializeComponent();
         }
+        public string username
+        {
+            get
+            {
+                return tbUsername.Text;
+            }
+            set
+            {
+                tbUsername.Text = value;
+            }
+        }
+        public string password
+        {
+            get
+            {
+                return tbPassword.Text;
+            }
+            set
+            {
+                tbPassword.Text = value;
+            }
+        }
+        public string mail
+        {
+            get
+            {
+                return tbMail.Text;
+            }
+            set
+            {
+                tbMail.Text = value;
+            }
+        }
+        public string cPassword
+        {
+            get
+            {
+                return tbCPassword.Text;
+            }
+            set
+            {
+                tbCPassword.Text = value;
+            }
+        }
         public static Panel panelDown;
         private void pictureBoxBack_Click(object sender, EventArgs e)
         {
-            typingBoxUser.text = "Username";
-            typingBoxPassword.text = "Password";
-            typingBoxConfirmPassword.text = "Confirm password";
-            typingBoxMail.text = "Mail";
+            tbUsername.Text = "Username";
+            tbPassword.Text = "Password";
+            tbCPassword.Text = "Confirm password";
+            tbMail.Text = "Mail";
             numericUpDown.Value = 1;
             userImage = "";
 
@@ -55,28 +99,28 @@
             bool ok = false;
 
             #region User
-            if (string.IsNullOrEmpty(typingBoxUser.text) || typingBoxUser.text == "Username")
+            if (string.IsNullOrEmpty(tbUsername.Text) || tbUsername.Text == "Username")
             {
-                typingBoxUser.labelErrorControl.Text = "Insert a username";
-                typingBoxUser.labelErrorControl.ForeColor = SystemColors.ControlLightLight;
-                typingBoxUser.labelErrorControl.Visible = true;
+                lbUsername.Text = "Insert a username";
+                lbUsername.ForeColor = SystemColors.ControlLightLight;
+                lbUsername.Visible = true;
                 ok = true;
             }
             #endregion
 
             #region mail
-            if (string.IsNullOrEmpty(typingBoxMail.text) || typingBoxMail.text == "Mail")
+            if (string.IsNullOrEmpty(tbMail.Text) || tbMail.Text == "Mail")
             {
-                typingBoxMail.labelErrorControl.ForeColor = SystemColors.ControlLightLight;
-                typingBoxMail.labelErrorControl.Text = "Insert a mail";
-                typingBoxMail.labelErrorControl.Visible = true;
+                lbMail.ForeColor = SystemColors.ControlLightLight;
+                lbMail.Text = "Insert a mail";
+                lbMail.Visible = true;
                 ok = true;
             }
-            else if (!isEmail(typingBoxMail.text))
+            else if (!isEmail(tbMail.Text))
             {
-                typingBoxMail.labelErrorControl.ForeColor = SystemColors.ControlLightLight;
-                typingBoxMail.labelErrorControl.Text = "Invalid mail";
-                typingBoxMail.labelErrorControl.Visible = true;
+                lbMail.ForeColor = SystemColors.ControlLightLight;
+                lbMail.Text = "Invalid mail";
+                lbMail.Visible = true;
                 ok = true;
             }
             #endregion
@@ -88,33 +132,33 @@
             }
 
             #region Password
-            if (string.IsNullOrEmpty(typingBoxPassword.text) || typingBoxPassword.text == "Password")
+            if (string.IsNullOrEmpty(tbPassword.Text) || tbPassword.Text == "Password")
             {
-                typingBoxPassword.labelErrorControl.ForeColor = SystemColors.ControlLightLight;
-                typingBoxPassword.labelErrorControl.Text = "Insert a password";
-                typingBoxPassword.labelErrorControl.Visible = true;
+                lbPassword.ForeColor = SystemColors.ControlLightLight;
+                lbPassword.Text = "Insert a password";
+                lbPassword.Visible = true;
                 ok = true;
             }
-            else if (typingBoxPassword.text.Length < 8)
+            else if (tbPassword.Text.Length < 8)
             {
-                typingBoxPassword.labelErrorControl.ForeColor = SystemColors.ControlLightLight;
-                typingBoxPassword.labelErrorControl.Text = "Password too short";
-                typingBoxPassword.labelErrorControl.Visible = true;
+                lbPassword.ForeColor = SystemColors.ControlLightLight;
+                lbPassword.Text = "Password too short";
+                lbPassword.Visible = true;
                 ok = true;
             }
 
-            if (string.IsNullOrEmpty(typingBoxConfirmPassword.text) || typingBoxConfirmPassword.text == "Confirm password")
+            if (string.IsNullOrEmpty(tbCPassword.Text) || tbCPassword.Text == "Confirm password")
             {
-                typingBoxConfirmPassword.labelErrorControl.ForeColor = SystemColors.ControlLightLight;
-                typingBoxConfirmPassword.labelErrorControl.Text = "Insert the confirm password";
-                typingBoxConfirmPassword.labelErrorControl.Visible = true;
+                lbCPassword.ForeColor = SystemColors.ControlLightLight;
+                lbCPassword.Text = "Insert the confirm password";
+                lbCPassword.Visible = true;
                 ok = true;
             }
-            else if (typingBoxConfirmPassword.text != typingBoxPassword.text)
+            else if (tbCPassword.Text != tbCPassword.Text)
             {
-                typingBoxConfirmPassword.labelErrorControl.ForeColor = SystemColors.ControlLightLight;
-                typingBoxConfirmPassword.labelErrorControl.Text = "Invalid confirm password";
-                typingBoxConfirmPassword.labelErrorControl.Visible = true;
+                lbCPassword.ForeColor = SystemColors.ControlLightLight;
+                lbCPassword.Text = "Invalid confirm password";
+                lbCPassword.Visible = true;
                 ok = true;
             }
             #endregion
@@ -127,16 +171,16 @@
                 JSON json = new JSON
                 {
                     id = 3,
-                    username = typingBoxUser.text,
-                    password = typingBoxPassword.text,
+                    username = tbUsername.Text,
+                    password = tbPassword.Text,
                     age = (int)numericUpDown.Value,
                     image = userImage,
-                    mail = typingBoxMail.text
+                    mail = tbMail.Text
                 };
                 WS.Send(json);
             }
         }
-        private static bool isEmail(string inputEmail)
+        public static bool isEmail(string inputEmail)
         {
             string strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
                   @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +

@@ -262,12 +262,6 @@
     <Compile Include="Lib\Client\Messages.cs" />
     <Compile Include="Lib\Client\WS.cs" />
     <Compile Include="Lib\Local\UserSave.cs" />
-    <Compile Include="Login\Controls\typingBox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Login\Controls\typingBox.Designer.cs">
-      <DependentUpon>typingBox.cs</DependentUpon>
-    </Compile>
     <Compile Include="Login\LoginPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -329,9 +323,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Login\Controls\typingBox.resx">
-      <DependentUpon>typingBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>

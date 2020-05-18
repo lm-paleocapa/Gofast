@@ -4,32 +4,9 @@
     using System.Windows.Forms;
     using Lib.Client;
     using System.Drawing;
-    using Controls;
     using OfficialChat.Chat;
     public partial class LoginPage : UserControl
     {
-        public typingBox tbUser
-        {
-            get
-            {
-                return typingBoxUser;
-            }
-            set
-            {
-                typingBoxUser = value;
-            }
-        }
-        public typingBox tbPassword
-        {
-            get
-            {
-                return typingBoxPassword;
-            }
-            set
-            {
-                typingBoxPassword = value;
-            }
-        }
         bool ok = true;
         public bool controlEnabled
         {
@@ -40,8 +17,8 @@
             set
             {
                 ok = value;
-                typingBoxUser.Enabled = ok;
-                typingBoxPassword.Enabled = ok;
+                tbPass.Enabled = ok;
+                tbUsername.Enabled = ok;
                 buttonLogin.Enabled = ok;
             }
         }
@@ -52,31 +29,26 @@
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             bool ok = false;
-            if (typingBoxPassword.text == "Password" || string.IsNullOrEmpty(typingBoxPassword.text))
+            if (tbPass.Text == "Password" || string.IsNullOrEmpty(tbPass.Text))
             {
-                typingBoxPassword.labelErrorControl.ForeColor = SystemColors.ControlLightLight;
-                typingBoxPassword.labelErrorControl.Text = "Insert the password";
-                typingBoxPassword.labelErrorControl.Visible = true;
+                lbPassword.ForeColor = SystemColors.ControlLightLight;
+                lbPassword.Text = "Insert the password";
+                lbPassword.Visible = true;
                 ok = true;
             }
-            if (typingBoxPassword.text.Length < 8)
+            if (lbPassword.Text.Length < 8)
             {
-                typingBoxPassword.labelErrorControl.ForeColor = SystemColors.ControlLightLight;
-                typingBoxPassword.labelErrorControl.Text = "Password too short";
-                typingBoxPassword.labelErrorControl.Visible = true;
+                lbPassword.ForeColor = SystemColors.ControlLightLight;
+                lbPassword.Text = "Password too short";
+                lbPassword.Visible = true;
                 ok = true;
             }
 
-            if (typingBoxUser.text == "Username" || string.IsNullOrEmpty(typingBoxUser.text))
+            if (tbUsername.Text == "Username" || string.IsNullOrEmpty(tbUsername.Text))
             {
-                if (typingBoxUser.pictureBoxTop == 41 && typingBoxUser.typingBoxTop == 37)
-                {
-                    typingBoxUser.pictureBoxTop -= 15;
-                    typingBoxUser.typingBoxTop -= 15;
-                }
-                typingBoxUser.labelErrorControl.ForeColor = SystemColors.ControlLightLight;
-                typingBoxUser.labelErrorControl.Text = "Inser the username";
-                typingBoxUser.labelErrorControl.Visible = true;
+                lbUsername.ForeColor = SystemColors.ControlLightLight;
+                lbUsername.Text = "Inser the username";
+                lbUsername.Visible = true;
                 ok = true;
             }
             if (!ok)
@@ -86,12 +58,12 @@
                 JSON json = new JSON
                 {
                     id = 1,
-                    username = typingBoxUser.text,
-                    password = typingBoxPassword.text
+                    username = tbUsername.Text,
+                    password = tbPass.Text
                 };
                 WS.Send(json);
 
-                mainChatControl.from = typingBoxUser.text;
+                mainChatControl.from = tbUsername.Text;
             }
         }
         public static Panel panelDown;
