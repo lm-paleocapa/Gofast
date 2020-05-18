@@ -435,14 +435,27 @@
 
                 MySqlCommand cmd;
                 string query;
-                MySqlDataReader reader;
+
+                // da inviare al server Username, Nome della persona a cui si vuole fare la richiesta
 
                 foreach (var i in json0.friends)
                 {
                     query = $"Insert into newFriendsRequest (user,friend) values ('{json0.username}','{i.user}')";
+                    cmd = new MySqlCommand(query,cnn);
+                    cmd.ExecuteNonQuery();
+
+                    Obj.Json json = new Obj.Json
+                    {
+                        id = 8,
+                        from = json0.username
+                    };
+                    string to = JsonConvert.SerializeObject(json);
+                    foreach (var k in usersConnected)
+                        if (k.user == i.user)
+                            k.socketId.Send(to);
                 }
                 cnn.Close();
-            } // da finire
+            }
             void Sesto(Obj.Json json0, IWebSocketConnection socekt)
             {
                 MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
