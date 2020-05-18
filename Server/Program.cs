@@ -465,7 +465,11 @@
 
                 foreach (var i in json0.friends)
                 {
-                    query = $"Insert into newFriendsRequest (user,friend) values ('{json0.username}','{i.user}')";
+                    query = $"select image from account where user = '{json0.username}'"
+                    cmd = new MySqlCommand(query,cnn);
+                    string img = cmd.ExecuteScalar().ToString();
+
+                    query = $"Insert into newFriendsRequest (user,friend,image) values ('{json0.username}','{i.user}','{img}')";
                     cmd = new MySqlCommand(query,cnn);
                     cmd.ExecuteNonQuery();
 
