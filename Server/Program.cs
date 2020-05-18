@@ -476,7 +476,7 @@
                     };
                     string to = JsonConvert.SerializeObject(json);
                     foreach (var k in usersConnected)
-                        if (k.user == i.user)
+                        if (k.user == i.user && k.SocketConnected)
                             k.socketId.Send(to);
                 }
                 cnn.Close();
