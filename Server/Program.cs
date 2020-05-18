@@ -209,6 +209,31 @@
                             foreach (var i in messages)
                                 MessaggiInAttesa.Remove(i);
                         }
+
+                        List<Obj.Friend> amici = new List<Obj.Friend>();
+                        query = $"select friend from newFriendsRequest where user = '{json0.username}'";
+                        cmd = new MySqlCommand(query, cnn);
+                        reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            query = $"select image from account where user = '{reader[0]}'";
+                            cmd = new MySqlCommand(query, cnn);
+                            string image = cmd.ExecuteScalar().ToString();
+                            Obj.Friend item = new Obj.Friend
+                            {
+                                user = reader[0].ToString(),
+                                image = image
+                            };
+                            amici.Add(item);
+                        }
+                        reader.Close();
+
+                        Obj.Json json4 = new Obj.Json
+                        {
+                            id = 8,
+                            friends = amici
+                        };
+
                         cnn.Close();
                     }
                     else
