@@ -1,17 +1,33 @@
 ﻿namespace OfficialChat.Chat.Controls
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Drawing;
-    using System.Data;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows.Forms;
     using Properties;
     public partial class requestItem : UserControl
     {
+        public string Username
+        {
+            get
+            {
+                return username.name;
+            }
+            set
+            {
+                username.name = value;
+            }
+        }
+        public Image Image
+        {
+            get
+            {
+                return username.picture;
+            }
+            set
+            {
+                username.picture = value;
+            }
+        }
         public requestItem()
         {
             InitializeComponent();

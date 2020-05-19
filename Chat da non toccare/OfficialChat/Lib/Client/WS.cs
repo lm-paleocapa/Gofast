@@ -107,6 +107,11 @@
                         ClassSeven.Seven(json);
                         break;
                     }
+                case 8:
+                    {
+                        ClassHeight.Height(json);
+                        break;
+                    }
             }
         }
         public class ClassOne
@@ -342,7 +347,18 @@
         {
             public static void Height(JSON json)
             {
-
+                foreach (var i in json.friends)
+                {
+                    var img = Convert.FromBase64String(i.image);
+                    MemoryStream ms = new MemoryStream(img);
+                    requestItem item = new requestItem
+                    {
+                        Username = i.user,
+                        Image = Image.FromStream(ms),
+                        Dock = DockStyle.Top
+                    };
+                    Form1.rq.panelForItem.Controls.Add(item);
+                }
             }
         }
     }

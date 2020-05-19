@@ -203,20 +203,24 @@
                                 id = 5,
                                 ms = messages
                             };
-                            string to = JsonConvert.SerializeObject(json);
-                            socket.Send(to);
+                            string to1 = JsonConvert.SerializeObject(json);
+                            socket.Send(to1);
                             foreach (var i in messages)
                                 MessaggiInAttesa.Remove(i);
                         }
+
+                        MySqlConnection cnn1 = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                        cnn1.Open();
 
                         List<Obj.Friend> amici = new List<Obj.Friend>();
                         query = $"select friend from newFriendsRequest where user = '{json0.username}'";
                         cmd = new MySqlCommand(query, cnn);
                         reader = cmd.ExecuteReader();
+
                         while (reader.Read())
                         {
                             query = $"select image from account where user = '{reader[0]}'";
-                            cmd = new MySqlCommand(query, cnn);
+                            cmd = new MySqlCommand(query, cnn1);
                             string image = cmd.ExecuteScalar().ToString();
                             Obj.Friend item = new Obj.Friend
                             {
@@ -232,7 +236,9 @@
                             id = 8,
                             friends = amici
                         };
-
+                        string to = JsonConvert.SerializeObject(json4);
+                        socket.Send(to);
+                        cnn1.Close();
                         cnn.Close();
                     }
                     else

@@ -11,6 +11,17 @@
         {
             InitializeComponent();
         }
+        public bool LA
+        {
+            get
+            {
+                return labelLastAccess.Visible;
+            }
+            set
+            {
+                labelLastAccess.Visible = value;
+            }
+        }
         public BorderStyle Border
         {
             get

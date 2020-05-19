@@ -8,6 +8,17 @@
         {
             InitializeComponent();
         }
+        public Panel panelForItem
+        {
+            get
+            {
+                return panelForUser;
+            }
+            set
+            {
+                panelForUser = value;
+            }
+        }
         public static Panel panelDown;
         private void pictureBoxBack_Click(object sender, System.EventArgs e)
         {

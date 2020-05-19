@@ -29,31 +29,21 @@
         private void InitializeComponent()
         {
             this.panelForUser = new System.Windows.Forms.Panel();
-            this.requestItem1 = new OfficialChat.Chat.Controls.requestItem();
             this.pictureBoxBack = new System.Windows.Forms.PictureBox();
-            this.panelForUser.SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelForUser
             // 
-            this.panelForUser.Controls.Add(this.requestItem1);
+            this.panelForUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.panelForUser.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelForUser.Location = new System.Drawing.Point(0, 68);
             this.panelForUser.Margin = new System.Windows.Forms.Padding(0);
             this.panelForUser.Name = "panelForUser";
             this.panelForUser.Size = new System.Drawing.Size(314, 457);
             this.panelForUser.TabIndex = 0;
-            // 
-            // requestItem1
-            // 
-            this.requestItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(69)))));
-            this.requestItem1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.requestItem1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.requestItem1.Location = new System.Drawing.Point(0, 0);
-            this.requestItem1.Margin = new System.Windows.Forms.Padding(0);
-            this.requestItem1.Name = "requestItem1";
-            this.requestItem1.Size = new System.Drawing.Size(314, 64);
-            this.requestItem1.TabIndex = 0;
             // 
             // pictureBoxBack
             // 
@@ -66,17 +56,28 @@
             this.pictureBoxBack.TabStop = false;
             this.pictureBoxBack.Click += new System.EventHandler(this.pictureBoxBack_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.panel1.Controls.Add(this.pictureBoxBack);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(314, 68);
+            this.panel1.TabIndex = 0;
+            // 
             // requests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pictureBoxBack);
             this.Controls.Add(this.panelForUser);
+            this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "requests";
             this.Size = new System.Drawing.Size(314, 525);
-            this.panelForUser.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -84,7 +85,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panelForUser;
-        private requestItem requestItem1;
         private System.Windows.Forms.PictureBox pictureBoxBack;
+        private System.Windows.Forms.Panel panel1;
     }
 }
