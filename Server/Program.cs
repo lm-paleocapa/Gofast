@@ -597,7 +597,7 @@
                 MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
                 cnn.Open();
 
-                string query = $"DELETE from newFriendsRequest where user = '{json0.username}' and friend = '{ json0.to}';";
+                string query = $"DELETE from newFriendsRequest where user = '{json0.to}' and friend = '{ json0.username}';";
                 MySqlCommand cmd = new MySqlCommand(query, cnn);
                 
                 cmd.ExecuteNonQuery();
