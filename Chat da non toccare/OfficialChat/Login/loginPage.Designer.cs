@@ -120,6 +120,10 @@
             this.tbUsername.TabIndex = 1;
             this.tbUsername.Text = "Username";
             this.tbUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.tbUsername.OnValueChanged += new System.EventHandler(this.userChangeed);
+            this.tbUsername.Click += new System.EventHandler(this.userChangeed);
+            this.tbUsername.Enter += new System.EventHandler(this.tbUsername_Enter);
+            this.tbUsername.Leave += new System.EventHandler(this.tbUsername_Leave);
             // 
             // lbUsername
             // 
@@ -181,9 +185,13 @@
             this.tbPass.Margin = new System.Windows.Forms.Padding(0);
             this.tbPass.Name = "tbPass";
             this.tbPass.Size = new System.Drawing.Size(370, 44);
-            this.tbPass.TabIndex = 18;
+            this.tbPass.TabIndex = 2;
             this.tbPass.Text = "Password";
             this.tbPass.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.tbPass.OnValueChanged += new System.EventHandler(this.passChanged);
+            this.tbPass.Click += new System.EventHandler(this.passChanged);
+            this.tbPass.Enter += new System.EventHandler(this.tbPass_Enter);
+            this.tbPass.Leave += new System.EventHandler(this.tbPass_Leave);
             // 
             // LoginPage
             // 

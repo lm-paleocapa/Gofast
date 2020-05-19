@@ -12,7 +12,7 @@
     using Chat.Controls;
     public class WS
     {
-       // private static WebSocket ws = new WebSocket("ws://80.182.17.185:8181");
+        //private static WebSocket ws = new WebSocket("ws://80.182.17.185:8181");
         private static WebSocket ws = new WebSocket("ws://127.0.0.1:8181");
         private static List<string> toSend = new List<string>();
         public static void Open()
@@ -67,7 +67,7 @@
             else
                 toSend.Add(item);
         }
-        public static void ms(object sender, MessageReceivedEventArgs e)
+        private static void ms(object sender, MessageReceivedEventArgs e)
         {
             JSON json = JsonConvert.DeserializeObject<JSON>(e.Message);
             switch (json.id)
@@ -109,7 +109,6 @@
                     }
             }
         }
-
         public class ClassOne
         {
             public static Panel panelForControl;
@@ -159,7 +158,7 @@
                 Form1.loginPage.Invoke(new Action(() => Form1.loginPage.controlEnabled = true));
             }
         }
-        public class ClassTwo
+        private class ClassTwo
         {
             public static void Two(JSON json)
             {
@@ -188,7 +187,7 @@
                 }
             }
         }
-        public class ClassThree
+        private class ClassThree
         {
             public static void Three(JSON json)
             {
@@ -264,17 +263,18 @@
                             Form1.registerPage.lbUsername.ForeColor = Color.FromArgb(204, 0, 0);
                             Form1.registerPage.lbUsername.Visible = true;
 
-                            Form1.registerPage.tbMail.Text = "the mail is already used";
-                            Form1.registerPage.tbMail.ForeColor = Color.FromArgb(204, 0, 0);
-                            Form1.registerPage.tbMail.Visible = true;
+                            Form1.registerPage.lbMail.Text = "the mail is already used";
+                            Form1.registerPage.lbMail.ForeColor = Color.FromArgb(204, 0, 0);
+                            Form1.registerPage.lbMail.Visible = true;
                         }
-                        Form1.registerPage.tbPassword.Text = "";
-                        Form1.registerPage.tbCPassword.Text = "";
+                        Form1.registerPage.tbPassword.Text = "Password";
+                        Form1.registerPage.tbCPassword.Text = "Confirm password";
+                        Form1.registerPage.numericUpDown.Value = 1;
                     }));
                 }
             }
         }
-        public class ClassFive
+        private class ClassFive
         {
             public static void Five(JSON json)
             {
@@ -331,11 +331,18 @@
                 }
             }
         }
-        public class ClassSeven
+        private class ClassSeven
         {
             public static void Seven(JSON json)
             {
                 MessageBox.Show("Aggiornato");
+            }
+        }
+        private class ClassHeight
+        {
+            public static void Height(JSON json)
+            {
+
             }
         }
     }

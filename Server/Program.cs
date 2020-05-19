@@ -107,7 +107,6 @@
                     }
                 }
             }
-
             void Primo(Obj.Json json0, IWebSocketConnection socket)
             {
                 MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
@@ -355,7 +354,7 @@
                         query = "select mail from account";
                         cmd = new MySqlCommand(query, cnn);
                         reader = cmd.ExecuteReader();
-
+                        while (reader.Read())
                         if (reader[0].ToString() == json0.mail)
                         {
                             Obj.Json json2 = new Obj.Json
@@ -460,12 +459,9 @@
 
                 MySqlCommand cmd;
                 string query;
-
-                // da inviare al server Username, Nome della persona a cui si vuole fare la richiesta
-
                 foreach (var i in json0.friends)
                 {
-                    query = $"select image from account where user = '{json0.username}'"
+                    query = $"select image from account where user = '{json0.username}'";
                     cmd = new MySqlCommand(query,cnn);
                     string img = cmd.ExecuteScalar().ToString();
 

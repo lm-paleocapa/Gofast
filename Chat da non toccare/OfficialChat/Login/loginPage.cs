@@ -36,7 +36,7 @@
                 lbPassword.Visible = true;
                 ok = true;
             }
-            if (lbPassword.Text.Length < 8)
+            if (tbPass.Text.Length < 8)
             {
                 lbPassword.ForeColor = SystemColors.ControlLightLight;
                 lbPassword.Text = "Password too short";
@@ -79,16 +79,43 @@
                 Form1.registerPage.Show();
             }));
         }
-
         private void LoginPage_Load(object sender, EventArgs e) // da rimuovere
         {
-            JSON json = new JSON
-            {
-                id = 1,
-                username = "martin",
-                password = "12345678"
-            };
-            WS.Send(json);
+           
+        }
+        private void tbUsername_Enter(object sender, EventArgs e)
+        {
+            if (tbUsername.Text == "Username")
+                tbUsername.Text = "";
+        }
+        private void tbUsername_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbUsername.Text))
+                tbUsername.Text = "Username";
+        }
+        private void tbPass_Enter(object sender, EventArgs e)
+        {
+            if (tbPass.Text == "Password")
+                tbPass.Text = "";
+        }
+        private void tbPass_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbPass.Text))
+                tbPass.Text = "Password";
+        }
+        private void passChanged(object sender, EventArgs e)
+        {
+            if (tbPass.Text != "Password" || tbPass.Text != "")
+                tbPass.isPassword = true;
+            else
+                tbPass.isPassword = false;
+            if (lbPassword.Visible)
+                lbPassword.Visible = false;
+        }
+        private void userChangeed(object sender, EventArgs e)
+        {
+            if (lbUsername.Visible)
+                lbUsername.Visible = false;
         }
     }
 }

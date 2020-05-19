@@ -38,11 +38,11 @@
         {
             get
             {
-                return tbMail.Text;
+                return lbMail.Text;
             }
             set
             {
-                tbMail.Text = value;
+                lbMail.Text = value;
             }
         }
         public string cPassword
@@ -66,14 +66,19 @@
             numericUpDown.Value = 1;
             userImage = "";
 
-            panelDown.Invoke(new Action(() =>
-            {
-                panelDown.Size = new Size(463, 493);
-                foreach (UserControl i in panelDown.Controls)
-                    i.Visible = false;
-                panelDown.Controls.Add(Form1.loginPage);
-                Form1.loginPage.Show();
-            }));
+            lbUsername.Visible = false;
+            lbPassword.Visible = false;
+            lbCPassword.Visible = false;
+            lbMail.Visible = false;
+            labelNumberError.Visible = false;
+
+            buttonRegister.Enabled = true;
+
+            panelDown.Size = new Size(463, 493);
+            foreach (UserControl i in panelDown.Controls)
+                i.Visible = false;
+            panelDown.Controls.Add(Form1.loginPage);
+            Form1.loginPage.Show();
         }
         public static string userImage { get; set; }
         private void buttonImage_Click_1(object sender, EventArgs e)
@@ -154,7 +159,7 @@
                 lbCPassword.Visible = true;
                 ok = true;
             }
-            else if (tbCPassword.Text != tbCPassword.Text)
+            else if (tbCPassword.Text != tbPassword.Text)
             {
                 lbCPassword.ForeColor = SystemColors.ControlLightLight;
                 lbCPassword.Text = "Invalid confirm password";
@@ -204,6 +209,85 @@
         private void RegisterPage_Load(object sender, EventArgs e)
         {
             WS.ClassFour.btn = buttonRegister;
+        }
+        private void tbUsername_Enter(object sender, EventArgs e)
+        {
+            if (tbUsername.Text == "Username")
+                tbUsername.Text = "";
+        }
+        private void tbUsername_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbUsername.Text))
+                tbUsername.Text = "Username";
+        }
+        private void userChanged(object sender, EventArgs e)
+        {
+            if (lbUsername.Visible)
+                lbUsername.Visible = false;
+        }
+        private void tbPassword_Enter(object sender, EventArgs e)
+        {
+            if (tbPassword.Text == "Password")
+                tbPassword.Text = "";
+        }
+        private void tbPassword_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbPassword.Text))
+                tbPassword.Text = "Password";
+        }
+        private void passChanged(object sender, EventArgs e)
+        {
+            if (tbPassword.Text != "Password")
+                tbPassword.isPassword = true;
+            else
+                tbPassword.isPassword = false;
+            if (lbPassword.Visible)
+                lbPassword.Visible = false;
+        }
+        private void tbCPassword_Enter(object sender, EventArgs e)
+        {
+            if (tbCPassword.Text == "Confirm password")
+                tbCPassword.Text = "";
+        }
+        private void tbCPassword_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbCPassword.Text))
+                tbCPassword.Text = "Confirm password";
+        }
+        private void passCChanged(object sender, EventArgs e)
+        {
+            if (tbCPassword.Text != "Confirm password")
+                tbCPassword.isPassword = true;
+            else
+                tbCPassword.isPassword = false;
+            if (lbCPassword.Visible)
+                lbCPassword.Visible = false;
+        }
+        private void tbMail_Enter(object sender, EventArgs e)
+        {
+            if (tbMail.Text == "Mail")
+                tbMail.Text = "";
+        }
+        private void tbMail_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbMail.Text))
+                tbMail.Text = "Mail";
+        }
+        private void tbMail_OnValueChanged(object sender, EventArgs e)
+        {
+            if (lbMail.Visible)
+            {
+                lbMail.Visible = false;
+                tbMail.Text = "";
+            }
+        }
+        private void tbUsername_OnValueChanged(object sender, EventArgs e)
+        {
+            if (lbUsername.Visible)
+            {
+                lbUsername.Visible = false;
+                tbUsername.Text = "";
+            }
         }
     }
 }

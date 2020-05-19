@@ -71,7 +71,7 @@
             0});
             this.numericUpDown.Name = "numericUpDown";
             this.numericUpDown.Size = new System.Drawing.Size(40, 16);
-            this.numericUpDown.TabIndex = 16;
+            this.numericUpDown.TabIndex = 5;
             this.numericUpDown.Value = new decimal(new int[] {
             1,
             0,
@@ -238,9 +238,13 @@
             this.tbUsername.Margin = new System.Windows.Forms.Padding(0);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(370, 44);
-            this.tbUsername.TabIndex = 30;
+            this.tbUsername.TabIndex = 1;
             this.tbUsername.Text = "Username";
             this.tbUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.tbUsername.OnValueChanged += new System.EventHandler(this.tbUsername_OnValueChanged);
+            this.tbUsername.Click += new System.EventHandler(this.userChanged);
+            this.tbUsername.Enter += new System.EventHandler(this.tbUsername_Enter);
+            this.tbUsername.Leave += new System.EventHandler(this.tbUsername_Leave);
             // 
             // pictureBox1
             // 
@@ -280,9 +284,13 @@
             this.tbPassword.Margin = new System.Windows.Forms.Padding(0);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(370, 44);
-            this.tbPassword.TabIndex = 33;
+            this.tbPassword.TabIndex = 2;
             this.tbPassword.Text = "Password";
             this.tbPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.tbPassword.OnValueChanged += new System.EventHandler(this.passChanged);
+            this.tbPassword.Click += new System.EventHandler(this.passChanged);
+            this.tbPassword.Enter += new System.EventHandler(this.tbPassword_Enter);
+            this.tbPassword.Leave += new System.EventHandler(this.tbPassword_Leave);
             // 
             // pictureBox2
             // 
@@ -322,9 +330,13 @@
             this.tbCPassword.Margin = new System.Windows.Forms.Padding(0);
             this.tbCPassword.Name = "tbCPassword";
             this.tbCPassword.Size = new System.Drawing.Size(370, 44);
-            this.tbCPassword.TabIndex = 36;
+            this.tbCPassword.TabIndex = 3;
             this.tbCPassword.Text = "Confirm password";
             this.tbCPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.tbCPassword.OnValueChanged += new System.EventHandler(this.passCChanged);
+            this.tbCPassword.Click += new System.EventHandler(this.passCChanged);
+            this.tbCPassword.Enter += new System.EventHandler(this.tbCPassword_Enter);
+            this.tbCPassword.Leave += new System.EventHandler(this.tbCPassword_Leave);
             // 
             // pictureBox4
             // 
@@ -364,9 +376,12 @@
             this.tbMail.Margin = new System.Windows.Forms.Padding(0);
             this.tbMail.Name = "tbMail";
             this.tbMail.Size = new System.Drawing.Size(370, 44);
-            this.tbMail.TabIndex = 39;
+            this.tbMail.TabIndex = 4;
             this.tbMail.Text = "Mail";
             this.tbMail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.tbMail.OnValueChanged += new System.EventHandler(this.tbMail_OnValueChanged);
+            this.tbMail.Enter += new System.EventHandler(this.tbMail_Enter);
+            this.tbMail.Leave += new System.EventHandler(this.tbMail_Leave);
             // 
             // RegisterPage
             // 
