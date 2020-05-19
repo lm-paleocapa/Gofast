@@ -77,6 +77,16 @@
                                 Ottavo(json0, socket);
                                 break;
                             }
+                        case 9:
+                            {
+                                Nono(json0, socket);
+                                break;
+                            }
+                        case 10:
+                            {
+                                Decimo(json0, socket);
+                                break;
+                            }
                     }
                 };
             });
@@ -556,6 +566,63 @@
                     }
                 }
                 Console.WriteLine(json0.username);
+            }
+            void Nono(Obj.Json json0, IWebSocketConnection socket)
+            {
+                MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                cnn.Open();
+
+                string query = $"DELETE from newFriendsRequest where user = '{json0.to}' and friend = '{json0.username}' ";
+                MySqlCommand cmd = new MySqlCommand(query, cnn);
+                cmd.ExecuteNonQuery();
+
+                cnn.Close();
+            }
+            void Decimo(Obj.Json json0, IWebSocketConnection socket)
+            {
+                // in arrivo
+                /*
+                id = 10,
+                username = nome dell'utente dentro il client,
+                to = utente di cui si ha accettato la richiesta
+                */
+
+                // In uscita
+                /*
+                id = 15,
+                username = nome del nuovo amico
+                */
+
+                MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                cnn.Open();
+
+                string query = $"DELETE from newFriendsRequest where user = '{json0.to}' and friend = '{json0.username}';";
+                MySqlCommand cmd = new MySqlCommand(query, cnn);
+                cmd.ExecuteNonQuery();
+
+                query = $"INSERT INTO friends (user,friend) VALUES ('{json0.to}','{json0.username}');";
+                cmd = new MySqlCommand(query,cnn);
+                cmd.ExecuteNonQuery();
+
+                query = $"INSERT INTO friends (user,friend) VALUES ('{json0.username}','{json0.to}');";
+                cmd = new MySqlCommand(query, cnn);
+                cmd.ExecuteNonQuery();
+
+                foreach (var i in usersConnected)
+                {
+                    if (i.SocketConnected && i.user == json0.to)
+                    {
+                        Obj.Json json = new Obj.Json
+                        {
+                            id = 15,
+                            username = json0.username
+                        };
+                        string to = JsonConvert.SerializeObject(json);
+                        i.socketId.Send(to);
+                    }
+                }
+
+                cnn.Close();
             }
             while (true)
             {
