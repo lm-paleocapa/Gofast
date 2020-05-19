@@ -33,7 +33,7 @@
                         }
                         catch
                         {
-                            
+
                         }
                         if (ws.State == WebSocketState.Open)
                             k = 0;
@@ -331,7 +331,12 @@
                     };
                     panel.Invoke(new Action(() =>
                     {
-                        panel.Controls.Add(user);
+                        bool ok = false;
+                        foreach (userLeft k in Form1.MainChat.panelUsers.Controls)
+                            if (k.name == i.user)
+                                ok = true;
+                        if (!ok)
+                            panel.Controls.Add(user);
                     }));
                 }
             }
@@ -353,6 +358,7 @@
                     MemoryStream ms = new MemoryStream(img);
                     requestItem item = new requestItem
                     {
+                        Name = i.user,
                         Username = i.user,
                         Image = Image.FromStream(ms),
                         Dock = DockStyle.Top

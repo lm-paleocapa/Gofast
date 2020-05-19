@@ -72,6 +72,11 @@
                                 Settimo(json0, socket);
                                 break;
                             }
+                        case 8:
+                            {
+                                Ottavo(json0, socket);
+                                break;
+                            }
                     }
                 };
             });
@@ -535,6 +540,22 @@
                 };
                 string to = JsonConvert.SerializeObject(json);
                 socket.Send(to);
+            }
+            void Ottavo(Obj.Json json0, IWebSocketConnection socket)
+            {
+                MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                cnn.Open();
+                foreach (var i in usersConnected)
+                {
+                    if (i.socketId == socket)
+                    {
+                        string query = $"DELETE from newFriendsRequest where user = '{i.user}' and friend = '{json0.username}' limit 1 ";
+                        MySqlCommand cmd = new MySqlCommand(query, cnn);
+                        cmd.ExecuteNonQuery();
+                        return;
+                    }
+                }
+                Console.WriteLine(json0.username);
             }
             while (true)
             {
