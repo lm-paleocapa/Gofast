@@ -493,7 +493,8 @@
                     Obj.Json json = new Obj.Json
                     {
                         id = 8,
-                        from = json0.username
+                        from = json0.username,
+                        image = img
                     };
                     string to = JsonConvert.SerializeObject(json);
                     foreach (var k in usersConnected)
