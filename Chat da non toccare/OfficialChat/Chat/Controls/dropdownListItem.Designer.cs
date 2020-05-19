@@ -53,6 +53,7 @@
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "dropdownListItem";
             this.Size = new System.Drawing.Size(129, 44);
+            this.Load += new System.EventHandler(this.dropdownListItem_Load);
             this.Click += new System.EventHandler(this.labelItem_Click);
             this.MouseEnter += new System.EventHandler(this.dropdownListItem_MouseEnter);
             this.MouseLeave += new System.EventHandler(this.dropdownListItem_MouseLeave);

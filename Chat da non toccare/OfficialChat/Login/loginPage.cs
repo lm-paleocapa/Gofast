@@ -79,5 +79,16 @@
                 Form1.registerPage.Show();
             }));
         }
+
+        private void LoginPage_Load(object sender, EventArgs e) // da rimuovere
+        {
+            JSON json = new JSON
+            {
+                id = 1,
+                username = "martin",
+                password = "12345678"
+            };
+            WS.Send(json);
+        }
     }
 }

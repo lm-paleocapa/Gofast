@@ -22,7 +22,6 @@
                 label1.Text = value;
             }
         }
-
         public Image UserImage
         {
             get
@@ -34,7 +33,6 @@
                 pictureBox1.Image = value;
             }
         }
-
         public Cursor ChatImageCursor
         {
             get
@@ -46,7 +44,6 @@
                 pictureBox1.Cursor = value;
             }
         }
-
         public Cursor ChatTextCursor
         {
             get
@@ -58,7 +55,6 @@
                 label1.Cursor = value;
             }
         }
-
         public Color MsgColor
         {
             get
@@ -70,7 +66,6 @@
                 label1.BackColor = value;
             }
         }
-
         public Color MsgTextColor
         {
             get
@@ -82,7 +77,6 @@
                 label1.ForeColor = value;
             }
         }
-
         public Color TimeColor
         {
             get
@@ -94,7 +88,6 @@
                 time.ForeColor = value;
             }
         }
-
         public string Time
         {
             get
@@ -112,9 +105,7 @@
         {
             time.Width = TextRenderer.MeasureText(time.Text, time.Font).Width;
         }
-
         private MessageStatus _CurrentMessageStatus = MessageStatus.Sent;
-        
         private Image msgStatusImage = null;
         public Image StatusImage
         {
@@ -129,7 +120,6 @@
                 SetMsgStatus();
             }
         }
-
         public MessageStatus Status
         {
             get
@@ -142,12 +132,10 @@
                 SetMsgStatus();
             }
         }
-
         private MessageStatus GetMsgStatus()
         {
             return _CurrentMessageStatus;
         }
-
         private void SetMsgStatus()
         {
             //switch (_CurrentMessageStatus)
@@ -190,16 +178,13 @@
 
             //}
         }
-
         private void Bubble_Load(object sender, EventArgs e)
         {
 
         }
-
         Panel messageBottom = new Panel();
         Label time = new Label();
         PictureBox msgStatus = new PictureBox();
-      
         bool isAdded = false;
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -251,13 +236,10 @@
 
             base.OnPaint(e);
         }
-
         public delegate void ChatImageClick(object sender, EventArgs e);
         public delegate void ChatTextClick(object sender, EventArgs e);
-
         public event ChatImageClick OnChatImageClick;
         public event ChatTextClick OnChatTextClick;
-
         private void label1_Click(object sender, EventArgs e)
         {
             if (OnChatTextClick != null)
@@ -265,7 +247,6 @@
                 OnChatTextClick.Invoke(sender, e);
             }
         }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             if (OnChatImageClick != null)

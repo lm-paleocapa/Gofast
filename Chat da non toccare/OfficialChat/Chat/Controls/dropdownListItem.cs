@@ -75,5 +75,10 @@
                 panelDown.Controls.Add(Form1.rq);
             }
         }
+
+        private void dropdownListItem_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
