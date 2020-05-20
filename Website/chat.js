@@ -27,12 +27,20 @@ class Contact {
 	var webSocketAddress = "ws://192.168.178.21:8181";
 	var username;
 
+	function loadFriendshipRequests(data) {
+		for(var i = 0; i < data.length; i++) {
+			if(data.name != null)
+				addFriendshipRequest(data.name, data.image);
+		}
+	}
+
 	function getData(data) {
 		email = data.email;
 		password = data.password;
 		userImage = "data:image/png; base64, " + data.image;
 		id = data.id;
 		username = data.username;
+		setupWebSocket();
 	}
 
 	function loadContacts(data) {
@@ -53,8 +61,21 @@ class Contact {
 		loadMessagesFromDatabase(0);
 	}
 
+	function reloadContacts(data) {
+		contacts = [];
+		var contactsList = document.getElementById("contactsList");
+		for(var i = 0; i < contactsList.children.length; i++) {
+			if(contactsList.children[i].hasAttribute("id")){
+				contactsList.removeChild(contactsList.children[i]);
+				i--;
+			}
+		}
+		loadContacts(data);
+	}
+
 	function manageData(event) {
 		var data = JSON.parse(event.data);
+		alert(data.id);
 		var idFrom;
 		for(var i = 0; i < contacts.length; i++) {
 			if(contacts[i].name == data.from)
@@ -63,6 +84,14 @@ class Contact {
 		switch (data.id) {
 			case 3:
 				getMessage(idFrom, data.message, data.date);
+				break;
+			case 8:
+				if(data.from != null)
+					addFriendshipRequest(data.from, "data:image/png; base64, " + data.image);
+				break;
+			case 15:
+				$.getJSON("loadContacts.php", reloadContacts);
+				break;
 		}
 	}
 
@@ -129,13 +158,18 @@ class Contact {
 		newImg2 = document.createElement("img");
 		newImg2.src = "accept.png";
 		newImg2.className = "rounded-circle accept_img";
-		newImg2.onclick = function() {contactsList.removeChild(newContact);};
+		newImg2.onclick = function() {contactsList.removeChild(newContact); webSocket.send("{'id':'10', 'username':'" + username + "', 'to':'" + name + "'}"); $.getJSON("loadContacts.php", reloadContacts);};
 		newSubDiv2.appendChild(newImg2);
 		newImg3 = document.createElement("img");
 		newImg3.src = "decline.png";
 		newImg3.className = "rounded-circle decline_img";
-		newImg3.onclick = function() {contactsList.removeChild(newContact);};
+		newImg3.onclick = function() {contactsList.removeChild(newContact); alert("q"); webSocket.send("{'id':'9', 'username':'" + username + "', 'to':'" + name + "'}");};
 		newSubDiv2.appendChild(newImg3);
+	}
+
+	function sendFriendshipRequest(){
+		friendName = document.getElementById("friendToRequest").value;
+		webSocket.send("{'id':'5', 'username':'" + username + "', 'friends':[{'user':'" + friendName + "'}]}");
 	}
 
 	function viewSentMessage(content, time) {
@@ -197,20 +231,29 @@ class Contact {
 		}
 	}
 
-	function postMessage(content, time) {
+	function postMessage(content) {
+		var now = new Date();
+ 		var year = "" + now.getFullYear();
+  		var month = "" + (now.getMonth() + 1); if (month.length == 1) { month = "0" + month; };
+  		var day = "" + now.getDate(); if (day.length == 1) { day = "0" + day; };
+  		var hour = "" + now.getHours(); if (hour.length == 1) { hour = "0" + hour; };
+  		var minute = "" + now.getMinutes(); if (minute.length == 1) { minute = "0" + minute; };
+  		var second = "" + now.getSeconds(); if (second.length == 1) { second = "0" + second; };
+  		var date = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
 		for(var i = 0; i < contacts.length; i++) {
 		    if(contacts[i].id == activeChat)
-		    	contacts[i].messages.push(new Message(content, time, "SEND"));
+		    	contacts[i].messages.push(new Message(content, date, "SEND"));
 		}
-		viewSentMessage(content, time);
+		viewSentMessage(content, date);
 		for(var i = 0; i < contacts.length; i++) {
-			if(contacts[i].id == activeChat)
-				webSocket.send("{'id':'2', 'message':'" + content + "', 'from':'" + username + "', 'to':'" + contacts[i].name + "'}");
+			if(contacts[i].id == activeChat) { 
+				webSocket.send("{'id':'2', 'message':'" + content + "', 'from':'" + username + "', 'to':'" + contacts[i].name + "', 'date':'" + date + "'}");
+			}
 		}              
 	}
 
 	function loadContact(name, image, online, id) {
-		webSocket.send("{'id':'1', 'username':'" + username + "', 'password':'" + password + "'}");
+		//webSocket.send("{'id':'1', 'username':'" + username + "', 'password':'" + password + "'}");
 		dynamicImg = document.getElementById("dynamicImg");
 		dynamicImg.src = image;
 		dynamicName = document.getElementById("dynamicName");
@@ -294,7 +337,7 @@ class Contact {
 		newContact.appendChild(newHr);
 	}
 	
-	setupWebSocket();
+	//setupWebSocket();
 
 	function main() {
 	
@@ -306,6 +349,8 @@ class Contact {
 
 	$.getJSON("getData.php", getData);
 	$.getJSON("loadContacts.php", loadContacts);
+	$.getJSON("loadFriendshipRequests.php", loadFriendshipRequests);
+	//setupWebSocket();
 
 	//loadMessagesFromDatabase();
 
