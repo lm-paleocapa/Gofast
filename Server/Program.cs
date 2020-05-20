@@ -223,37 +223,6 @@
                             foreach (var i in messages)
                                 MessaggiInAttesa.Remove(i);
                         }
-
-                        MySqlConnection cnn1 = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
-                        cnn1.Open();
-
-                        List<Obj.Friend> amici = new List<Obj.Friend>();
-                        query = $"select friend from newFriendsRequest where user = '{json0.username}'";
-                        cmd = new MySqlCommand(query, cnn);
-                        reader = cmd.ExecuteReader();
-
-                        while (reader.Read())
-                        {
-                            query = $"select image from account where user = '{reader[0]}'";
-                            cmd = new MySqlCommand(query, cnn1);
-                            string image = cmd.ExecuteScalar().ToString();
-                            Obj.Friend item = new Obj.Friend
-                            {
-                                user = reader[0].ToString(),
-                                image = image
-                            };
-                            amici.Add(item);
-                        }
-                        reader.Close();
-
-                        Obj.Json json4 = new Obj.Json
-                        {
-                            id = 8,
-                            friends = amici
-                        };
-                        string to = JsonConvert.SerializeObject(json4);
-                        socket.Send(to);
-                        cnn1.Close();
                         cnn.Close();
                     }
                     else
@@ -470,8 +439,8 @@
                     friends = userToAdd
                 };
                 string to = JsonConvert.SerializeObject(json);
-                socket.Send(to);
                 cnn.Close();
+                socket.Send(to);
             }
             void Quinto(Obj.Json json0, IWebSocketConnection socket)
             {
@@ -554,19 +523,42 @@
             }
             void Ottavo(Obj.Json json0, IWebSocketConnection socket)
             {
+                MySqlConnection cnn1 = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                cnn1.Open();
                 MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
                 cnn.Open();
-                foreach (var i in usersConnected)
+                string query;
+                MySqlCommand cmd;
+                MySqlDataReader reader;
+
+                List<Obj.Friend> amici = new List<Obj.Friend>();
+                query = $"select user from newFriendsRequest where friend = '{json0.username}'";
+                cmd = new MySqlCommand(query, cnn);
+                reader = cmd.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    if (i.socketId == socket)
+                    query = $"select image from account where user = '{reader[0]}'";
+                    cmd = new MySqlCommand(query, cnn1);
+                    string image = cmd.ExecuteScalar().ToString();
+                    Obj.Friend item = new Obj.Friend
                     {
-                        string query = $"DELETE from newFriendsRequest where user = '{i.user}' and friend = '{json0.username}' limit 1 ";
-                        MySqlCommand cmd = new MySqlCommand(query, cnn);
-                        cmd.ExecuteNonQuery();
-                        return;
-                    }
+                        user = reader[0].ToString(),
+                        image = image
+                    };
+                    amici.Add(item);
                 }
-                Console.WriteLine(json0.username);
+                reader.Close();
+
+                Obj.Json json4 = new Obj.Json
+                {
+                    id = 8,
+                    friends = amici
+                };
+                string to = JsonConvert.SerializeObject(json4);
+                socket.Send(to);
+                cnn.Close();
+                cnn1.Close();
             }
             void Nono(Obj.Json json0, IWebSocketConnection socket)
             {

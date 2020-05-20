@@ -48,8 +48,9 @@
 
             JSON json = new JSON
             {
-                id = 8,
-                username = Username
+                id = 10,
+                to = Username,
+                username = Form1.username
             };
             WS.Send(json);
         }

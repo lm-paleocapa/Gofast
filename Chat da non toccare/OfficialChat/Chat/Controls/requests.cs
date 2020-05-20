@@ -1,5 +1,6 @@
 ﻿namespace OfficialChat.Chat.Controls
 {
+    using OfficialChat.Lib.Client;
     using System.Drawing;
     using System.Windows.Forms;
     public partial class requests : UserControl
@@ -26,6 +27,10 @@
             panelDown.Size = new Size(876, 612);
             Form1.MainChat.Visible = true;
             panelDown.Controls.Add(Form1.MainChat);
+        }
+        private void requests_Load(object sender, System.EventArgs e)
+        {
+            
         }
     }
 }

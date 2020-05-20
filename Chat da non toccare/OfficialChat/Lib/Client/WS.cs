@@ -10,6 +10,8 @@
     using Newtonsoft.Json;
     using Bunifu.Framework.UI;
     using Chat.Controls;
+    using System.Management;
+
     public class WS
     {
         //private static WebSocket ws = new WebSocket("ws://80.182.17.185:8181");
@@ -161,6 +163,12 @@
                 }));
 
                 Form1.loginPage.Invoke(new Action(() => Form1.loginPage.controlEnabled = true));
+                JSON json1 = new JSON
+                {
+                    id = 8,
+                    username = Form1.username,
+                };
+                WS.Send(json1);
             }
         }
         private class ClassTwo
@@ -348,10 +356,11 @@
                 MessageBox.Show("Aggiornato");
             }
         }
-        private class ClassHeight
+        public class ClassHeight
         {
             public static void Height(JSON json)
             {
+                List<requestItem> items = new List<requestItem>();
                 foreach (var i in json.friends)
                 {
                     var img = Convert.FromBase64String(i.image);
@@ -363,8 +372,18 @@
                         Image = Image.FromStream(ms),
                         Dock = DockStyle.Top
                     };
-                    Form1.rq.panelForItem.Controls.Add(item);
+                    items.Add(item);
                 }
+
+                new Thread(() =>
+                {
+                    if (Form1.rq.IsHandleCreated)
+                    {
+                        foreach (var s in items)
+                            Form1.rq.Invoke(new Action(() => Form1.rq.panelForItem.Controls.Add(s)));
+                    }
+                })
+                { IsBackground = true }.Start();
             }
         }
     }

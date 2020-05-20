@@ -79,7 +79,7 @@
                 Form1.registerPage.Show();
             }));
         }
-        private void LoginPage_Load(object sender, EventArgs e) // da rimuovere
+        private void LoginPage_Load(object sender, EventArgs e)
         {
            
         }

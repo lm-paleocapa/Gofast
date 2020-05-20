@@ -76,6 +76,7 @@
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "requests";
             this.Size = new System.Drawing.Size(314, 525);
+            this.Load += new System.EventHandler(this.requests_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

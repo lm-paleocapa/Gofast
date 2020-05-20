@@ -5,6 +5,8 @@
     using System.Drawing;
     using OfficialChat.Chat.Controls;
     using OfficialChat.Properties;
+    using OfficialChat.Lib.Client;
+
     public partial class mainChatControl : UserControl
     {
         public static string To = "";
@@ -125,7 +127,6 @@
                 dropdownList = value;
             }
         }
-
         private void flpChat_Click(object sender, System.EventArgs e)
         {
             if (dropdownlist.Visible)

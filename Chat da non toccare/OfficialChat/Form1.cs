@@ -33,11 +33,9 @@
         {
             InitializeComponent();
         }
-
+        public static requests rq = new requests();
         public static List<userLeft> panelUserLeft = new List<userLeft>();
         public static userSetting panelUserSetting = new userSetting();
-        public static requests rq = new requests();
-
         public static mainChatControl MainChat = new mainChatControl();
         public static LoginPage loginPage = new LoginPage();
         public static RegisterPage registerPage = new RegisterPage();

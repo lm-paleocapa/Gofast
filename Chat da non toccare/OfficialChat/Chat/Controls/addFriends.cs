@@ -45,6 +45,7 @@
                 JSON json = new JSON
                 {
                     id = 4,
+                    username = Form1.username,
                     message = textboxSearch.text,
                 };
                 WS.Send(json);
@@ -75,6 +76,7 @@
                     {
                         user = i.name
                     };
+                    users.Add(item);                
                 }
 
             JSON json = new JSON()
