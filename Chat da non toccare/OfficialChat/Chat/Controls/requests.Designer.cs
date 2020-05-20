@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(requests));
             this.panelForUser = new System.Windows.Forms.Panel();
             this.pictureBoxBack = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.requestItem1 = new OfficialChat.Chat.Controls.requestItem();
+            this.panelForUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -38,6 +41,7 @@
             // panelForUser
             // 
             this.panelForUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
+            this.panelForUser.Controls.Add(this.requestItem1);
             this.panelForUser.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelForUser.Location = new System.Drawing.Point(0, 68);
             this.panelForUser.Margin = new System.Windows.Forms.Padding(0);
@@ -67,6 +71,19 @@
             this.panel1.Size = new System.Drawing.Size(314, 68);
             this.panel1.TabIndex = 0;
             // 
+            // requestItem1
+            // 
+            this.requestItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(69)))));
+            this.requestItem1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.requestItem1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.requestItem1.Image = ((System.Drawing.Image)(resources.GetObject("requestItem1.Image")));
+            this.requestItem1.Location = new System.Drawing.Point(0, 0);
+            this.requestItem1.Margin = new System.Windows.Forms.Padding(0);
+            this.requestItem1.Name = "requestItem1";
+            this.requestItem1.Size = new System.Drawing.Size(314, 64);
+            this.requestItem1.TabIndex = 0;
+            this.requestItem1.Username = "Francesco";
+            // 
             // requests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -77,6 +94,7 @@
             this.Name = "requests";
             this.Size = new System.Drawing.Size(314, 525);
             this.Load += new System.EventHandler(this.requests_Load);
+            this.panelForUser.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -88,5 +106,6 @@
         private System.Windows.Forms.Panel panelForUser;
         private System.Windows.Forms.PictureBox pictureBoxBack;
         private System.Windows.Forms.Panel panel1;
+        private requestItem requestItem1;
     }
 }
