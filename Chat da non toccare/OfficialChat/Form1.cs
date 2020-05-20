@@ -10,6 +10,8 @@
     using Register;
     using Chat.Controls;
     using System.Collections.Generic;
+    using System.Threading;
+
     public partial class Form1 : Form
     {
         #region Cose
@@ -33,6 +35,7 @@
         {
             InitializeComponent();
         }
+        public static Thread thread = new Thread(new ThreadStart(WS.ClassHeight.th));
         public static requests rq = new requests();
         public static List<userLeft> panelUserLeft = new List<userLeft>();
         public static userSetting panelUserSetting = new userSetting();
@@ -55,6 +58,7 @@
         private void labelClose_Click(object sender, EventArgs e)
         {
             WS.Close();
+            Environment.Exit(Environment.ExitCode);
             Application.Exit();
         }
         private void labelMinimize_Click(object sender, EventArgs e)

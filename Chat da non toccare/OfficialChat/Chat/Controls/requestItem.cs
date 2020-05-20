@@ -37,18 +37,10 @@
         private void btnOk_Click(object sender, EventArgs e)
         {
             this.Visible = false;
-            userLeft user = new userLeft
-            {
-                name = this.Name,
-                lastAccess = "Da mettere",
-                picture = this.Image,
-                Dock = DockStyle.Top
-            };
-            Form1.MainChat.panelUsers.Controls.Add(user);
 
             JSON json = new JSON
             {
-                id = 10,
+                id = 8,
                 to = Username,
                 username = Form1.username
             };

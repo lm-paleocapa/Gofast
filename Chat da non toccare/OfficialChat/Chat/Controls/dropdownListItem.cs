@@ -2,7 +2,9 @@
 {
     using System;
     using System.Drawing;
+    using System.Threading;
     using System.Windows.Forms;
+    using OfficialChat.Lib.Client;
     using OfficialChat.Properties;
     public partial class dropdownListItem : UserControl
     {
@@ -59,6 +61,13 @@
             }
             else if (this.Name == "btnLogOut")
             {
+                JSON json = new JSON
+                {
+                    id = 10,
+                    username = Form1.username
+                };
+                WS.Send(json);
+
                 panelDown.Controls.Clear();
                 panelDown.Size = new Size(463, 493);
                 Form1.loginPage = new Login.LoginPage();

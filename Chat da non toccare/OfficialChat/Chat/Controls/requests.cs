@@ -1,6 +1,5 @@
 ﻿namespace OfficialChat.Chat.Controls
 {
-    using OfficialChat.Lib.Client;
     using System.Drawing;
     using System.Windows.Forms;
     public partial class requests : UserControl

@@ -114,6 +114,21 @@
                         ClassHeight.Height(json);
                         break;
                     }
+                case 9:
+                    {
+                        ClassNine.Nine(json);
+                        break;
+                    }
+                case 10:
+                    {
+                        ClassTen.Ten(json);
+                        break;
+                    }
+                case 11:
+                    {
+                        ClassEleven.Eleven(json);
+                        break;
+                    }
             }
         }
         public class ClassOne
@@ -139,7 +154,7 @@
                     userLeft user = new userLeft
                     {
                         name = i.user,
-                        lastAccess = "Da mettere",
+                        lastAccess = "Never",
                         picture = Image.FromStream(ms),
                         Dock = DockStyle.Top
                     };
@@ -163,12 +178,6 @@
                 }));
 
                 Form1.loginPage.Invoke(new Action(() => Form1.loginPage.controlEnabled = true));
-                JSON json1 = new JSON
-                {
-                    id = 8,
-                    username = Form1.username,
-                };
-                WS.Send(json1);
             }
         }
         private class ClassTwo
@@ -358,9 +367,21 @@
         }
         public class ClassHeight
         {
+            public static void th()
+            {
+                bool ok = false;
+                while (!ok)
+                    if (Form1.rq.IsHandleCreated)
+                    {
+                        ok = true;
+                        foreach (var s in items)
+                            Form1.rq.Invoke(new Action(() => Form1.rq.panelForItem.Controls.Add(s)));
+                        items.Clear();
+                    }
+            }
+            public static List<requestItem> items = new List<requestItem>();
             public static void Height(JSON json)
             {
-                List<requestItem> items = new List<requestItem>();
                 foreach (var i in json.friends)
                 {
                     var img = Convert.FromBase64String(i.image);
@@ -375,15 +396,54 @@
                     items.Add(item);
                 }
 
-                new Thread(() =>
+                if (!Form1.thread.IsAlive)
                 {
-                    if (Form1.rq.IsHandleCreated)
+                    Form1.thread = new Thread(new ThreadStart(th));
+                    Form1.thread.Start();
+                }
+            }
+        }
+        public class ClassNine
+        {
+            public static void Nine(JSON json)
+            {
+                var pic = Convert.FromBase64String(json.image);
+                MemoryStream ms = new MemoryStream(pic);
+
+                userLeft user = new userLeft
+                {
+                    name = json.username,
+                    lastAccess = "Da mettere",
+                    picture = Image.FromStream(ms),
+                    Dock = DockStyle.Top
+                };
+                Form1.MainChat.panelUsers.Invoke(new Action(() => Form1.MainChat.panelUsers.Controls.Add(user)));
+            }
+        }
+        public class ClassTen
+        {
+            public static void Ten(JSON json)
+            {
+                foreach (userLeft i in Form1.MainChat.panelUsers.Controls)
+                {
+                    if (i.name == json.username)
                     {
-                        foreach (var s in items)
-                            Form1.rq.Invoke(new Action(() => Form1.rq.panelForItem.Controls.Add(s)));
+                        i.lastAccess = $"{json.date}";
                     }
-                })
-                { IsBackground = true }.Start();
+                }
+            }
+        }
+        public class ClassEleven
+        {
+            public static void Eleven(JSON json)
+            {
+                foreach(userLeft i in Form1.MainChat.panelUsers.Controls)
+                {
+                    if (i.name == json.username)
+                    {
+                        i.lastAccess = "Online";
+                    }
+                }
             }
         }
     }

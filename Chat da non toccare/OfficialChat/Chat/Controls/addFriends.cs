@@ -86,6 +86,8 @@
                 friends = users
             };
             WS.Send(json);
+            textboxSearch.text = "Search...";
+            panelForUser.Controls.Clear();
         }
     }
 }

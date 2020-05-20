@@ -6,16 +6,19 @@
     using System;
     using System.Collections.Generic;
     using Lib;
+    using System.Drawing.Text;
+    using System.Linq;
+
     public class Program
     {
         public static List<Obj.WebsocketUsers> usersConnected = new List<Obj.WebsocketUsers>();
         public static List<Obj.Messages> MessaggiInAttesa = new List<Obj.Messages>();
-
+        private static string ip = "80.182.17.185";
         static void Main()
         {
-            MySqlConnection mainCnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+            MySqlConnection mainCnn = new MySqlConnection($"server={ip};database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
             mainCnn.Open();
-
+            Console.WriteLine(mainCnn.State);
             Start.OnServerOpen(mainCnn);
 
             #region Server
@@ -93,38 +96,15 @@
 
             void socketOnClose(IWebSocketConnection e)
             {
-                Console.WriteLine("Close");
 
-                foreach (var i in usersConnected)
-                {
-                    if (i.socketId == e)
-                    {
-                        i.SocketConnected = false;
-                        if (i.user != "none")
-                        {
-                            string query = $"UPDATE account SET state = '{DateTime.Now}' WHERE user = '{i.user}';";
-                            MySqlCommand cmd = new MySqlCommand(query, mainCnn);
-                            cmd.ExecuteNonQuery();
-                        }
-                        return;
-                    }
-                }
             }
             void socketOnOpen(IWebSocketConnection e)
             {
-                Console.WriteLine("Open");
-                foreach (var i in usersConnected)
-                {
-                    if (i.socketId == e)
-                    {
-                        i.SocketConnected = true;
-                        return;
-                    }
-                }
+                
             }
             void Primo(Obj.Json json0, IWebSocketConnection socket)
             {
-                MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                MySqlConnection cnn = new MySqlConnection($"server={ip};database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
                 cnn.Open();
 
                 string query;
@@ -223,7 +203,41 @@
                             foreach (var i in messages)
                                 MessaggiInAttesa.Remove(i);
                         }
+
+                        MySqlConnection cnn1 = new MySqlConnection($"server={ip};database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                        cnn1.Open();
+
+                        List<Obj.Friend> items = new List<Obj.Friend>();
+
+                        query = $"select user from newFriendsRequest where friend = '{json0.username}';";
+                        cmd = new MySqlCommand(query, cnn);
+                        reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            query = $"select user,image from account where user = '{reader[0]}' limit 1;";
+                            cmd = new MySqlCommand(query, cnn1);
+                            MySqlDataReader rd = cmd.ExecuteReader();
+                            rd.Read();
+                            Obj.Friend item = new Obj.Friend
+                            {
+                                user = rd[0].ToString(),
+                                image = rd[1].ToString()
+                            };
+                            items.Add(item);
+                            rd.Close();
+                        }
+                        reader.Close();
+
+                        Obj.Json json2 = new Obj.Json
+                        {
+                            id = 8,
+                            friends = items
+                        };
+                        string to = JsonConvert.SerializeObject(json2);
+                        socket.Send(to);
+
                         cnn.Close();
+                        cnn1.Close();
                     }
                     else
                     {
@@ -253,7 +267,7 @@
             }
             void Secondo(Obj.Json json0, IWebSocketConnection socket)
             {
-                MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                MySqlConnection cnn = new MySqlConnection($"server={ip};database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
                 cnn.Open();
 
                 string query;
@@ -323,7 +337,7 @@
             }
             void Terzo(Obj.Json json0, IWebSocketConnection socket)
             {
-                MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                MySqlConnection cnn = new MySqlConnection($"server={ip};database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
                 cnn.Open();
 
                 string query;
@@ -345,20 +359,20 @@
                         cmd = new MySqlCommand(query, cnn);
                         reader = cmd.ExecuteReader();
                         while (reader.Read())
-                        if (reader[0].ToString() == json0.mail)
-                        {
-                            Obj.Json json2 = new Obj.Json
+                            if (reader[0].ToString() == json0.mail)
                             {
-                                id = 4,
-                                uok = false,
-                                mok = false
-                            };
-                            toClient = JsonConvert.SerializeObject(json2);
-                            socket.Send(toClient);
-                            reader.Close();
-                            cnn.Close();
-                            return;
-                        }
+                                Obj.Json json2 = new Obj.Json
+                                {
+                                    id = 4,
+                                    uok = false,
+                                    mok = false
+                                };
+                                toClient = JsonConvert.SerializeObject(json2);
+                                socket.Send(toClient);
+                                reader.Close();
+                                cnn.Close();
+                                return;
+                            }
                         reader.Close();
 
                         Obj.Json json = new Obj.Json
@@ -411,26 +425,39 @@
             }
             void Quarto(Obj.Json json0, IWebSocketConnection socket)
             {
-                MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                MySqlConnection cnn = new MySqlConnection($"server={ip};database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
                 cnn.Open();
-
+                MySqlConnection cnn1 = new MySqlConnection($"server={ip};database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                cnn1.Open();
                 MySqlCommand cmd;
                 string query;
                 MySqlDataReader reader;
 
                 List<Obj.Friend> userToAdd = new List<Obj.Friend>();
 
-                query = $"SELECT user,image from account where user REGEXP '^[{json0.message}]' limit 4";
+                query = $"select user,image from account where user not in ('{json0.username}') and user REGEXP '^[{json0.message}]' limit 4";
                 cmd = new MySqlCommand(query, cnn);
                 reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    Obj.Friend item = new Obj.Friend
+                    query = $"SELECT (EXISTS(SELECT user from friends where user = '{json0.username}' and friend = '{reader[0]}')) LIMIT 1 ";
+                    cmd = new MySqlCommand(query, cnn1);
+                    string k = cmd.ExecuteScalar().ToString();
+                    if (k != "1")
                     {
-                        user = reader[0].ToString(),
-                        image = reader[1].ToString()
-                    };
-                    userToAdd.Add(item);
+                        query = $"SELECT (EXISTS(SELECT friend from newFriendsRequest where user = '{json0.username}' and friend = '{reader[0]}')) LIMIT 1 ";
+                        cmd = new MySqlCommand(query, cnn1);
+                        k = cmd.ExecuteScalar().ToString();
+                        if (k != "1")
+                        {
+                            Obj.Friend item = new Obj.Friend
+                            {
+                                user = reader[0].ToString(),
+                                image = reader[1].ToString()
+                            };
+                            userToAdd.Add(item);
+                        }
+                    }
                 }
                 reader.Close();
                 Obj.Json json = new Obj.Json
@@ -440,23 +467,24 @@
                 };
                 string to = JsonConvert.SerializeObject(json);
                 cnn.Close();
+                cnn1.Close();
                 socket.Send(to);
             }
             void Quinto(Obj.Json json0, IWebSocketConnection socket)
             {
-                MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                MySqlConnection cnn = new MySqlConnection($"server={ip};database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
                 cnn.Open();
 
                 MySqlCommand cmd;
                 string query;
                 foreach (var i in json0.friends)
                 {
-                    query = $"select image from account where user = '{json0.username}'";
-                    cmd = new MySqlCommand(query,cnn);
+                    query = $"select image from account where user = '{i.user}'";
+                    cmd = new MySqlCommand(query, cnn);
                     string img = cmd.ExecuteScalar().ToString();
 
                     query = $"Insert into newFriendsRequest (user,friend,image) values ('{json0.username}','{i.user}','{img}')";
-                    cmd = new MySqlCommand(query,cnn);
+                    cmd = new MySqlCommand(query, cnn);
                     cmd.ExecuteNonQuery();
 
                     Obj.Json json = new Obj.Json
@@ -474,7 +502,7 @@
             }
             void Sesto(Obj.Json json0, IWebSocketConnection socekt)
             {
-                MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                MySqlConnection cnn = new MySqlConnection($"server={ip};database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
                 cnn.Open();
 
                 string query;
@@ -507,7 +535,7 @@
             }
             void Settimo(Obj.Json json0, IWebSocketConnection socket)
             {
-                MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                MySqlConnection cnn = new MySqlConnection($"server={ip};database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
                 cnn.Open();
                 string query = $"update account set image = '{json0.image}' where user = '{json0.username}'";
                 MySqlCommand cmd = new MySqlCommand(query, cnn);
@@ -523,100 +551,117 @@
             }
             void Ottavo(Obj.Json json0, IWebSocketConnection socket)
             {
-                MySqlConnection cnn1 = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
-                cnn1.Open();
-                MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                MySqlConnection cnn = new MySqlConnection($"server={ip};database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
                 cnn.Open();
                 string query;
                 MySqlCommand cmd;
-                MySqlDataReader reader;
 
-                List<Obj.Friend> amici = new List<Obj.Friend>();
-                query = $"select user from newFriendsRequest where friend = '{json0.username}'";
+                query = $"delete from newFriendsRequest where user = '{json0.to}' and friend = '{json0.username}' limit 1;";
                 cmd = new MySqlCommand(query, cnn);
-                reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    query = $"select image from account where user = '{reader[0]}'";
-                    cmd = new MySqlCommand(query, cnn1);
-                    string image = cmd.ExecuteScalar().ToString();
-                    Obj.Friend item = new Obj.Friend
-                    {
-                        user = reader[0].ToString(),
-                        image = image
-                    };
-                    amici.Add(item);
-                }
-                reader.Close();
-
-                Obj.Json json4 = new Obj.Json
-                {
-                    id = 8,
-                    friends = amici
-                };
-                string to = JsonConvert.SerializeObject(json4);
-                socket.Send(to);
-                cnn.Close();
-                cnn1.Close();
-            }
-            void Nono(Obj.Json json0, IWebSocketConnection socket)
-            {
-                MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
-                cnn.Open();
-
-                string query = $"DELETE from newFriendsRequest where user = '{json0.to}' and friend = '{json0.username}' ";
-                MySqlCommand cmd = new MySqlCommand(query, cnn);
-                cmd.ExecuteNonQuery();
-
-                cnn.Close();
-            }
-            void Decimo(Obj.Json json0, IWebSocketConnection socket)
-            {
-                // in arrivo
-                /*
-                id = 10,
-                username = nome dell'utente dentro il client,
-                to = utente di cui si ha accettato la richiesta
-                */
-
-                // In uscita
-                /*
-                id = 15,
-                username = nome del nuovo amico
-                */
-
-                MySqlConnection cnn = new MySqlConnection("server=192.168.1.108;database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
-                cnn.Open();
-
-                string query = $"DELETE from newFriendsRequest where user = '{json0.to}' and friend = '{ json0.username}';";
-                MySqlCommand cmd = new MySqlCommand(query, cnn);
-                
                 cmd.ExecuteNonQuery();
 
                 query = $"INSERT INTO friends (user,friend) VALUES ('{json0.to}','{json0.username}');";
-                cmd = new MySqlCommand(query,cnn);
+                cmd = new MySqlCommand(query, cnn);
                 cmd.ExecuteNonQuery();
 
                 query = $"INSERT INTO friends (user,friend) VALUES ('{json0.username}','{json0.to}');";
                 cmd = new MySqlCommand(query, cnn);
                 cmd.ExecuteNonQuery();
 
+                query = $"select user,image from account where user = '{json0.to}' limit 1;";
+                cmd = new MySqlCommand(query, cnn);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
                 foreach (var i in usersConnected)
                 {
-                    if (i.SocketConnected && i.user == json0.to)
+                    if (i.user == json0.username && i.SocketConnected)
                     {
                         Obj.Json json = new Obj.Json
                         {
-                            id = 15,
-                            username = json0.username
+                            id = 9,
+                            username = reader[0].ToString(),
+                            image = reader[1].ToString()
                         };
                         string to = JsonConvert.SerializeObject(json);
                         i.socketId.Send(to);
                     }
                 }
+                reader.Close();
 
+                query = $"select user,image from account where user = '{json0.username}' limit 1;";
+                cmd = new MySqlCommand(query, cnn);
+                reader = cmd.ExecuteReader();
+                reader.Read();
+                foreach (var i in usersConnected)
+                {
+                    if (i.user == json0.to && i.SocketConnected)
+                    {
+                        Obj.Json json = new Obj.Json
+                        {
+                            id = 9,
+                            username = reader[0].ToString(),
+                            image = reader[1].ToString()
+                        };
+                        string to = JsonConvert.SerializeObject(json);
+                        i.socketId.Send(to);
+                    }
+                }
+                reader.Close();
                 cnn.Close();
+            }
+            void Nono(Obj.Json json0, IWebSocketConnection socket)
+            {
+                MySqlConnection cnn = new MySqlConnection($"server={ip};database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                cnn.Open();
+                string query = $"DELETE from newFriendsRequest where user = '{json0.to}' and friend = '{json0.username}' ";
+                MySqlCommand cmd = new MySqlCommand(query, cnn);
+                cmd.ExecuteNonQuery();
+                cnn.Close();
+            }
+            void Decimo(Obj.Json json0, IWebSocketConnection socket)
+            {
+                MySqlConnection cnn = new MySqlConnection($"server={ip};database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                cnn.Open();
+                MySqlConnection cnn1 = new MySqlConnection($"server={ip};database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
+                cnn1.Open();
+                string query;
+                MySqlCommand cmd;
+                MySqlDataReader reader;
+
+                foreach (var i in usersConnected)
+                {
+                    if (i.user == json0.username)
+                    {
+                        query = $"select friend from friends where user = '{json0.username}';";
+                        cmd = new MySqlCommand(query, cnn);
+                        reader = cmd.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            Obj.Json json = new Obj.Json
+                            {
+                                id = 10,
+                                username = json0.username,
+                                date = DateTime.Now
+                            };
+                            string to = JsonConvert.SerializeObject(json);
+                            foreach (var k in usersConnected)
+                            {
+                                if (k.user == reader[0].ToString() && k.SocketConnected)
+                                    k.socketId.Send(to);
+                            }
+                        }
+
+                        i.SocketConnected = false;
+
+                        i.user = "none";
+                        query = $"UPDATE account SET state = '{DateTime.Now}' WHERE user = '{i.user}';";
+                        cmd = new MySqlCommand(query, mainCnn);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                cnn.Close();
+                cnn1.Close();
             }
             while (true)
             {
