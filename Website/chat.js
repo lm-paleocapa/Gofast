@@ -26,6 +26,7 @@ class Contact {
 	var webSocket;
 	var webSocketAddress = "ws://192.168.178.21:8181";
 	var username;
+	var contactSelected = false;
 
 	function loadFriendshipRequests(data) {
 		for(var i = 0; i < data.length; i++) {
@@ -254,6 +255,8 @@ class Contact {
 
 	function loadContact(name, image, online, id) {
 		//webSocket.send("{'id':'1', 'username':'" + username + "', 'password':'" + password + "'}");
+		contactCard = document.getElementById("contactCard");
+		contactCard.style.display = "";
 		dynamicImg = document.getElementById("dynamicImg");
 		dynamicImg.src = image;
 		dynamicName = document.getElementById("dynamicName");
@@ -314,7 +317,7 @@ class Contact {
 	function addAddFriend() {
 		var contactsList = document.getElementById("contactsList");
 		var newContact = document.createElement("li");
-		newContact.onclick = function() {document.getElementById("addFriendText").style.display = ""; document.getElementById("addFriendButton").style.display = ""; document.getElementById("messagesPanel").style.display = "none"; document.getElementById("messageList").style.display = "none"; document.getElementById("messagesFooter").style.display = "none";};
+		newContact.onclick = function() {document.getElementById("contactCard").style.display = ""; document.getElementById("addFriendText").style.display = ""; document.getElementById("addFriendButton").style.display = ""; document.getElementById("messagesPanel").style.display = "none"; document.getElementById("messageList").style.display = "none"; document.getElementById("messagesFooter").style.display = "none";};
 		contactsList.appendChild(newContact);
 		var newDiv = document.createElement("div");
 		newDiv.className = "d-flex bd-highlight";
@@ -341,7 +344,8 @@ class Contact {
 
 	function main() {
 	
-
+	var contactCard = document.getElementById("contactCard");
+	contactCard.style.display = "none";
 	addAddFriend();	
 	//var newContact = new Contact("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP._9SsO9_KzjYz0lPYS6XPOAHaHa%26pid%3DApi&f=1", "ddg", 1, true, "online", []);
 	//var newContact2 = new Contact("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2Fyt0CE-bN--g%2Fhqdefault.jpg&f=1&nofb=1", "google", 2, true, "online", []);

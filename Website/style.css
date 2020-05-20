@@ -2,8 +2,8 @@
 			height: 100%;
 			margin: 0;
 			background: rgb(79, 42, 138);
-	       background: -webkit-linear-gradient(to right, rgb(37, 58, 150), rgb(133, 73, 165), rgb(194, 81, 194));
-			background: linear-gradient(to right, rgb(88, 74, 206), rgb(145, 92, 196), rgb(183, 80, 192));
+	       background: -webkit-linear-gradient(to right, rgb(44, 34, 126), rgb(75, 40, 109), rgb(109, 41, 115));
+			background: linear-gradient(to right, rgb(44, 34, 126), rgb(75, 40, 109), rgb(109, 41, 115));
 			color: white;
 		}
 
