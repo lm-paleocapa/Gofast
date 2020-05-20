@@ -30,16 +30,5 @@
                 pictureBox.Image = value;
             }
         }
-        public string state
-        {
-            get
-            {
-                return labelState.Text;
-            }
-            set
-            {
-                labelState.Text = value;
-            }
-        }
     }
 }

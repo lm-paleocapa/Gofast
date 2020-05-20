@@ -71,17 +71,6 @@
                 userSelected.imageUserSelected = value;
             }
         }
-        public string lastAccessOfUserSelected
-        {
-            get
-            {
-                return userSelected.state;
-            }
-            set
-            {
-                userSelected.state = value;
-            }
-        }
         public string nameOfUserSelected
         {
             get

@@ -11,17 +11,6 @@
         {
             InitializeComponent();
         }
-        public bool LA
-        {
-            get
-            {
-                return labelLastAccess.Visible;
-            }
-            set
-            {
-                labelLastAccess.Visible = value;
-            }
-        }
         public BorderStyle Border
         {
             get
@@ -42,17 +31,6 @@
             set
             {
                 labelUsername.Text = value;
-            }
-        }
-        public string lastAccess
-        {
-            get
-            {
-                return labelLastAccess.Text;
-            }
-            set
-            {
-                labelLastAccess.Text = value;
             }
         }
         public Image picture
@@ -76,7 +54,6 @@
 
             Form1.MainChat.nameOfUserSelected = this.name;
             Form1.MainChat.imageOfUserSelected = picture;
-            Form1.MainChat.lastAccessOfUserSelected = lastAccess;
 
             Form1.MainChat.panelUserSelected.Visible = true;
 

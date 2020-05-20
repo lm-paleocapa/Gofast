@@ -4,5 +4,6 @@
     {
         public string image { get; set; }
         public string user { get; set; }
+        public string date { get; set; }
     }
 }

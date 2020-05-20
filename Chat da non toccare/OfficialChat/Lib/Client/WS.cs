@@ -10,12 +10,10 @@
     using Newtonsoft.Json;
     using Bunifu.Framework.UI;
     using Chat.Controls;
-    using System.Management;
-
     public class WS
     {
-        //private static WebSocket ws = new WebSocket("ws://80.182.17.185:8181");
-        private static WebSocket ws = new WebSocket("ws://127.0.0.1:8181");
+        private static WebSocket ws = new WebSocket("ws://80.182.17.185:8181");
+        //private static WebSocket ws = new WebSocket("ws://127.0.0.1:8181");
         private static List<string> toSend = new List<string>();
         public static void Open()
         {
@@ -119,16 +117,6 @@
                         ClassNine.Nine(json);
                         break;
                     }
-                case 10:
-                    {
-                        ClassTen.Ten(json);
-                        break;
-                    }
-                case 11:
-                    {
-                        ClassEleven.Eleven(json);
-                        break;
-                    }
             }
         }
         public class ClassOne
@@ -154,7 +142,6 @@
                     userLeft user = new userLeft
                     {
                         name = i.user,
-                        lastAccess = "Never",
                         picture = Image.FromStream(ms),
                         Dock = DockStyle.Top
                     };
@@ -413,37 +400,10 @@
                 userLeft user = new userLeft
                 {
                     name = json.username,
-                    lastAccess = "Da mettere",
                     picture = Image.FromStream(ms),
                     Dock = DockStyle.Top
                 };
                 Form1.MainChat.panelUsers.Invoke(new Action(() => Form1.MainChat.panelUsers.Controls.Add(user)));
-            }
-        }
-        public class ClassTen
-        {
-            public static void Ten(JSON json)
-            {
-                foreach (userLeft i in Form1.MainChat.panelUsers.Controls)
-                {
-                    if (i.name == json.username)
-                    {
-                        i.lastAccess = $"{json.date}";
-                    }
-                }
-            }
-        }
-        public class ClassEleven
-        {
-            public static void Eleven(JSON json)
-            {
-                foreach(userLeft i in Form1.MainChat.panelUsers.Controls)
-                {
-                    if (i.name == json.username)
-                    {
-                        i.lastAccess = "Online";
-                    }
-                }
             }
         }
     }

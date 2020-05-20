@@ -30,7 +30,6 @@
         {
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.labelUsername = new System.Windows.Forms.Label();
-            this.labelState = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,22 +52,11 @@
             this.labelUsername.TabIndex = 1;
             this.labelUsername.Text = "Username";
             // 
-            // labelState
-            // 
-            this.labelState.AutoSize = true;
-            this.labelState.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.labelState.Location = new System.Drawing.Point(66, 28);
-            this.labelState.Name = "labelState";
-            this.labelState.Size = new System.Drawing.Size(30, 13);
-            this.labelState.TabIndex = 2;
-            this.labelState.Text = "state";
-            // 
             // UserSelected
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(60)))), ((int)(((byte)(93)))));
-            this.Controls.Add(this.labelState);
             this.Controls.Add(this.labelUsername);
             this.Controls.Add(this.pictureBox);
             this.Name = "UserSelected";
@@ -83,6 +71,5 @@
 
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.Label labelUsername;
-        private System.Windows.Forms.Label labelState;
     }
 }

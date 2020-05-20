@@ -6,8 +6,6 @@
     using System;
     using System.Collections.Generic;
     using Lib;
-    using System.Drawing.Text;
-    using System.Linq;
 
     public class Program
     {
@@ -28,6 +26,7 @@
             {
                 socket.OnOpen = () =>
                 {
+                    Console.WriteLine("Open");
                     socketOnOpen(socket);
                 };
                 socket.OnClose = () =>
@@ -85,11 +84,6 @@
                                 Nono(json0, socket);
                                 break;
                             }
-                        case 10:
-                            {
-                                Decimo(json0, socket);
-                                break;
-                            }
                     }
                 };
             });
@@ -132,9 +126,6 @@
                                 i.SocketConnected = true;
                             }
                         }
-                        query = $"UPDATE account SET state = 'online' WHERE user = '{json0.username}' limit 1;";
-                        cmd = new MySqlCommand(query, cnn);
-                        cmd.ExecuteNonQuery();
 
                         List<Obj.Friend> friends = new List<Obj.Friend>();
                         query = $"SELECT friend from friends where user= '{json0.username}';";
@@ -165,7 +156,6 @@
                         reader = cmd.ExecuteReader();
 
                         reader.Read();
-
                         Obj.Json json1 = new Obj.Json
                         {
                             id = 1,
@@ -178,6 +168,28 @@
                         };
                         reader.Close();
 
+                        query = $"select friend from friends where user = '{json0.username}'";
+                        cmd = new MySqlCommand(query, cnn);
+                        reader = cmd.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            foreach(var i in usersConnected)
+                            {
+                                if (reader[0].ToString() == i.user && i.SocketConnected)
+                                {
+                                    Obj.Json item = new Obj.Json
+                                    {
+                                        id = 11,
+                                        username = i.user
+                                    };
+                                    string Gh = JsonConvert.SerializeObject(item);
+                                    i.socketId.Send(Gh);
+                                }
+                            }
+                        }
+                        reader.Close();
+                        
                         ToClient = JsonConvert.SerializeObject(json1);
                         socket.Send(ToClient);
 
@@ -287,8 +299,8 @@
                             id = 3,
                             from = json0.from,
                             message = json0.message,
-                            messageType = json0.messageType,
-                            date = json0.date
+                            date = DateTime.Now.ToString(),
+                            messageType = "string"
                         };
                         ok = true;
                         ToClient = JsonConvert.SerializeObject(json);
@@ -302,7 +314,7 @@
                     {
                         to = json0.to,
                         from = json0.from,
-                        date = json0.date,
+                        date = DateTime.Now.ToString(),
                         message = json0.message,
                         messageType = json0.messageType
                     };
@@ -318,7 +330,7 @@
                     if (reader[0].ToString() == $"{json0.from}_messages")
                     {
                         reader.Close();
-                        query = $"insert into {json0.from}_messages (user,messages,type,date) values ('{json0.to}','{json0.message}','{json0.messageType}','{json0.date.ToString("yyyy/MM/dd HH:mm:ss")}');";
+                        query = $"insert into {json0.from}_messages (user,messages,type,date) values ('{json0.to}','{json0.message}','{json0.messageType}','{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}');";
                         cmd = new MySqlCommand(query, cnn);
                         cmd.ExecuteNonQuery();
                         return;
@@ -330,7 +342,7 @@
                 cmd = new MySqlCommand(query, cnn);
                 cmd.ExecuteNonQuery();
 
-                query = $"insert into {json0.from}_messages (user,messages,type,date) values ('{json0.to}','{json0.message}','{json0.messageType}','{json0.date.ToString("yyyy/MM/dd HH:mm:ss")}');";
+                query = $"insert into {json0.from}_messages (user,messages,type,date) values ('{json0.to}','{json0.message}','{json0.messageType}','{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}');";
                 cmd = new MySqlCommand(query, cnn);
                 cmd.ExecuteNonQuery();
                 cnn.Close();
@@ -618,51 +630,7 @@
                 cmd.ExecuteNonQuery();
                 cnn.Close();
             }
-            void Decimo(Obj.Json json0, IWebSocketConnection socket)
-            {
-                MySqlConnection cnn = new MySqlConnection($"server={ip};database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
-                cnn.Open();
-                MySqlConnection cnn1 = new MySqlConnection($"server={ip};database=gofastdb;port=3306;uid=gofast;pwd=SDSD123687u21nsad;");
-                cnn1.Open();
-                string query;
-                MySqlCommand cmd;
-                MySqlDataReader reader;
-
-                foreach (var i in usersConnected)
-                {
-                    if (i.user == json0.username)
-                    {
-                        query = $"select friend from friends where user = '{json0.username}';";
-                        cmd = new MySqlCommand(query, cnn);
-                        reader = cmd.ExecuteReader();
-
-                        while (reader.Read())
-                        {
-                            Obj.Json json = new Obj.Json
-                            {
-                                id = 10,
-                                username = json0.username,
-                                date = DateTime.Now
-                            };
-                            string to = JsonConvert.SerializeObject(json);
-                            foreach (var k in usersConnected)
-                            {
-                                if (k.user == reader[0].ToString() && k.SocketConnected)
-                                    k.socketId.Send(to);
-                            }
-                        }
-
-                        i.SocketConnected = false;
-
-                        i.user = "none";
-                        query = $"UPDATE account SET state = '{DateTime.Now}' WHERE user = '{i.user}';";
-                        cmd = new MySqlCommand(query, mainCnn);
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-                cnn.Close();
-                cnn1.Close();
-            }
+            
             while (true)
             {
             }
@@ -686,7 +654,7 @@
             public List<Messages> ms { get; set; }
             public string from { get; set; } // Da chi viene il messaggio.
             public string to { get; set; } // Verso che deve andare il messaggio.
-            public DateTime date { get; set; } // Orario di invio del messaggio.
+            public string date { get; set; } // Orario di invio del messaggio.
             public string message { get; set; } // Stringa della messaggio.
             public string messageType { get; set; } // Che tipo di messaggio è (testo, audio, video, immagine).
         }
@@ -694,7 +662,7 @@
         {
             public string from { get; set; } // Da chi viene il messaggio.
             public string to { get; set; } // Verso che deve andare il messaggio.
-            public DateTime date { get; set; } // Orario di invio del messaggio.
+            public string date { get; set; } // Orario di invio del messaggio.
             public string message { get; set; } // Stringa della messaggio.
             public string messageType { get; set; } // Che tipo di messaggio è (testo, audio, video, immagine).
         }
@@ -702,6 +670,7 @@
         {
             public string image { get; set; } // Immagine dell'amico.
             public string user { get; set; } // Nome utente dell'amico.
+            public string date { get; set; }
         }
         public class WebsocketUsers
         {

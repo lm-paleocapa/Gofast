@@ -50,10 +50,6 @@
             this.username.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(69)))));
             this.username.Border = System.Windows.Forms.BorderStyle.None;
             this.username.hover = true;
-            this.username.LA = false;
-            this.username.lastAccess = "10:30";
-            this.username.Location = new System.Drawing.Point(0, 0);
-            this.username.Margin = new System.Windows.Forms.Padding(0);
             this.username.name = "Username";
             this.username.Name = "username";
             this.username.picture = ((System.Drawing.Image)(resources.GetObject("username.picture")));

@@ -133,7 +133,6 @@
             this.userSelected.Location = new System.Drawing.Point(0, 0);
             this.userSelected.Name = "userSelected";
             this.userSelected.Size = new System.Drawing.Size(674, 57);
-            this.userSelected.state = "state";
             this.userSelected.TabIndex = 0;
             this.userSelected.usernameSelected = "Username";
             this.userSelected.Click += new System.EventHandler(this.flpChat_Click);

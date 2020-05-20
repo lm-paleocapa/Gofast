@@ -32,7 +32,7 @@
                             messageType = "string",
                             from = from,
                             message = mes,
-                            date = DateTime.Now
+                            date = DateTime.Now.ToString()
                         };
                         string toClient = JsonConvert.SerializeObject(json);
                         i.socketId.Send(toClient);
@@ -44,7 +44,7 @@
                         {
                             to = to,
                             from = from,
-                            date = DateTime.Now,
+                            date = DateTime.Now.ToString(),
                             message = mes,
                             messageType = "string"
                         };

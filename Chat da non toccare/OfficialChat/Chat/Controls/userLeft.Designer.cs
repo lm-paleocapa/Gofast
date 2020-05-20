@@ -15,7 +15,6 @@
         private void InitializeComponent()
         {
             this.labelUsername = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.labelLastAccess = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
@@ -32,19 +31,6 @@
             this.labelUsername.Click += new System.EventHandler(this.userLeft_Click);
             this.labelUsername.MouseEnter += new System.EventHandler(this.userLeft_MouseEnter);
             this.labelUsername.MouseLeave += new System.EventHandler(this.userLeft_MouseLeave);
-            // 
-            // labelLastAccess
-            // 
-            this.labelLastAccess.AutoSize = true;
-            this.labelLastAccess.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.labelLastAccess.Location = new System.Drawing.Point(71, 35);
-            this.labelLastAccess.Name = "labelLastAccess";
-            this.labelLastAccess.Size = new System.Drawing.Size(34, 13);
-            this.labelLastAccess.TabIndex = 2;
-            this.labelLastAccess.Text = "10:30";
-            this.labelLastAccess.Click += new System.EventHandler(this.userLeft_Click);
-            this.labelLastAccess.MouseEnter += new System.EventHandler(this.userLeft_MouseEnter);
-            this.labelLastAccess.MouseLeave += new System.EventHandler(this.userLeft_MouseLeave);
             // 
             // pictureBox
             // 
@@ -64,7 +50,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(59)))), ((int)(((byte)(69)))));
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.labelLastAccess);
             this.Controls.Add(this.labelUsername);
             this.Controls.Add(this.pictureBox);
             this.Name = "userLeft";
@@ -80,6 +65,5 @@
         }
         private System.Windows.Forms.PictureBox pictureBox;
         private Bunifu.Framework.UI.BunifuCustomLabel labelUsername;
-        private Bunifu.Framework.UI.BunifuCustomLabel labelLastAccess;
     }
 }

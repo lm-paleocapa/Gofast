@@ -65,7 +65,7 @@
                         JSON json = new JSON
                         {
                             id = 2,
-                            date = DateTime.Now,
+                            date = DateTime.Now.ToString(),
                             message = box.Text,
                             messageType = "string",
                             to = i.Name,
