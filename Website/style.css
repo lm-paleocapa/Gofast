@@ -5,6 +5,11 @@
 	       background: -webkit-linear-gradient(to right, rgb(44, 34, 126), rgb(75, 40, 109), rgb(109, 41, 115));
 			background: linear-gradient(to right, rgb(44, 34, 126), rgb(75, 40, 109), rgb(109, 41, 115));
 			color: white;
+			scrollbar-width: none;
+		}
+
+		::-webkit-scrollbar {
+								width: 0px;
 		}
 
 		.chat{
@@ -20,9 +25,11 @@
 			padding:  0.75rem 0 !important;
 			overflow-y: auto;
 			white-space: nowrap;
+			scrollbar-width: none;
 		}
 		.msg_card_body{
 			overflow-y: auto;
+			scrollbar-width: none;
 		}
 		.card-header{
 			border-radius: 15px 15px 0 0 !important;
