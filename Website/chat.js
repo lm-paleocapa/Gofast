@@ -24,7 +24,7 @@ class Contact {
 	var email;
 	var password;
 	var webSocket;
-	var webSocketAddress = "ws://192.168.178.21:8181";
+	var webSocketAddress = "ws://80.182.17.185:8181";
 	var username;
 	var contactSelected = false;
 
@@ -74,9 +74,24 @@ class Contact {
 		loadContacts(data);
 	}
 
+	function searchContacts() {
+		var contactsList = document.getElementById("contactsList");
+		for(var i = 0; i < contactsList.children.length; i++) {
+						if(contactsList.children[i].hasAttribute("id")) {
+								contactsList.removeChild(contactsList.children[1]);
+								i--;
+						}
+		}
+
+		for(var i = 0; i < contacts.length; i++) {
+			if(contacts[i].name.includes(document.getElementById("searchContacts").value)) {
+								addContact(contacts[i].image, contacts[i].name, contacts[i].id, contacts[i].online, contacts[i].lastLog);
+			}
+		}
+	}
+
 	function manageData(event) {
 		var data = JSON.parse(event.data);
-		alert(data.id);
 		var idFrom;
 		for(var i = 0; i < contacts.length; i++) {
 			if(contacts[i].name == data.from)
@@ -90,7 +105,7 @@ class Contact {
 				if(data.from != null)
 					addFriendshipRequest(data.from, "data:image/png; base64, " + data.image);
 				break;
-			case 15:
+			case 9:
 				$.getJSON("loadContacts.php", reloadContacts);
 				break;
 		}
@@ -119,7 +134,7 @@ class Contact {
 			var id = contacts[r].id;
 			$.getJSON("loadMessages.php?friendId=" + id, function(data) {
                                         	for (var j = 0; j < data.length; j++) {
-                                                	contacts[r].messages.push(new Message(data[j].content, data[j].date, data[j].mode));
+                                                	contacts[r].messages.push(new Message(data[j].content, data[j].date.split(" ")[1], data[j].mode));
                                         	}
 						if (r < contacts.length) {
 							r++;
@@ -159,17 +174,18 @@ class Contact {
 		newImg2 = document.createElement("img");
 		newImg2.src = "accept.png";
 		newImg2.className = "rounded-circle accept_img";
-		newImg2.onclick = function() {contactsList.removeChild(newContact); webSocket.send("{'id':'10', 'username':'" + username + "', 'to':'" + name + "'}"); $.getJSON("loadContacts.php", reloadContacts);};
+		newImg2.onclick = function() {contactsList.removeChild(newContact); webSocket.send("{'id':'8', 'username':'" + username + "', 'to':'" + name + "'}"); $.getJSON("loadContacts.php", reloadContacts);};
 		newSubDiv2.appendChild(newImg2);
 		newImg3 = document.createElement("img");
 		newImg3.src = "decline.png";
 		newImg3.className = "rounded-circle decline_img";
-		newImg3.onclick = function() {contactsList.removeChild(newContact); alert("q"); webSocket.send("{'id':'9', 'username':'" + username + "', 'to':'" + name + "'}");};
+		newImg3.onclick = function() {contactsList.removeChild(newContact); webSocket.send("{'id':'9', 'username':'" + username + "', 'to':'" + name + "'}");};
 		newSubDiv2.appendChild(newImg3);
 	}
 
 	function sendFriendshipRequest(){
 		friendName = document.getElementById("friendToRequest").value;
+		document.getElementById("friendToRequest").value = "";
 		webSocket.send("{'id':'5', 'username':'" + username + "', 'friends':[{'user':'" + friendName + "'}]}");
 	}
 
@@ -223,16 +239,17 @@ class Contact {
 	function getMessage(id, content, time) {
 		for (var i = 0; i < contacts.length; i++) {
 			if (contacts[i].id == id) {
-					contacts[i].messages.push(new Message(content, time, "RECEIVE"));
+					contacts[i].messages.push(new Message(content, time.split(" ")[1], "RECEIVE"));
 			}
 		}
 		
 		if (id == activeChat) {
-			viewReceivedMessage(content, time);
+			viewReceivedMessage(content, time.split(" ")[1]);
 		}
 	}
 
 	function postMessage(content) {
+		document.getElementById("textarea").value = "";
 		var now = new Date();
  		var year = "" + now.getFullYear();
   		var month = "" + (now.getMonth() + 1); if (month.length == 1) { month = "0" + month; };
@@ -243,9 +260,9 @@ class Contact {
   		var date = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
 		for(var i = 0; i < contacts.length; i++) {
 		    if(contacts[i].id == activeChat)
-		    	contacts[i].messages.push(new Message(content, date, "SEND"));
+		    	contacts[i].messages.push(new Message(content, date.split(" ")[1], "SEND"));
 		}
-		viewSentMessage(content, date);
+		viewSentMessage(content, date.split(" ")[1]);
 		for(var i = 0; i < contacts.length; i++) {
 			if(contacts[i].id == activeChat) { 
 				webSocket.send("{'id':'2', 'message':'" + content + "', 'from':'" + username + "', 'to':'" + contacts[i].name + "', 'date':'" + date + "'}");
@@ -261,11 +278,11 @@ class Contact {
 		dynamicImg.src = image;
 		dynamicName = document.getElementById("dynamicName");
 		dynamicName.innerHTML = name;
-		dynamicOnline = document.getElementById("dynamicOnline");
+		/*dynamicOnline = document.getElementById("dynamicOnline");
 		if(online)
 			dynamicOnline.className = "online_icon";
 		else
-			dynamicOnline.className = "online_icon offline";
+			dynamicOnline.className = "online_icon offline";*/
 		if(activeChat != 0)
 		    document.getElementById(activeChat).className = "";
 		document.getElementById(id).className = "active";
@@ -297,21 +314,21 @@ class Contact {
 		newImg.src = image;
 		newImg.className = "rounded-circle user_img";
 		newSubDiv0.appendChild(newImg);
-		newSpan0 = document.createElement("span");
+		/*newSpan0 = document.createElement("span");
 		if (online == true)
 			newSpan0.className = "online_icon";
 		else
 			newSpan0.className = "online_icon offline"
-		newSubDiv0.appendChild(newSpan0);
+		newSubDiv0.appendChild(newSpan0);*/
 		var newSpan1 = document.createElement("span");
 		newSpan1.innerHTML = name;
 		newSubDiv1.appendChild(newSpan1);
-		var newP = document.createElement("p");
+		/*var newP = document.createElement("p");
 		if (online == true)
 			newP.innerHTML = "online";
 		else
 			newP.innerHTML = "Last log: " + lastLog;
-		newSubDiv1.appendChild(newP);
+		newSubDiv1.appendChild(newP);*/
 	}
 
 	function addAddFriend() {
