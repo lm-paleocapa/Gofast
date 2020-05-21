@@ -92,7 +92,6 @@ class Contact {
 
 	function manageData(event) {
 		var data = JSON.parse(event.data);
-		alert(data.id);
 		var idFrom;
 		for(var i = 0; i < contacts.length; i++) {
 			if(contacts[i].name == data.from)
@@ -180,7 +179,7 @@ class Contact {
 		newImg3 = document.createElement("img");
 		newImg3.src = "decline.png";
 		newImg3.className = "rounded-circle decline_img";
-		newImg3.onclick = function() {contactsList.removeChild(newContact); alert("q"); webSocket.send("{'id':'9', 'username':'" + username + "', 'to':'" + name + "'}");};
+		newImg3.onclick = function() {contactsList.removeChild(newContact); webSocket.send("{'id':'9', 'username':'" + username + "', 'to':'" + name + "'}");};
 		newSubDiv2.appendChild(newImg3);
 	}
 
