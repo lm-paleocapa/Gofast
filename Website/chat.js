@@ -74,6 +74,22 @@ class Contact {
 		loadContacts(data);
 	}
 
+	function searchContacts() {
+		var contactsList = document.getElementById("contactsList");
+		for(var i = 0; i < contactsList.children.length; i++) {
+						if(contactsList.children[i].hasAttribute("id")) {
+								contactsList.removeChild(contactsList.children[1]);
+								i--;
+						}
+		}
+
+		for(var i = 0; i < contacts.length; i++) {
+			if(contacts[i].name.includes(document.getElementById("searchContacts").value)) {
+								addContact(contacts[i].image, contacts[i].name, contacts[i].id, contacts[i].online, contacts[i].lastLog);
+			}
+		}
+	}
+
 	function manageData(event) {
 		var data = JSON.parse(event.data);
 		alert(data.id);
