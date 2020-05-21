@@ -98,7 +98,7 @@
             this.labelSignUp.Name = "labelSignUp";
             this.labelSignUp.Size = new System.Drawing.Size(45, 13);
             this.labelSignUp.TabIndex = 5;
-            this.labelSignUp.Text = " SingUp";
+            this.labelSignUp.Text = " SignUp";
             this.labelSignUp.Click += new System.EventHandler(this.labelSignUp_Click);
             // 
             // tbUsername

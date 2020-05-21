@@ -491,7 +491,7 @@
                 string query;
                 foreach (var i in json0.friends)
                 {
-                    query = $"select image from account where user = '{i.user}'";
+                    query = $"select image from account where user = '{json0.username}'";
                     cmd = new MySqlCommand(query, cnn);
                     string img = cmd.ExecuteScalar().ToString();
 
