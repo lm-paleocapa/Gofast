@@ -369,20 +369,19 @@
             public static List<requestItem> items = new List<requestItem>();
             public static void Height(JSON json)
             {
-                foreach (var i in json.friends)
+                if (json.image != null)
                 {
-                    var img = Convert.FromBase64String(i.image);
+                    var img = Convert.FromBase64String(json.image);
                     MemoryStream ms = new MemoryStream(img);
                     requestItem item = new requestItem
                     {
-                        Name = i.user,
-                        Username = i.user,
+                        Name = json.from,
+                        Username = json.from,
                         Image = Image.FromStream(ms),
                         Dock = DockStyle.Top
                     };
                     items.Add(item);
                 }
-
                 if (!Form1.thread.IsAlive)
                 {
                     Form1.thread = new Thread(new ThreadStart(th));
